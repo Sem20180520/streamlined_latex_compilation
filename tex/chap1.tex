@@ -160,7 +160,7 @@ $|\alpha|<1$ならば$(a^2+b^2)-1<0$、$|z|<1$ならば$(c^2+d^2)-1<0$である�
 \end{align*}
 が言える。
 
-\paragraph{別解}
+\paragraph{別解1}
 
 図形的に解くこともできる。
 
@@ -193,3 +193,14 @@ $\arg\bar{\alpha}z-\arg 1=\arg\bar{\alpha}+\arg z-0=-\arg\alpha+\arg z$である
     \draw (0.12,0.08) arc (33:138:0.125);
     \draw (-0.07,0.2) node {$\theta$};
 \end{tikzpicture}
+
+\paragraph{別解2}
+複素数の計算規則によって、
+\begin{align*}
+    |\bar{\alpha}z-1|^2-|z-\alpha|^2
+    &=(\bar{\alpha}z-1)(\alpha\bar{z}-1)-(z-\alpha)(\bar{z}-\bar{\alpha})\\
+    &=|\alpha|^2|z|^2-\bar{\alpha}z-\alpha\bar{z}+1-(|z|^2-\bar{\alpha}z-\alpha\bar{z}+|\alpha|^2)\\
+    &=|\alpha|^2|z|^2-|z|^2-|\alpha|^2+1\\
+    &=(|z|^2-1)(|\alpha|^2-1)
+\end{align*}
+と計算でき、上記と同様の結論を得る。
