@@ -1,0 +1,16 @@
+%mybook
+
+\newcommand{\R}{\mathbb{R}}%実数体
+\newcommand{\C}{\mathbb{C}}%複素数体
+
+\tcbuselibrary{skins}
+
+\newtcolorbox{mysimplebox}[1]{%
+ colframe=black, colback=white,
+ coltitle=black, colbacktitle=white,
+ boxrule=0.8pt, arc=0mm,
+ fonttitle=\sffamily\bfseries,
+ enhanced,
+ attach boxed title to top left={xshift=3mm,yshift=-3mm},
+ boxed title style={frame hidden},
+ title=#1}

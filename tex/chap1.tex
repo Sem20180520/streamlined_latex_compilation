@@ -1,0 +1,159 @@
+\chapter{複素数}%第１章
+
+\begin{mysimplebox}{問1}
+$|\alpha+\alpha'|\le|\alpha|+|\alpha'|$
+（$\alpha,\alpha'\in\C$）を計算によって示せ。
+\end{mysimplebox}
+
+$\alpha=a+bi$（$a, b\in\R, i=\sqrt{-1}$）に対して$|\alpha|\coloneqq\sqrt{a^2+b^2}$と定義される。
+
+$\alpha'=c+di$（$c,d\in\R$）とする。
+
+問1の不等式の左辺について定義に従って変形する。
+\begin{align*}
+    |\alpha+\alpha'|&=|(a+bi)+(c+di)|\\
+    &=|(a+c)+(b+d)i|\\
+    &=\sqrt{(a+c)^2+(b+d)^2}
+\end{align*}
+
+右辺についても変形する。
+\begin{align*}
+    |\alpha|+|\alpha'|=\sqrt{a^2+b^2}+\sqrt{c^2+d^2}
+\end{align*}
+
+よって、$\sqrt{(a+c)^2+(b+d)^2}\le\sqrt{a^2+b^2}+\sqrt{c^2+d^2}$を示せばよい。
+
+この示すべき目的の式を変形していく。
+
+両辺とも0以上であるから、示すべき式は両辺2
+乗した形である以下の式に変形できる。
+\begin{align*}
+    (a+c)^2+(b+d)^2\le(a^2+b^2)+(c^2+d^2)+2\sqrt{(a^2+b^2)(c^2+d^2)}
+\end{align*}
+
+さらに以下のように展開して整理する。
+\begin{align}
+    (a^2+2ac+c^2)+(b^2+2bd+d^2)&\le (a^2+b^2)+(c^2+d^2)+2\sqrt{(a^2+b^2)(c^2+d^2)}\nonumber\\
+    2ac+2bd&\le 2\sqrt{(a^2+b^2)(c^2+d^2)}\nonumber\\
+    ac+bd&\le \sqrt{(a^2+b^2)(c^2+d^2)}\label{eq:cauchy-shwarz}\\
+    ac+bd&\le \sqrt{a^2c^2+b^2d^2+a^2d^2+b^2c^2}\label{eq:cauchy-shwarz2}
+\end{align}
+この最終行の不等式(\ref{eq:cauchy-shwarz2})を示せばよいこととなる。
+
+以下の計算をする。
+\begin{align}
+    &\left(\sqrt{a^2c^2+b^2d^2+a^2d^2+b^2c^2}\right)^2-(ac+bd)^2\nonumber\\
+    &=a^2c^2+b^2d^2+a^2d^2+b^2c^2-(a^2c^2+b^2d^2+2abcd)\nonumber\\
+    &=a^2d^2+b^2c^2-2abcd\nonumber\\
+    &=(ad-bc)^2\ge0\label{eq:togo}
+\end{align}
+よって、
+\begin{align*}
+    (ac+bd)^2&\le\left(\sqrt{a^2c^2+b^2d^2+a^2d^2+b^2c^2}\right)^2\\
+    |ac+bd|&\le\sqrt{a^2c^2+b^2d^2+a^2d^2+b^2c^2}\\
+    ac+bd\le|ac+bd|&\le\sqrt{a^2c^2+b^2d^2+a^2d^2+b^2c^2}
+\end{align*}
+これで示すべき不等式は示された。
+
+なお、不等式(\ref{eq:cauchy-shwarz})は、よく知られたコーシー・シュワルツの不等式である。すなわち、$\bm{x}=(a,b)$、$\bm{y}=(c,d)$とすると、不等式(\ref{eq:cauchy-shwarz})は、ベクトルの内積と大きさによって、
+\begin{align}
+    \bm{x}\cdot \bm{y}\le|\bm{x}||\bm{y}|\label{eq:cauchy-shwarz0}
+\end{align}
+と書き表される。
+
+この不等式は、$t\in\R$に対して、以下のよく知られた証明がある。すなわち、
+\begin{align*}
+    0\le|t\bm{x}+\bm{y}|^2
+    =|\bm{x}|^2t^2+2(\bm{x}\cdot\bm{y})t+|\bm{y}|^2
+\end{align*}
+であるが、2次方程式$|\bm{x}|^2t^2+2(\bm{x}\cdot\bm{y})t+|\bm{y}|^2=0$の判別式$D\le 0$より
+\begin{align*}
+    \frac{D}{4}=(\bm{x}\cdot\bm{y})^2-|\bm{x}|^2|\bm{y}|^2\le 0
+\end{align*}
+よって、$\bm{x}\cdot\bm{y}\le|\bm{x}\cdot\bm{y}|\le|\bm{x}||\bm{y}|$が言える。
+
+\begin{mysimplebox}{問2}
+    $z_k\in\C$($k=1,2,\dots,n$)に対して、$|z_1+z_2+\dots+z_n|\le|z_1|+|z_2|+\dots+|z_n|$であり、等号が成立するのは、$z_k$($k=1,2,\dots,n$)が$z=0$を起点とする同じ半直線の上にあるときに限ることを示せ。
+\end{mysimplebox}
+
+$|z_1+z_2+\dots+z_n|\le|z_1|+|z_2|+\dots+|z_n|$であることは、問1の結果と$n$に関する帰納法によって示される。
+
+$n=2$のとき、等号が成立する条件を考える。すなわち、$|z_1+z_2|=|z_1|+|z_2|$が成り立っているとする。複素数と実2次元平面上の点を同一視して$z_1=(a,b), z_2=(c,d)$（$a,b,c,d\in\R$）とすると、($\ref{eq:togo}$)式より、$ad=bc$の場合に限られることが分かる。
+
+$a=0$の場合、$b=0$または$c=0$である。
+
+$b=0$の場合、$z_1=(0,0)$であるから、どのような$z_2=(c,d)$に対しても$z_1, z_2$は原点を起点とする半直線上にある。
+
+$c=0$の場合、$z_1=(0,b), z_2=(0,d)$であるが、$|z_1+z_2|=|z_1|+|z_2|$は、
+\begin{align*}
+    |b+d|=|b|+|d|
+\end{align*}
+と書き直される。これは$b$と$d$が同符号であることを表す。よって$z_1$と$z_2$は虚軸上で同じ方向を向いており、原点を起点とする半直線上にあることが分かる。
+
+$a\neq 0$の場合、($\ref{eq:togo}$)式より、$c\neq 0$であり、次の式が成り立つ。
+\begin{align*}
+    \frac{b}{a}=\frac{d}{c}=k
+\end{align*}
+これは、$z_1$と$z_2$が同一直線上にあることを表している。
+
+さらに、
+\begin{align*}
+    |z_1+z_2|&=|(a+c)+(b+d)i|\\
+    &=|(a+c)+(ak+ck)i|\\
+    &=|a+c||1+ki|\\
+    &=|a+c|\sqrt{1+k^2}\\
+    |z_1|+|z_2|&=|a+bi|+|c+di|\\
+    &=|a+aki|+|c+cki|\\
+    &=|a||1+ki|+|c||1+ki|\\
+    &=(|a|+|c|)\sqrt{1+k^2}
+\end{align*}
+よって、$|a+c|=|a|+|c|$が成り立つ。これは$a$と$c$が同符号であることを表している。
+
+以上より、$z_1$と$z_2$は原点を起点とする半直線上にある。
+
+逆に、$z_1$と$z_2$は原点を起点とする半直線上にあるとき、問題の不等式の等号が成立している。
+
+したがって、$n=2$のとき、不等式の等号が成立するのは$z_1$と$z_2$が原点を起点とする半直線上にあることが示せた。
+
+$n=3$以上のときも、帰納法によって示される。
+
+ところで、($\ref{eq:cauchy-shwarz0}$)式において、$\bm{x}\cdot \bm{y}=|\bm{x}||\bm{y}|\cos \theta$（ただし$\theta$は$z_1$と$z_2$のなす角の大きさ）であることを知っていれば、問題の不等式の等号が成り立つのは、$|\bm{x}||\bm{y}|\cos \theta=|\bm{x}||\bm{y}|$のときであり、$\bm{x}, \bm{y}$ともに0でなければ$\cos \theta=1$となる。よって、$\theta=0$（$2\pi$分の違いは無視する）であるから、不等式の等号が成立するのは、複素数平面上の点たちが原点を起点とする半直線上にあることが容易に分かる。
+
+\begin{mysimplebox}{問3}
+    $|\alpha|<1$のとき、$|z|<1$ならば$\left|\frac{z-\alpha}{\bar{\alpha}z-1}\right|<1$であり、$|z|=1$ならば$\left|\frac{z-\alpha}{\bar{\alpha}z-1}\right|=1$であることを示せ。
+\end{mysimplebox}
+
+$\alpha=a+bi, z=c+di$（$a,b,c,d\in\R$）とする。
+
+\begin{align*}
+    |\bar{\alpha}z-1|&=|(a-bi)(c+di)-1|\\
+    &=|(ac+bd-1)+(ad-bc)i|\\
+    &=\sqrt{(ac+bd-1)^2+(ad-bc)^2}\\
+    &=\sqrt{(a^2c^2+b^2d^2+1+2abcd-2bd-2ac)+(a^2d^2-2abcd+b^2c^2)}\\
+    &=\sqrt{a^2c^2+b^2d^2-2bd-2ac+a^2d^2+b^2c^2+1}\\
+    &=\sqrt{(a^2+b^2)(c^2+d^2)-2(ac+bd)+1}\\
+    |z-\alpha|&=|(c-a)+(d-b)i|\\
+    &=\sqrt{(c-a)^2+(d-b)^2}\\
+    &=\sqrt{a^2+b^2+c^2+d^2-2(ac+bd)}
+\end{align*}
+よって、
+\begin{align*}
+    &|\bar{\alpha}z-1|^2-|z-\alpha|^2\\
+    =&(a^2+b^2)(c^2+d^2)-(a^2+b^2)-(c^2+d^2)+1\\
+    =&\{(a^2+b^2)-1\}\{(c^2+d^2)-1\}
+\end{align*}
+
+$|\alpha|<1$ならば$(a^2+b^2)-1<0$、$|z|<1$ならば$(c^2+d^2)-1<0$である。
+よって、
+\begin{align*}
+    &|\bar{\alpha}z-1|^2-|z-\alpha|^2>0\\
+    &|\bar{\alpha}z-1|^2>|z-\alpha|^2\\
+    &|\bar{\alpha}z-1|>|z-\alpha|\\
+    &\left|\frac{z-\alpha}{\bar{\alpha}z-1}\right|<1
+\end{align*}
+
+また、$|z|=1$ならば$(c^2+d^2)-1=0$であるから、上記と同じ計算で等号が成り立ち、
+\begin{align*}
+    &\left|\frac{z-\alpha}{\bar{\alpha}z-1}\right|=1
+\end{align*}
+が言える。
