@@ -55,7 +55,9 @@ $\alpha'=c+di$（$c,d\in\R$）とする。
 \end{align*}
 これで示すべき不等式は示された。
 
-なお、不等式(\ref{eq:cauchy-shwarz})は、よく知られたコーシー・シュワルツの不等式である。すなわち、$\bm{x}=(a,b)$、$\bm{y}=(c,d)$とすると、不等式(\ref{eq:cauchy-shwarz})は、ベクトルの内積と大きさによって、
+\paragraph{別解}
+
+不等式(\ref{eq:cauchy-shwarz})は、よく知られたコーシー・シュワルツの不等式である。すなわち、$\bm{x}=(a,b)$、$\bm{y}=(c,d)$とすると、不等式(\ref{eq:cauchy-shwarz})は、ベクトルの内積と大きさによって、
 \begin{align}
     \bm{x}\cdot \bm{y}\le|\bm{x}||\bm{y}|\label{eq:cauchy-shwarz0}
 \end{align}
@@ -157,3 +159,37 @@ $|\alpha|<1$ならば$(a^2+b^2)-1<0$、$|z|<1$ならば$(c^2+d^2)-1<0$である�
     &\left|\frac{z-\alpha}{\bar{\alpha}z-1}\right|=1
 \end{align*}
 が言える。
+
+\paragraph{別解}
+
+図形的に解くこともできる。
+
+$\arg\bar{\alpha}z-\arg 1=\arg\bar{\alpha}+\arg z-0=-\arg\alpha+\arg z$であるから、3点$\bar{\alpha}z$,O,1がなす角度と、3点$z$,O,$\alpha$がなす角度は等しい。その大きさを$\theta$とすると、余弦定理により、
+\begin{align*}
+    |z-\alpha|^2&=|z|^2+|\alpha|^2-2\cos\theta\\
+    |\bar{\alpha}z-1|^2&=|\bar{\alpha}z|^2+1^2-2|\bar{\alpha}z|\cos\theta\\
+    &=|\alpha|^2|z|^2+1-2|\bar{\alpha}z|\cos\theta
+\end{align*}
+よって、
+\begin{align*}
+    |\bar{\alpha}z-1|^2-|z-\alpha|^2&=|\alpha|^2|z|^2-|z|^2-|\alpha|^2+1\\
+    &=(|z|^2-1)(|\alpha|^2-1)
+\end{align*}
+ゆえに、$|\alpha|<1, |z|<1$のとき、 $|\bar{\alpha}z-1|^2-|z-\alpha|^2>0$となり、上記と同じ結論を得る。
+
+\begin{tikzpicture}[x=30mm,y=30mm,domain=-1.5:1.5,samples=200,>=stealth]
+    \draw[->](-1.5,0)--(1.5,0) node[right]{$x$};
+    \draw[->](0,-1.5)--(0,1.5) node[above]{$y$};
+    \draw (0,0) node[below left]{O};
+    \draw[line width=2pt] (0,0) circle (1);
+    \fill[black] (-0.5,0.7) circle (0.03) node[left] {$z$}
+                 (0.6,0.4) circle (0.03) node[right] {$\alpha$}
+                 (-0.02,0.62) circle (0.03) node[above]{$\bar{\alpha}z$};
+    \draw (1,0) node[below right] {1};
+    \draw[line width=2pt] (0,0)--(-0.5,0.7)--(0.6,0.4)--(0,0);
+    \draw[line width=2pt] (0,0)--(-0.02,0.62)--(1,0)--(0,0);
+    \draw (0.1,0) arc (0:92:0.1);
+    \draw (0.2,0.05) node {$\theta$};
+    \draw (0.12,0.08) arc (33:138:0.125);
+    \draw (-0.07,0.2) node {$\theta$};
+\end{tikzpicture}
