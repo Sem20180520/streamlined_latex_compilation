@@ -1,5 +1,16 @@
 %mybook
 
+% 版面を中央に(左右)
+\oddsidemargin=\paperwidth
+\advance\oddsidemargin by -\textwidth
+\divide\oddsidemargin by 2
+\advance\oddsidemargin by -1truein
+%\advance\oddsidemargin by -1truemm %小口に1mmずらす
+\evensidemargin=\paperwidth
+\advance\evensidemargin by -\textwidth
+\divide\evensidemargin by 2
+\advance\evensidemargin by -1truein
+%\advance\evensidemargin by  1truemm %小口に1mmずらす
 \setlength{\parindent}{10pt}
 
 \newcommand{\R}{\mathbb{R}}%実数体
