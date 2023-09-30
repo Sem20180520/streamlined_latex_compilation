@@ -266,19 +266,25 @@ $\sum_{n=0}^\infty c_nz^n$が$z=z_1$で絶対収束しなければ、収束半�
     $c_n\neq 0\,(n=k, k+1, k+2,\dots)$、$R=\lim_{n\to\infty}|c_nc_{n+1}^{-1}|$ならば、$\sum_{n=0}^\infty c_nz^n$の収束半径は$R$である。
 \end{mysimplebox}
 \paragraph{証明}
-$R=\lim_{n\to\infty}|c_nc_{n+1}^{-1}|$であることより、$0<\epsilon<R$である任意の数$\epsilon$に対して、ある正数$N$が存在し、$n>N$となる任意の$n$に対して、$R-\epsilon<\left|\frac{c_n}{c_{n+1}}\right|<R+\epsilon$となる。
-
-よって、$\frac{|c_n|}{R+\epsilon}<|c_{n+1}|<\frac{|c_n|}{R-\epsilon}$である。
+$R=\lim_{n\to\infty}|c_nc_{n+1}^{-1}|$であることより、$0<\epsilon<R$である任意の数$\epsilon$に対して、ある正数$N$が存在し、$n>N$となる任意の$n$に対して、
+\begin{align*}
+    R-\epsilon<\left|\frac{c_n}{c_{n+1}}\right|<R+\epsilon
+\end{align*}
+となる。よって、
+\begin{align*}
+    \frac{|c_n|}{R+\epsilon}<|c_{n+1}|<\frac{|c_n|}{R-\epsilon}
+\end{align*}    
+である。
 
 ゆえに、$k>0$に対して、
-\begin{align*}
-    |c_{n+k}|&>\frac{|c_{n+k-1}|}{R+\epsilon}>\frac{|c_{n+k-2}|}{(R+\epsilon)^2}>\dots>\frac{|c_{n}|}{(R+\epsilon)^k},\\
-    |c_{n+k}|&<\frac{|c_{n+k-1}|}{R-\epsilon}<\frac{|c_{n+k-2}|}{(R-\epsilon)^2}<\dots<\frac{|c_{n}|}{(R-\epsilon)^k}.
-\end{align*}
+\begin{align}
+    |c_{n+k}|&>\frac{|c_{n+k-1}|}{R+\epsilon}>\frac{|c_{n+k-2}|}{(R+\epsilon)^2}>\dots>\frac{|c_{n}|}{(R+\epsilon)^k},\label{eq:convR1}\\
+    |c_{n+k}|&<\frac{|c_{n+k-1}|}{R-\epsilon}<\frac{|c_{n+k-2}|}{(R-\epsilon)^2}<\dots<\frac{|c_{n}|}{(R-\epsilon)^k}.\label{eq:convR2}
+\end{align}
 
 したがって、
 \begin{align*}
-    \left\{\frac{|c_{n}|}{(R+\epsilon)^k}\right\}^\frac{1}{n+k}<&|c_{n+k}|^\frac{1}{n+k}< \left(\frac{|c_{n}|}{(R-\epsilon)^k}\right)^\frac{1}{n+k}\\
+    \left\{\frac{|c_{n}|}{(R+\epsilon)^k}\right\}^\frac{1}{n+k}<&|c_{n+k}|^\frac{1}{n+k}< \left\{\frac{|c_{n}|}{(R-\epsilon)^k}\right\}^\frac{1}{n+k}\\
     \frac{|c_{n}|^\frac{1}{n+k}}{(R+\epsilon)^\frac{k}{n+k}}<&|c_{n+k}|^\frac{1}{n+k}< \frac{|c_{n}|^\frac{1}{n+k}}{(R-\epsilon)^\frac{k}{n+k}}
 \end{align*}
 ここで、$k\longrightarrow\infty$の極限において、
@@ -294,4 +300,27 @@ $\epsilon$はいくらでも小さくとれるから、
 \begin{align*}
     \lim_{k\to\infty}|c_{n+k}|^\frac{1}{n+k}=\frac{1}{R}
 \end{align*}
-したがって、Cauchy--Hadamardの定理により、$\sum_{n=0}^\infty c_nz^n$の収束半径は$R$である。
+したがって、Cauchy--Hadamardの定理により、$\sum_{n=0}^\infty c_nz^n$の収束半径は$R$である。（証明終）
+
+\paragraph{別解}
+Cauchy--Hadamardの定理を使わず、$R$が収束半径であることを直接示す。
+
+$0<\epsilon<\frac{R}{2}$である$\epsilon$に対して、$(\ref{eq:convR1}),(\ref{eq:convR2})$式が成り立っているとする。
+
+まずは$|z|<R-2\epsilon$のときを考える。
+$(\ref{eq:convR2})$式から、
+\begin{align*}
+    \sum_{k=0}^\infty |c_{n+k}z^{n+k}|
+    <\sum_{k=0}^\infty \frac{|c_n|(R-2\epsilon)^{n+k}}{(R-\epsilon)^k}=|c_n|(R-2\epsilon)^n\sum_{k=0}^\infty \left(\frac{R-2\epsilon}{R-\epsilon}\right)^k
+\end{align*}
+$0<\frac{R-2\epsilon}{R-\epsilon}<1$であるから、$\sum_{n=0}^\infty c_nz^n$は絶対収束する。
+
+次に$|z|>R+2\epsilon$のときを考える。
+$(\ref{eq:convR1})$式から、
+\begin{align*}
+    \sum_{k=0}^\infty |c_{n+k}z^{n+k}|
+    >\sum_{k=0}^\infty \frac{|c_n|(R+2\epsilon)^{n+k}}{(R+\epsilon)^k}=|c_n|(R+2\epsilon)^n\sum_{k=0}^\infty \left(\frac{R+2\epsilon}{R+\epsilon}\right)^k
+\end{align*}
+$1<\frac{R+2\epsilon}{R+\epsilon}$であるから、$\sum_{n=0}^\infty c_nz^n$は発散する。
+
+よって、$\sum_{n=0}^\infty c_nz^n$の収束半径$r$は、$R-2\epsilon<r<R+2\epsilon$を満たす。$\epsilon$は$0<\epsilon<\frac{R}{2}$の範囲で任意であるから、$r=R$である。（証明終）
