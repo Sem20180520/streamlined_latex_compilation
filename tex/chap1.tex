@@ -4,7 +4,7 @@
 $|\alpha+\alpha'|\le|\alpha|+|\alpha'|$
 （$\alpha,\alpha'\in\C$）を計算によって示せ。
 \end{mysimplebox}
-
+\paragraph{証明}
 $\alpha=a+bi$（$a, b\in\R, i=\sqrt{-1}$）に対して$|\alpha|\coloneqq\sqrt{a^2+b^2}$と定義される。
 
 $\alpha'=c+di$（$c,d\in\R$）とする。
@@ -53,10 +53,9 @@ $\alpha'=c+di$（$c,d\in\R$）とする。
     |ac+bd|&\le\sqrt{a^2c^2+b^2d^2+a^2d^2+b^2c^2}\\
     ac+bd\le|ac+bd|&\le\sqrt{a^2c^2+b^2d^2+a^2d^2+b^2c^2}
 \end{align*}
-これで示すべき不等式は示された。
+これで示すべき不等式は示された。（証明終）
 
-\paragraph{別解}
-
+\paragraph{別証}
 不等式(\ref{eq:cauchy-shwarz})は、よく知られたコーシー・シュワルツの不等式である。すなわち、$\bm{x}=(a,b)$、$\bm{y}=(c,d)$とすると、不等式(\ref{eq:cauchy-shwarz})は、ベクトルの内積と大きさによって、
 \begin{align}
     \bm{x}\cdot \bm{y}\le|\bm{x}||\bm{y}|\label{eq:cauchy-shwarz0}
@@ -72,12 +71,12 @@ $\alpha'=c+di$（$c,d\in\R$）とする。
 \begin{align*}
     \frac{D}{4}=(\bm{x}\cdot\bm{y})^2-|\bm{x}|^2|\bm{y}|^2\le 0
 \end{align*}
-よって、$\bm{x}\cdot\bm{y}\le|\bm{x}\cdot\bm{y}|\le|\bm{x}||\bm{y}|$が言える。
+よって、$\bm{x}\cdot\bm{y}\le|\bm{x}\cdot\bm{y}|\le|\bm{x}||\bm{y}|$が言える。（証明終）
 
 \begin{mysimplebox}{問2}
     $z_k\in\C$($k=1,2,\dots,n$)に対して、$|z_1+z_2+\dots+z_n|\le|z_1|+|z_2|+\dots+|z_n|$であり、等号が成立するのは、$z_k$($k=1,2,\dots,n$)が$z=0$を起点とする同じ半直線の上にあるときに限ることを示せ。
 \end{mysimplebox}
-
+\paragraph{証明}
 $|z_1+z_2+\dots+z_n|\le|z_1|+|z_2|+\dots+|z_n|$であることは、問1の結果と$n$に関する帰納法によって示される。
 
 $n=2$のとき、等号が成立する条件を考える。すなわち、$|z_1+z_2|=|z_1|+|z_2|$が成り立っているとする。複素数と実2次元平面上の点を同一視して$z_1=(a,b), z_2=(c,d)$（$a,b,c,d\in\R$）とすると、($\ref{eq:togo}$)式より、$ad=bc$の場合に限られることが分かる。
@@ -119,12 +118,12 @@ $a\neq 0$の場合、($\ref{eq:togo}$)式より、$c\neq 0$であり、次の式
 
 $n=3$以上のときも、帰納法によって示される。
 
-ところで、($\ref{eq:cauchy-shwarz0}$)式において、$\bm{x}\cdot \bm{y}=|\bm{x}||\bm{y}|\cos \theta$（ただし$\theta$は$z_1$と$z_2$のなす角の大きさ）であることを知っていれば、問題の不等式の等号が成り立つのは、$|\bm{x}||\bm{y}|\cos \theta=|\bm{x}||\bm{y}|$のときであり、$\bm{x}, \bm{y}$ともに0でなければ$\cos \theta=1$となる。よって、$\theta=0$（$2\pi$分の違いは無視する）であるから、不等式の等号が成立するのは、複素数平面上の点たちが原点を起点とする半直線上にあることが容易に分かる。
+ところで、($\ref{eq:cauchy-shwarz0}$)式において、$\bm{x}\cdot \bm{y}=|\bm{x}||\bm{y}|\cos \theta$（ただし$\theta$は$z_1$と$z_2$のなす角の大きさ）であることを知っていれば、問題の不等式の等号が成り立つのは、$|\bm{x}||\bm{y}|\cos \theta=|\bm{x}||\bm{y}|$のときであり、$\bm{x}, \bm{y}$ともに0でなければ$\cos \theta=1$となる。よって、$\theta=0$（$2\pi$分の違いは無視する）であるから、不等式の等号が成立するのは、複素数平面上の点たちが原点を起点とする半直線上にあることが容易に分かる。（証明終）
 
 \begin{mysimplebox}{問3}
     $|\alpha|<1$のとき、$|z|<1$ならば$\left|\frac{z-\alpha}{\bar{\alpha}z-1}\right|<1$であり、$|z|=1$ならば$\left|\frac{z-\alpha}{\bar{\alpha}z-1}\right|=1$であることを示せ。
 \end{mysimplebox}
-
+\paragraph{証明}
 $\alpha=a+bi, z=c+di$（$a,b,c,d\in\R$）とする。
 
 \begin{align*}
@@ -158,9 +157,9 @@ $|\alpha|<1$ならば$(a^2+b^2)-1<0$、$|z|<1$ならば$(c^2+d^2)-1<0$である�
 \begin{align*}
     &\left|\frac{z-\alpha}{\bar{\alpha}z-1}\right|=1
 \end{align*}
-が言える。
+が言える。（証明終）
 
-\paragraph{別解1}
+\paragraph{別証1}
 
 図形的に解くこともできる。
 
@@ -175,8 +174,9 @@ $\arg\bar{\alpha}z-\arg 1=\arg\bar{\alpha}+\arg z-0=-\arg\alpha+\arg z$である
     |\bar{\alpha}z-1|^2-|z-\alpha|^2&=|\alpha|^2|z|^2-|z|^2-|\alpha|^2+1\\
     &=(|z|^2-1)(|\alpha|^2-1)
 \end{align*}
-ゆえに、$|\alpha|<1, |z|<1$のとき、 $|\bar{\alpha}z-1|^2-|z-\alpha|^2>0$となり、上記と同じ結論を得る。
-
+ゆえに、$|\alpha|<1, |z|<1$のとき、 $|\bar{\alpha}z-1|^2-|z-\alpha|^2>0$となり、上記と同じ結論を得る。（証明終）
+\begin{figure}
+    \centering
 \begin{tikzpicture}[x=30mm,y=30mm,domain=-1.5:1.5,samples=200,>=stealth]
     \draw[->](-1.5,0)--(1.5,0) node[right]{$x$};
     \draw[->](0,-1.5)--(0,1.5) node[above]{$y$};
@@ -193,8 +193,10 @@ $\arg\bar{\alpha}z-\arg 1=\arg\bar{\alpha}+\arg z-0=-\arg\alpha+\arg z$である
     \draw (0.12,0.08) arc (33:138:0.125);
     \draw (-0.07,0.2) node {$\theta$};
 \end{tikzpicture}
+\caption{問3の図形的解法}
+\end{figure}
 
-\paragraph{別解2}
+\paragraph{別証2}
 複素数の計算規則によって、
 \begin{align*}
     |\bar{\alpha}z-1|^2-|z-\alpha|^2
@@ -203,7 +205,7 @@ $\arg\bar{\alpha}z-\arg 1=\arg\bar{\alpha}+\arg z-0=-\arg\alpha+\arg z$である
     &=|\alpha|^2|z|^2-|z|^2-|\alpha|^2+1\\
     &=(|z|^2-1)(|\alpha|^2-1)
 \end{align*}
-と計算でき、上記と同様の結論を得る。
+と計算でき、上記と同様の結論を得る。（証明終）
 
 \begin{mysimplebox}{問4（Cauchy--Hadamard）}
     $\sum_{n=0}^\infty c_nz^n=c_0+c_1z+\dots+c_nz^n+\dots$（①）の形の級数を$z$の\textgt{整級数}という。
@@ -263,7 +265,7 @@ $|z|>0$とすると、$|z|>\frac{1}{\delta}>0$となる$\delta\,(>0)$が存在�
 $\sum_{n=0}^\infty c_nz^n$が$z=z_1$で絶対収束しなければ、収束半径$R$は、$R<|z_1|$である。よって、$|z|>|z_1|>R$では、$\sum_{n=0}^\infty c_nz^n$は発散する。（証明終）
 
 \begin{mysimplebox}{問6}
-    $c_n\neq 0\,(n=k, k+1, k+2,\dots)$、$R=\lim_{n\to\infty}|c_nc_{n+1}^{-1}|$ならば、$\sum_{n=0}^\infty c_nz^n$の収束半径は$R$である。
+    $c_n\neq 0\,(n=k, k+1, k+2,\dots)$、$R=\lim_{n\to\infty}|c_nc_{n+1}^{-1}|$ならば、$\sum_{n=0}^\infty c_nz^n$の収束半径は$R$であることを示せ。
 \end{mysimplebox}
 \paragraph{証明}
 $R=\lim_{n\to\infty}|c_nc_{n+1}^{-1}|$であることより、$0<\epsilon<R$である任意の数$\epsilon$に対して、ある正数$N$が存在し、$n>N$となる任意の$n$に対して、
@@ -302,7 +304,7 @@ $\epsilon$はいくらでも小さくとれるから、
 \end{align*}
 したがって、Cauchy--Hadamardの定理により、$\sum_{n=0}^\infty c_nz^n$の収束半径は$R$である。（証明終）
 
-\paragraph{別解}
+\paragraph{別証}
 Cauchy--Hadamardの定理を使わず、$R$が収束半径であることを直接示す。
 
 $0<\epsilon<\frac{R}{2}$である$\epsilon$に対して、$(\ref{eq:convR1}),(\ref{eq:convR2})$式が成り立っているとする。
@@ -324,3 +326,113 @@ $(\ref{eq:convR1})$式から、
 $1<\frac{R+2\epsilon}{R+\epsilon}$であるから、$\sum_{n=0}^\infty c_nz^n$は発散する。
 
 よって、$\sum_{n=0}^\infty c_nz^n$の収束半径$r$は、$R-2\epsilon<r<R+2\epsilon$を満たす。$\epsilon$は$0<\epsilon<\frac{R}{2}$の範囲で任意であるから、$r=R$である。（証明終）
+
+\begin{mysimplebox}{問7}
+    次の整級数の収束半径を求めよ。
+    \begin{itemize}
+        \item[(i)]{$\displaystyle\sum_{n=0}^{\infty}\frac{z^n}{n^n}$}
+        \item[(ii)]{$\displaystyle\sum_{n=0}^{\infty}n!z^n$}
+        \item[(iii)]{$\displaystyle 1+\sum_{n=1}^{\infty}\frac{\alpha(\alpha+1)(\alpha+2)\dots(\alpha+n-1)\beta(\beta+1)\dots(\beta+n-1)}{n!\gamma(\gamma+1)(\gamma+2)\dots(\gamma+n-1)}z^n$\\（$\gamma\neq 0, -1,-2,-3,\dots$）} 
+    \end{itemize}
+\end{mysimplebox}
+問6の結果を使うと計算できる。
+
+(i)について。
+\begin{align*}
+    &c_n=\frac{1}{n^n}\\
+    &\frac{c_n}{c_{n+1}}=\frac{(n+1)^{n+1}}{n^n}=\left(\frac{n+1}{n}\right)^n(n+1)=\left(1+\frac{1}{n}\right)^n(n+1)\overset{n\longrightarrow\infty}{\longrightarrow}e\cdot \infty=\infty
+\end{align*}
+よって、収束半径は$+\infty$である。すなわち、任意の$z\in\C$で収束する。
+
+(ii)について。
+\begin{align*}
+    &c_n=n!\\
+    &\frac{c_n}{c_{n+1}}=\frac{n!}{(n+1)!}=\frac{1}{n+1}{n\longrightarrow\infty}{\longrightarrow}0
+\end{align*}
+よって、収束半径は0である。
+
+(iii)
+$n>1$とする。また、$\alpha, \beta\neq 0, -1,-2,-3,\dots$とする。
+\begin{align*}
+    &c_n=\frac{\alpha(\alpha+1)(\alpha+2)\dots(\alpha+n-1)\beta(\beta+1)\dots(\beta+n-1)}{n!\gamma(\gamma+1)(\gamma+2)\dots(\gamma+n-1)}\\
+    &\frac{c_n}{c_{n+1}}=\frac{(n+1)(\gamma+n)}{(\alpha+n)(\beta+n)}=\frac{(1+\frac{1}{n})(\frac{\gamma}{n}+1)}{(\frac{\alpha}{n}+1)(\frac{\beta}{n}+1)}{n\longrightarrow\infty}{\longrightarrow}1
+\end{align*}
+よって、収束半径は1である。
+
+ただし、$\alpha$と$\beta$のどちらかが0または負の整数であるとき、(iii)の整級数は有限次数であるため、収束半径は$+\infty$である。
+
+\paragraph{感想}
+Cauchy--Hadamardの定理によって収束半径を求めるのは難しい。ただし、(i)については、
+\begin{align*}
+    \overline{\lim_{n\to\infty}}|c_n|^\frac{1}{n}=\overline{\lim_{n\to\infty}}\left(\frac{1}{n^n}\right)^\frac{1}{n}=\overline{\lim_{n\to\infty}}\frac{1}{n}=0
+\end{align*}
+よって収束半径が$+\infty$であることが分かる。
+
+(ii)や(iii)はCauchy--Hadamardの定理の上極限をどのように計算すればよいかよく分からないが、逆に上記の結果から
+\begin{align*}
+    \lim_{n\to\infty}n!^\frac{1}{n}=\infty
+\end{align*}
+であることが分かる。
+
+\begin{mysimplebox}{問8}
+    $\displaystyle\sum_{n=0}^{\infty}c_nz^n, \sum_{n=0}^{\infty}c'_nz^n$の収束半径がそれぞれ$R, R'$であるとき、$|z|<\min\{R, R'\}$において
+    \begin{align*}
+        \left(\sum_{n=0}^{\infty}c_nz^n\right)\left(\sum_{n=0}^{\infty}c'_nz^n\right)
+        =\sum_{n=0}^{\infty}(c_0c'_n+c_1c'_{n-1}+\dots+c_nc'_0)z^n
+    \end{align*}
+    であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+本のp.13に載っている式(5.3)を利用する。問8の2つの整級数は$|z|<\min\{R, R'\}$において絶対収束するから
+\begin{align*}
+    \left(\sum_{n=0}^{\infty}c_nz^n\right)\left(\sum_{n=0}^{\infty}c'_nz^n\right)
+    &=\sum_{n=0}^{\infty}(c_0z^0c'_nz^n+c_1z^1c'_{n-1}z^{n-1}+\dots+c_nz^nc'_0z^0)\\
+    &=\sum_{n=0}^{\infty}(c_0c'_n+c_1c'_{n-1}+\dots+c_nc'_0)z^n
+\end{align*}
+（証明終）
+
+\begin{mysimplebox}{問9}
+    $\displaystyle\sum_{n=0}^{\infty}c_nz^n$の収束半径が1のとき、$\displaystyle(1-z)^{-1}\sum_{n=0}^{\infty}c_nz^n$を$z$の整級数として表せ。
+\end{mysimplebox}
+$|z|<1$のとき、
+\begin{align*}
+    \sum_{n=0}^{\infty}z^n=1+z+z^2+\dots=\frac{1}{1-z}
+\end{align*}
+であるから、問8の結果より、$|z|<1$のとき、
+\begin{align*}
+    (1-z)^{-1}\sum_{n=0}^{\infty}c_nz^n=\sum_{n=0}^{\infty}(c_0+c_1+\dots+c_n)z^n
+\end{align*}
+
+\begin{mysimplebox}{問10（Jordanの不等式）}
+    $0<\theta<\pi/2$ならば$\sin\theta>2\theta/\pi$であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+
+\begin{figure}
+    \centering
+%\begin{tikzpicture}[x=3cm,y=30mm,domain=-0.02:95.0,samples=200,>=stealth]
+   %\draw[->](-0.02,0)--(95.0,0) node[right]{$x$};%x軸
+   %\draw[->](0,-0.02)--(0,1.5) node[above]{$y$};%y軸
+   %\draw (0,0) node[below left]{O};%原点
+   %\draw[domain=0:95]plot(\x,{sin(\xr)});
+    %\draw[line width=2pt] (0,0) circle (1);
+    %\fill[black] (-0.5,0.7) circle (0.03) node[left] {$z$}
+    %             (0.6,0.4) circle (0.03) node[right] {$\alpha$}
+    %             (-0.02,0.62) circle (0.03) node[above]{$\bar{\alpha}z$};
+   %\draw (1,0) node[below right] {1};
+   %\draw[line width=2pt] (0,0)--(-0.5,0.7)--(0.6,0.4)--(0,0);
+   %\draw[line width=2pt] (0,0)--(-0.02,0.62)--(1,0)--(0,0);
+   %\draw (0.1,0) arc (0:92:0.1);
+   %\draw (0.2,0.05) node {$\theta$};
+   %\draw (0.12,0.08) arc (33:138:0.125);
+   %\draw (-0.07,0.2) node {$\theta$};
+   %\draw[->,>=stealth,semithick](-0.01,0)--(90.5,0)node[above]{$x$};%x軸
+   %\draw[->,>=stealth,semithick](0,-0.01)--(0,1.5)node[right]{$y$};%y軸
+   %\draw(0,0)node[below right]{O};%原点
+    %\draw[magenta,very thick,domain=0:3.5]plot(\x,{sqrt(\x)})node[right]    {$y=\sqrt{x}$};
+    %\draw[blue,very thick,domain=-3.5:3.5]plot(\x,{-abs(\x)})node[right]    {$y=-|x|$};
+   % \draw[orange,very thick,domain=-0.0:90.5]plot(\x,{sin(\x)})node[right]{$y=\cos{x}$};
+%\end{tikzpicture}
+\scalebox{0.6}{\input{dnorm.tex}}
+\caption{問10の解}
+\end{figure}
