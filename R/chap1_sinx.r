@@ -1,0 +1,10 @@
+library("tikzDevice")
+
+tikz("R/sinx.tex" ,width=7, height=5)
+x = seq(-3.5, 1.5, by=0.1)
+y = sin(x)
+par(las=1, mgp=c(2, 0.8,0))
+plot(NULL,xlim=c(-3.5,3.5),ylim=c(-1.2,1.2),xlab="",ylab="")
+polygon(c(x,rev(x)),c(rep(0,51),rev(y)),col="gray")
+#curve(dnorm,lwd=2,add=TRUE)
+dev.off()
