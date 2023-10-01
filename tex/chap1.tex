@@ -347,7 +347,7 @@ $1<\frac{R+2\epsilon}{R+\epsilon}$であるから、$\sum_{n=0}^\infty c_nz^n$�
 (ii)について。
 \begin{align*}
     &c_n=n!\\
-    &\frac{c_n}{c_{n+1}}=\frac{n!}{(n+1)!}=\frac{1}{n+1}{n\longrightarrow\infty}{\longrightarrow}0
+    &\frac{c_n}{c_{n+1}}=\frac{n!}{(n+1)!}=\frac{1}{n+1}\overset{n\longrightarrow\infty}{\longrightarrow}0
 \end{align*}
 よって、収束半径は0である。
 
@@ -355,24 +355,40 @@ $1<\frac{R+2\epsilon}{R+\epsilon}$であるから、$\sum_{n=0}^\infty c_nz^n$�
 $n>1$とする。また、$\alpha, \beta\neq 0, -1,-2,-3,\dots$とする。
 \begin{align*}
     &c_n=\frac{\alpha(\alpha+1)(\alpha+2)\dots(\alpha+n-1)\beta(\beta+1)\dots(\beta+n-1)}{n!\gamma(\gamma+1)(\gamma+2)\dots(\gamma+n-1)}\\
-    &\frac{c_n}{c_{n+1}}=\frac{(n+1)(\gamma+n)}{(\alpha+n)(\beta+n)}=\frac{(1+\frac{1}{n})(\frac{\gamma}{n}+1)}{(\frac{\alpha}{n}+1)(\frac{\beta}{n}+1)}{n\longrightarrow\infty}{\longrightarrow}1
+    &\frac{c_n}{c_{n+1}}=\frac{(n+1)(\gamma+n)}{(\alpha+n)(\beta+n)}=\frac{(1+\frac{1}{n})(\frac{\gamma}{n}+1)}{(\frac{\alpha}{n}+1)(\frac{\beta}{n}+1)}\overset{n\longrightarrow\infty}{\longrightarrow}1
 \end{align*}
 よって、収束半径は1である。
 
 ただし、$\alpha$と$\beta$のどちらかが0または負の整数であるとき、(iii)の整級数は有限次数であるため、収束半径は$+\infty$である。
 
-\paragraph{感想}
-Cauchy--Hadamardの定理によって収束半径を求めるのは難しい。ただし、(i)については、
+\paragraph{別解}
+Cauchy--Hadamardの定理によって収束半径を求めるてみる。
+
+(i)については、
 \begin{align*}
     \overline{\lim_{n\to\infty}}|c_n|^\frac{1}{n}=\overline{\lim_{n\to\infty}}\left(\frac{1}{n^n}\right)^\frac{1}{n}=\overline{\lim_{n\to\infty}}\frac{1}{n}=0
 \end{align*}
 よって収束半径が$+\infty$であることが分かる。
 
-(ii)や(iii)はCauchy--Hadamardの定理の上極限をどのように計算すればよいかよく分からないが、逆に上記の結果から
+(ii)については、対数をとって考える。すなわち、
 \begin{align*}
-    \lim_{n\to\infty}n!^\frac{1}{n}=\infty
+    \log |c_n|^\frac{1}{n}
+   &=\log n!^\frac{1}{n}
+  % =\frac{\log 1 +\log 2 +\dots+\log n}{n}\\
+  % &<\frac{\int_{1}^{n+1}\log x dx}{n}
+  % =\frac{\left\[x\log x -x\right\]_1^{n+1}}{n}
+  % =\frac{(n+1)\log(n+1)-(n+1)-(-1)}{n}\\
+  % &=\frac{(n+1)\log(n+1)-n}{n}
+  % =\left(1+\frac{1}{n}\right)\log(n+1)-1
+  % \overset{n\longrightarrow\infty}{\longrightarrow}\infty
 \end{align*}
-であることが分かる。
+よって、
+\begin{align*}
+    \lim_{n\to\infty}|c_n|^\frac{1}{n}=\infty
+\end{align*}
+となり、収束半径は0であることが分かる。
+
+(iii)はCauchy--Hadamardの定理の上極限を計算するよりも、上記で計算したように問6の結果を使うのが明解であると思う。
 
 \begin{mysimplebox}{問8}
     $\displaystyle\sum_{n=0}^{\infty}c_nz^n, \sum_{n=0}^{\infty}c'_nz^n$の収束半径がそれぞれ$R, R'$であるとき、$|z|<\min\{R, R'\}$において
