@@ -374,14 +374,19 @@ Cauchy--Hadamardの定理によって収束半径を求めるてみる。
 \begin{align*}
     \log |c_n|^\frac{1}{n}
    &=\log n!^\frac{1}{n}
-  % =\frac{\log 1 +\log 2 +\dots+\log n}{n}\\
-  % &<\frac{\int_{1}^{n+1}\log x dx}{n}
-  % =\frac{\left\[x\log x -x\right\]_1^{n+1}}{n}
-  % =\frac{(n+1)\log(n+1)-(n+1)-(-1)}{n}\\
-  % &=\frac{(n+1)\log(n+1)-n}{n}
-  % =\left(1+\frac{1}{n}\right)\log(n+1)-1
-  % \overset{n\longrightarrow\infty}{\longrightarrow}\infty
+   =\frac{\log 1 +\log 2 +\dots+\log n}{n}\\
+   &<\frac{\int_{1}^{n+1}\log x dx}{n}
+   =\frac{\left[x\log x -x\right]_1^{n+1}}{n}
+   =\frac{(n+1)\log(n+1)-(n+1)-(-1)}{n}\\
+   &=\frac{(n+1)\log(n+1)-n}{n}
+   =\left(1+\frac{1}{n}\right)\log(n+1)-1
+   \overset{n\longrightarrow\infty}{\longrightarrow}\infty
 \end{align*}
+\begin{figure}
+    \centering
+    \scalebox{0.6}{\input{../R/logx.tex}}
+    \caption{問10の解}
+\end{figure}
 よって、
 \begin{align*}
     \lim_{n\to\infty}|c_n|^\frac{1}{n}=\infty
@@ -426,29 +431,6 @@ $|z|<1$のとき、
 
 \begin{figure}
     \centering
-%\begin{tikzpicture}[x=3cm,y=30mm,domain=-0.02:95.0,samples=200,>=stealth]
-   %\draw[->](-0.02,0)--(95.0,0) node[right]{$x$};%x軸
-   %\draw[->](0,-0.02)--(0,1.5) node[above]{$y$};%y軸
-   %\draw (0,0) node[below left]{O};%原点
-   %\draw[domain=0:95]plot(\x,{sin(\xr)});
-    %\draw[line width=2pt] (0,0) circle (1);
-    %\fill[black] (-0.5,0.7) circle (0.03) node[left] {$z$}
-    %             (0.6,0.4) circle (0.03) node[right] {$\alpha$}
-    %             (-0.02,0.62) circle (0.03) node[above]{$\bar{\alpha}z$};
-   %\draw (1,0) node[below right] {1};
-   %\draw[line width=2pt] (0,0)--(-0.5,0.7)--(0.6,0.4)--(0,0);
-   %\draw[line width=2pt] (0,0)--(-0.02,0.62)--(1,0)--(0,0);
-   %\draw (0.1,0) arc (0:92:0.1);
-   %\draw (0.2,0.05) node {$\theta$};
-   %\draw (0.12,0.08) arc (33:138:0.125);
-   %\draw (-0.07,0.2) node {$\theta$};
-   %\draw[->,>=stealth,semithick](-0.01,0)--(90.5,0)node[above]{$x$};%x軸
-   %\draw[->,>=stealth,semithick](0,-0.01)--(0,1.5)node[right]{$y$};%y軸
-   %\draw(0,0)node[below right]{O};%原点
-    %\draw[magenta,very thick,domain=0:3.5]plot(\x,{sqrt(\x)})node[right]    {$y=\sqrt{x}$};
-    %\draw[blue,very thick,domain=-3.5:3.5]plot(\x,{-abs(\x)})node[right]    {$y=-|x|$};
-   % \draw[orange,very thick,domain=-0.0:90.5]plot(\x,{sin(\x)})node[right]{$y=\cos{x}$};
-%\end{tikzpicture}
-\scalebox{0.6}{\input{../R/sinx.tex}}
-\caption{問10の解}
+    \scalebox{0.6}{\input{../R/sinx.tex}}
+    \caption{問10の解}
 \end{figure}
