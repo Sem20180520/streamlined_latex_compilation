@@ -1,0 +1,38 @@
+\chapter{複素函数}%第2章
+
+\begin{mysimplebox}{問1}
+    点集合$E\subset\C$が閉集合であるためには$E$の境界$\partial E$が$E$の部分であることが必要十分であることを示せ。 
+\end{mysimplebox}
+\paragraph{証明}
+（$\Rightarrow$）本の定義では$E$が閉であるとは$E$の集積点がすべて$E$に属することである（p.22）。
+
+$E$は閉であるとしたとき、$\partial E\subset E$であることを示す。
+すなわち、$x\in\partial E$ならば$x\in E$であることを示す。
+$r\in\R$に対して
+\begin{align*}
+    B_r(x)=\left\{y\in\C\mid\|y-x|<r\right\}
+\end{align*}
+と定義する。$E$の境界$\partial E$の点$x$は$E$の内点でも外点でもない。特に、外点でないことから、任意の$n\in \N$に対して、$B_{1/n}(x)$は$E$と交わりをもつ。よって、任意の$n\in \N$に対して、$x_n\in B_{1/n}(x)\cap E$をとれる。
+
+もし$|x-x_n|=0$となる$n\in\N$が存在すれば、$x=x_n\in E$である。
+
+すべての$n\in\N$に対して$|x-x_n|\neq 0$であるとする。$|x-x_n|\longrightarrow 0 (n\longrightarrow 0)$であり、$\{x_n\}\subset E$であるから、$x$は$E$の集積点である。したがって、$E$は閉であると仮定していたから、閉であることの定義より$x\in E$である。
+
+（$\Leftarrow$）
+$\partial E\subset E$とする。$x$が$E$の任意の集積点であるとき、$x\in E$であることを示せばよい。ここで、$\C$の任意の点は$E$の内点か外点か境界の点であることに注意する。
+
+もし$E$の集積点$x$が$E$の外点であるとすると、ある$r\in\R$に対して$B_r(x)\subset E^c$（$E^c$は$E$の補集合を表す）であるから、$x$が$E$の集積点であることに反する。
+
+よって、$E$の集積点$x$は$E$の内点か境界の点である。内点ならば$x\in E$は明らかである。境界の点ならば$\partial E\subset E$という仮定から、やはり$x\in E$である。（証明終）
+
+\begin{mysimplebox}{問2}
+    点集合の境界は閉集合であることを示せ。 
+\end{mysimplebox}
+\paragraph{証明}
+$E$を点集合とし、$x$を$\partial E$の集積点とする。$x\in\partial E$であることを示せばよい。
+
+$x$を$E$の内点とすると、ある$n\in\N$に対して、$B_{1/n}(x)\subset E$である。一方、$x$は$\partial E$の集積点であるから、ある$y\in\partial E$が存在して、$y\in B_{1/n}(x)\subset E$である。十分小さい$n'\in\N$をとれば、$B_{1/n'}(y)\subset E$であるから、$y$は$E$の内点である。しかし、これは$y\in\partial E$に反する。よって$x$は$E$の内点ではない。
+
+$x$を$E$の外点としても同様の議論ができるから、$x$は$E$の外点でもない。
+
+したがって、$x$は$E$の境界の点である。（証明終）
