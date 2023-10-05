@@ -393,8 +393,25 @@ Cauchy--Hadamardの定理によって収束半径を求めるてみる。
 \end{align*}
 となり、収束半径は0であることが分かる。
 
-(iii)はCauchy--Hadamardの定理の上極限を計算するよりも、上記で計算したように問6の結果を使うのが明解であると思う。
-
+(iii)について。$\alpha, \beta\neq 0, -1,-2,-3,\dots$とする。
+\begin{align*}
+    &\log |c_n|^\frac{1}{n}\\
+   =\frac{1}{n}
+   &\left\{ 
+   \log|\alpha|+\dots+\log|\alpha+n-1|
+   +\log|\beta|+\dots+\log|\beta+n-1|\right.\\
+   &\left.
+   -\log 1-\dots-\log n 
+   -\log|\gamma|-\log|\gamma+n-1| 
+   \right\}\\
+   =\frac{1}{n}&\left\{ \log|\alpha|+\log\left|\frac{\alpha+1}{2}\right|+\dots+\log\left|\frac{\alpha}{n}+\frac{n-1}{n}\right|
+   +\log\left|\frac{\beta}{\gamma}\right|
+   +\log\left|\frac{\beta+n-1}{\gamma+n-1}\right|\right\}\\
+   &\overset{n\longrightarrow\infty}{\longrightarrow}0
+\end{align*}
+よって、
+$\lim_{n\to\infty}|c_n|^\frac{1}{n}=1$
+となり、収束半径は1であることが分かる。
 \begin{mysimplebox}{問8}
     $\displaystyle\sum_{n=0}^{\infty}c_nz^n, \sum_{n=0}^{\infty}c'_nz^n$の収束半径がそれぞれ$R, R'$であるとき、$|z|<\min\{R, R'\}$において
     \begin{align*}
@@ -428,8 +445,24 @@ $|z|<1$のとき、
     $0<\theta<\pi/2$ならば$\sin\theta>2\theta/\pi$であることを示せ。
 \end{mysimplebox}
 \paragraph{証明}
-
-\begin{figure}
+$f(\theta)=\sin\theta-2\theta/\pi$とおく。
+\begin{align*}
+    f'(\theta)&=\cos\theta-\frac{2}{\pi}\\
+%    f''(\theta)&=-\sin\theta
+\end{align*}
+$f'(\theta)=0$より$\cos\theta=2/\pi$。
+$0<2/\pi<1$であるから、$0<\theta<\pi/2$において$f'(\theta)=0$となる
+$\theta$がある。それを$\theta_0$とする。
+関数$f(\theta)$の増減表は次のようになる。
+\begin{align*}
+    \begin{array}{c|c|c|c|c|c}\hline\hline
+        \theta     & 0 & \dots    & \theta_0 & \dots & \pi/2 \\ \hline
+        f'(\theta) &   & +        & 0        & -        & \\ \hline
+        f(\theta)  & 0 & \nearrow & f(\theta_0)        & \searrow & 0 \\ \hline
+    \end{array}
+\end{align*}
+よって$0<\theta<\pi/2$ならば$\sin\theta>2\theta/\pi$であることが示された。
+\begin{figure}[t]
     \centering
     \scalebox{0.6}{\input{../R/sinx.tex}}
     \caption{問10の解}
