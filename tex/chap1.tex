@@ -375,7 +375,7 @@ Cauchy--Hadamardの定理によって収束半径を求めるてみる。
     \log |c_n|^\frac{1}{n}
    &=\log n!^\frac{1}{n}
    =\frac{\log 1 +\log 2 +\dots+\log n}{n}\\
-   &<\frac{\int_{1}^{n+1}\log x dx}{n}
+   &>\frac{\int_{1}^{n+1}\log x dx}{n}
    =\frac{\left[x\log x -x\right]_1^{n+1}}{n}
    =\frac{(n+1)\log(n+1)-(n+1)-(-1)}{n}\\
    &=\frac{(n+1)\log(n+1)-n}{n}
@@ -393,7 +393,10 @@ Cauchy--Hadamardの定理によって収束半径を求めるてみる。
 \end{align*}
 となり、収束半径は0であることが分かる。
 
-(iii)について。$\alpha, \beta\neq 0, -1,-2,-3,\dots$とする。
+(iii)についてはCauchy--Hadamardの定理を使って解く方法は私はよく分からない。
+
+いちおうやってみる。
+$\alpha, \beta\neq 0, -1,-2,-3,\dots$とする。
 \begin{align*}
     &\log |c_n|^\frac{1}{n}\\
    =\frac{1}{n}
@@ -404,14 +407,15 @@ Cauchy--Hadamardの定理によって収束半径を求めるてみる。
    -\log 1-\dots-\log n 
    -\log|\gamma|-\log|\gamma+n-1| 
    \right\}\\
-   =\frac{1}{n}&\left\{ \log|\alpha|+\log\left|\frac{\alpha+1}{2}\right|+\dots+\log\left|\frac{\alpha}{n}+\frac{n-1}{n}\right|
+   =\frac{1}{n}&\left\{ \log|\alpha|+\log\left|\frac{\alpha+1}{2}\right|+\dots+\log\left|\frac{\alpha+n-1}{n}\right|
    +\log\left|\frac{\beta}{\gamma}\right|
-   +\dots+\log\left|\frac{\beta+n-1}{\gamma+n-1}\right|\right\}\\
-   &\overset{n\longrightarrow\infty}{\longrightarrow}0
+   +\dots+\log\left|\frac{\beta+n-1}{\gamma+n-1}\right|\right\}
 \end{align*}
-よって、
-$\lim_{n\to\infty}|c_n|^\frac{1}{n}=1$
-となり、収束半径は1であることが分かる。
+これが0に収束することを示せれば、対数関数の引数部分は1
+に収束することが言えて、収束半径が1
+であることが導ける。
+
+たしかに上記は0に収束しそうに見えるが、無限項の和を無限大で割っているため、論理的に正しく示すには労力がいるように感じる。
 \begin{mysimplebox}{問8}
     $\displaystyle\sum_{n=0}^{\infty}c_nz^n, \sum_{n=0}^{\infty}c'_nz^n$の収束半径がそれぞれ$R, R'$であるとき、$|z|<\min\{R, R'\}$において
     \begin{align*}
