@@ -81,3 +81,211 @@ $q$にも近傍$V_q$が与えられており、
 
 これは$Q'_k$が有限被覆可能でないことに反する。（証明終）
 
+\begin{mysimplebox}{問4}
+    $c$が定数のとき$|z-c|$は全平面で連続な函数であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$f(z)=|z-c|$とする。
+\begin{align*}
+    f(z)-f(z')&=|z-c|-|z'-c|\\
+    &\le |(z-c)-(z'-c)|\\
+    &=|z-z'|
+\end{align*}
+よって、任意の$z\in\C$、任意の$\epsilon>0$に対して
+$|z-z'|<\epsilon$となるように$z'\in\C$をとれば
+$|f(z)-f(z')|<\epsilon$とできる。
+ゆえに$f(z)$は全平面で連続である。（証明終）
+
+\begin{mysimplebox}{問5}
+    点$c$と閉集合$E$の距離が$d$ならば$d=|z-c|, z\in E$となる$z$が存在することを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+\begin{align*}
+    d\coloneqq \inf_{z\in E}|z-c|
+\end{align*}
+である。
+
+$d=|z-c|$となる$z\in E$が存在しないと仮定すると、
+任意の$\epsilon>0$に対して$d<|z'-c|<d+\epsilon$となる$z'\in E$を
+無数にとることができる。
+
+\begin{align*}
+    d+\epsilon>|z_1-c|>|z_2-c|>\dots>d
+\end{align*}
+となるように$E$の列$\{z_n\}$をとる。すべての$z_n$は$c$からの距離が
+$d+\epsilon$以内に収まっている。すなわち有界である。
+
+よって、列$\{z_n\}$は収束する部分列$\{z_{n_k}\}$を有する。
+$z_{n_k}\longrightarrow c'$とする。$c'$は$E$の集積点であり、$E$は閉集合であるから$c'\in E$である。
+
+仮定より$|c'-c|>d$であるから$|c'-c|>|z_{n_k}-c|>d$となる$z_{n_k}\in E$が存在する。しかし$z_{n_k}\longrightarrow c'$であり、
+\begin{align*}
+    |z_{n_k}-c|>|z_{n_{k+1}}-c|>\dots>|c'-c|.
+\end{align*}
+よって矛盾である。（証明終）
+
+\begin{mysimplebox}{問6}
+    $E, E'$がともに閉集合で、そのうちの1つが有界であるとき、$E$と$E'$の距離が$d$ならば$d=|z-z'|, z\in E, z'\in E'$となる$z, z'$が存在することを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+\begin{align*}
+    d\coloneqq \inf_{z\in E, z'\in E'}|z-z'|
+\end{align*}
+である。
+
+$E\cap E'\neq \emptyset$ならば、$d=0$であり、$z\in E\cap E'$
+に対して$|z-z|=0=d$となり証明が終わる。
+
+$E\cap E'=\emptyset$とする。$E$と$E'$の距離が$d$であるとする。
+また、$E$は有界であるとする。
+$d=|z-z'|$となる$z\in E, z'\in E'$が存在しないとすると、
+\begin{align*}
+    |z_1-z'_1|>|z_2-z'_2|>\dots>d
+\end{align*}
+となる列$\{z_k\}_{k=1,2,\dots}\subset E, \{z'_k\}_{k=1,2,\dots}\subset E'$が存在する。
+
+$E$は有界であるから、$\{z_k\}$は収束する部分列を有する。
+それを$\{z_{k_l}\}_{l=1,2,\dots}$とし、$z_{k_l}\longrightarrow c$とする。$c$は$E$の集積点であり$E$は閉集合であるから、$c\in E$である。
+
+ここで$\{z_{k_l}\}_{l=1,2,\dots}$に対応する$\{z'_{k_l}\}_{l=1,2,\dots}$について考える。
+任意の$\epsilon>0$に対して$l$を十分大きくとれば、
+$d<|z_{k_l}-z'_{k_l}|<d+\epsilon/2$とできる。
+また同時に$|c-z_{k_l}|<\epsilon/2$とできる。
+よって$|c-z'_{k_l}|\le|c-z_{k_l}|+|z_{k_l}-z'_{k_l}|<\epsilon/2+\epsilon/2=\epsilon$である。
+すなわち$\{z'_{k_l}\}_{l=1,2,\dots}$は有界であるから、収束する部分列を有する。
+それを$\{z'_{k_{l_m}}\}_{m=1,2,\dots}$とし、$z'_{k_{l_m}}\rightarrow c'$とする。
+$c'$は$E'$の集積点であり$E'$は閉集合であるから、$c'\in E'$である。
+
+仮定より$|c'-c|>d$であるから$|c'-c|>|z_{k_{l_m}}-z'_{k_{l_m}}|>d$となる$m$が存在する。しかし$z_{k_{l_m}}\longrightarrow c$、$z'_{k_{l_m}}\longrightarrow c'$であり、
+\begin{align*}
+    |z_{k_{l_m}}-z'_{k_{l_m}}|>|c-c'|.
+\end{align*}
+よって矛盾である。（証明終）
+
+\begin{mysimplebox}{問7}
+    閉領域は連続体であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$D$を領域（弧状連結である集合）とし、$\overline{D}\coloneqq D\cup\partial D$とする。
+$\overline{D}$が連続体（連結）であることを背理法によって示す。
+
+$\overline{D}=A_1\cup A_2$（$A_1, A_2$はともに閉集合、$A_1\neq\emptyset, A_2\neq\emptyset$、$A_1\cap A_2=\emptyset$）とする。
+
+$A_1\cap D\neq\emptyset$かつ$A_2\cap D\neq\emptyset$の場合、
+$x_1\in A_1\cap D$、$x_2\in A_1\cap D$とすると、
+$x_1$と$x_2$を結ぶ$D$内の曲線がある。それを、
+\begin{align*}
+    C\colon z=z(t)\quad (0\le t \le 1)
+\end{align*}
+とする。ただし$z(0)=x_1, z(1)=x_2$である。
+
+曲線$C$上の点は$A_1$か$A_2$のどちらか一方に属する。
+$z(t)\in A_1$である$t$の上限を$t_0$とすると、
+$z(t_0)$の任意の近傍に$A_1$の点と$A_2$の点が存在する。
+すなわち$z(t_0)$は$A_1$の集積点であり$A_2$の集積点でもある。
+$A_1$、$A_2$はともに閉集合であるから$z(t_0)\in A_1\cap A_2$である。
+これは$A_1\cap A_2=\emptyset$と矛盾する。
+
+次に$A_1\cap D=\emptyset$または$A_2\cap D=\emptyset$の場合を考える。$A_1\cap D=\emptyset$かつ$A_2\cap D=\emptyset$となることはないから、$A_1\cap D=\emptyset$かつ$A_2\cap D\neq\emptyset$としてよい。このとき$A_1\subset\partial D$である。
+
+$x_3\in A_1\subset\partial D$とする。$x_3$の任意の近傍に$D$の点が存在する。それらはすべて$A_2$の点である。よって$x_3$は$A_2$の集積点である。$A_2$は閉集合であるから$x_3\in A_2$となり、$A_1\cap A_2=\emptyset$と矛盾する。（証明終）
+
+\begin{mysimplebox}{問8}
+    $|\zeta|=1$のとき$\phi(\zeta)=\arg \zeta$とおくと、
+    $|z|<1$で連続で境界$|\zeta|=1$の各点$\zeta$で境界値が$\phi(\zeta)$に等しいような函数は存在しないことを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+背理法によって証明する。
+函数$f(z)$は$|z|<1$で連続で境界$|\zeta|=1$の各点$\zeta$で境界値が$\phi(\zeta)$に等しいとする。
+このとき書籍p.32の事実により$f(z)$は境界$|\zeta|=1$においても連続である。
+そこで$z=e^{i\theta}$とすると,
+これは境界上の点であり$\theta=0$と$\theta=2\pi$は同じ点$z=1$を表す。$f(z)$の境界値は$\phi(z)$であるから
+\begin{align*}
+    \lim_{\theta\to 2\pi-0}f(e^{i\theta})
+    &=\lim_{\theta\to 2\pi-0}\phi(e^{i\theta})\\
+    &=\lim_{\theta\to 2\pi-0}\theta\\
+    &=2\pi
+\end{align*}
+しかし$f(1)=\phi(1)=\arg 1=0\neq 2\pi$であるから$f(z)$が境界上で連続であることと矛盾する。よってこのような函数$f(z)$は存在しない。（証明終）
+
+\begin{mysimplebox}{問9}
+    \begin{align*}
+        \sum_{n=1}^{\infty}\frac{z^2}{(1+|z|^2)^n}
+    \end{align*}
+    は$|z|<1$で収束するが広義の一様収束をしないことを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+\begin{align*}
+    S=\sum_{n=1}^{\infty}\frac{z^2}{(1+|z|^2)^n}
+\end{align*}
+とおく。$z=0$のとき$S=0$である。
+
+$z\neq 0$のとき、
+\begin{align*}
+    0<\frac{1}{1+|z|^2}<1.
+\end{align*}
+よって、
+\begin{align*}
+    S&=z^2\frac{1}{1+|z|^2}\frac{1}{1-\frac{1}{1+|z|^2}}\\
+    &=z^2\frac{1}{1+|z|^2}\frac{1+|z|^2}{1+|z|^2-1}\\
+    &=\frac{z^2}{|z|^2}
+\end{align*}
+$z=re^{i\theta} (r>0)$とすると$S=\frac{r^2e^{2i\theta}}{r^2}=e^{2i\theta}$である。すなわち
+\begin{align*}
+    S=\left\{
+        \begin{array}{cc}
+            0 & (z=0)\\
+            e^{2i\theta} & (z\neq 0)
+        \end{array}
+    \right.
+\end{align*}
+よって$S$は$z=0$で連続でない。
+
+書籍のp.35の事実「函数列が領域で連続かつ広義の一様収束をするならば極限函数も領域で連続である」ということから、もし$S$が広義の一様収束によって得られた極限函数ならば連続であるはずであるが、上で見たように不連続であるから、$S$は広義の一様収束による極限函数ではない。（証明終）
+
+\begin{mysimplebox}{問10（Abelの連続定理）}
+    $\sum_{n=0}^{\infty}c_nz^n$の収束半径が1に等しいとき、
+    $\sum_{n=0}^{\infty}c_n$が収束すれば、
+    \begin{align*}
+        \lim_{x\to 1-0}\sum_{n=0}^{\infty}c_nx^n=\sum_{n=0}^{\infty}c_n
+    \end{align*}
+    であることを示せ。
+\end{mysimplebox}
+\paragraph{証明の前に}
+$\lim_{x\to 1-0}$は実軸に沿っての極限である。
+示すべきことは、整級数を収束円内から半径に沿って境界への極限をとれば、
+境界値となることである。
+極限操作と無限和の操作の順序を入れ替えてよいとも言える。
+ただし、書籍のp.38に書かれてある「ヒント：　演習問題I-9」というのはよく分からなかった。
+以下の解答は高木貞治『解析概論』に倣った。
+
+\paragraph{証明}
+\begin{align*}
+    s_k\coloneqq\sum_{n=0}^{k}c_n
+\end{align*}
+とする。
+$\sum_{n=0}^{\infty}c_n$が収束するから、任意の$\delta>0$に対して
+十分大きい$n$をとれば、$l>m>n$に対して
+\begin{align*}
+    |s_l-s_m|<\delta
+\end{align*}
+とできる。
+
+$m>n$となるある$m$を固定し、$k>m$のとき$\sigma_k\coloneqq s_k-s_m$とおくと$|\sigma_l|<\delta$である。
+
+$0\le x\le 1$とすれば、$x^n\le x^{n+1}$から
+\begin{align*}
+    \left|\sum_{n=m+1}^{l}c_nx^n\right|
+    &=\left|(s_{m+1}-s_m)x^{m+1}+(s_{m+2}-s_{m+1})x^{m+2}+\dots+(s_l-s_{l-1})x^l\right|\\
+    &=\left|\sigma_{m+1}x^{m+1}+(\sigma_{m+2}-\sigma_{m+1})x^{m+2}+\dots+(\sigma_l-\sigma_{l-1})x^l\right|\\
+    &=\left|\sigma_{m+1}(x^{m+1}-x^{m+2})+\sigma_{m+2}(x^{m+2}-x^{m+3})+\dots+\sigma_{l-1}(x^{l-1}-x^l)+\sigma_lx^l\right|\\
+    &\le\delta\left|(x^{m+1}-x^{m+2})+(x^{m+2}-x^{m+3})+\dots+(x^{l-1}-x^l)+x^l\right|\\
+    &=\delta x^{m+1}\le\delta
+\end{align*}
+ゆえに$\sum_{n=0}^{\infty}c_nz^n$は$0\le x\le 1$において一様収束する。書籍p.35の事実により、極限函数は$0\le x\le 1$において連続である。
+
+したがって
+\begin{align*}
+    \lim_{x\to 1-0}\sum_{n=0}^{\infty}c_nx^n=\sum_{n=0}^{\infty}c_n
+\end{align*}
+（証明終）
