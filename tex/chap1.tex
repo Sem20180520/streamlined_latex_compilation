@@ -55,7 +55,7 @@ $\alpha'=c+di$（$c,d\in\R$）とする。
 \end{align*}
 これで示すべき不等式は示された。（証明終）
 
-\paragraph{別証}
+\paragraph{別証1}
 不等式(\ref{eq:cauchy-shwarz})は、よく知られたコーシー・シュワルツの不等式である。すなわち、$\bm{x}=(a,b)$、$\bm{y}=(c,d)$とすると、不等式(\ref{eq:cauchy-shwarz})は、ベクトルの内積と大きさによって、
 \begin{align}
     \bm{x}\cdot \bm{y}\le|\bm{x}||\bm{y}|\label{eq:cauchy-shwarz0}
@@ -73,6 +73,30 @@ $\alpha'=c+di$（$c,d\in\R$）とする。
 \end{align*}
 よって、$\bm{x}\cdot\bm{y}\le|\bm{x}\cdot\bm{y}|\le|\bm{x}||\bm{y}|$が言える。（証明終）
 
+\paragraph{別証2}
+$\alpha=0$のとき、不等式の左辺と右辺は等しい。よって不等式は成り立つ。
+
+$\alpha\neq 0$のとき、示すべき不等式の両辺を$|\alpha|$で割ると
+\begin{align*}
+    \frac{|\alpha+\alpha'|}{|\alpha|}&\le\frac{|\alpha|}{|\alpha|}+\frac{|\alpha'|}{|\alpha|}\\
+    \left|\frac{\alpha+\alpha'}{\alpha}\right|&\le 1+\left|\frac{\alpha'}{\alpha}\right|\\
+    \left|1+\frac{\alpha'}{\alpha}\right|&\le 1+\left|\frac{\alpha'}{\alpha}\right|
+\end{align*}
+よって、$\frac{\alpha'}{\alpha}$を改めて$\alpha$ととり直して、$|1+\alpha|\le 1+|\alpha|$を示せばよい。
+$\alpha=a+bi$（ただし、$a,b\in\R$）のとき、
+\begin{align*}
+    |1+\alpha|&=|a+1+bi|=\sqrt{(a+1)^2+b^2}\\
+    1+|\alpha|&=1+|a+bi|=1+\sqrt{a^2+b^2}
+\end{align*}
+よって
+\begin{align*}
+    (1+|\alpha|)^2-(|1+\alpha|)^2
+    &=(1+\sqrt{a^2+b^2})^2-\{(a+1)^2+b^2\}\\
+    &=1+2\sqrt{a^2+b^2}+a^2+b^2-(a^2+2a+1+b^2)\\
+    &=2(\sqrt{a^2+b^2}-a)\ge 2(\sqrt{a^2}-a)
+    =2(|a|-a)\ge 0
+\end{align*}
+（証明終）
 \begin{mysimplebox}{問2}
     $z_k\in\C$($k=1,2,\dots,n$)に対して、$|z_1+z_2+\dots+z_n|\le|z_1|+|z_2|+\dots+|z_n|$であり、等号が成立するのは、$z_k$($k=1,2,\dots,n$)が$z=0$を起点とする同じ半直線の上にあるときに限ることを示せ。
 \end{mysimplebox}
