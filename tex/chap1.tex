@@ -313,20 +313,22 @@ $0<1-\delta<1$であるから、上式の左辺は等比級数として収束す
 $|z|>0$ならば整級数①が発散することを示せばよい。
 
 $|z|>0$とすると、$|z|>\frac{1}{\delta}>0$となる$\delta\,(>0)$が存在する。
-
-十分大きい$n$に対して、$|c_n|^\frac{1}{n}>\delta$が成り立つ。
-
+また条件より、十分大きい$n$に対して、$|c_n|^\frac{1}{n}>\delta$となる$n$が無数に存在する。
 よって、
 \begin{align*}
     |c_nz^n|&=\left(|c_n|^\frac{1}{n}\right)^n|z|^n>\delta^n\left(\frac{1}{\delta}\right)^n
-    =1.
+    =1
 \end{align*}
+となる$n$が無数に存在する。
+
 ゆえに、$|c_nz^n|\to 0$でないため、整級数①は発散する。（証明終）
 
 この問題からも分かったことだが、級数の収束の判定法の1つは、等比級数と比較することである。
 
 上記で定めた$R$を整級数①の\textgt{収束半径}という。
 
+\paragraph{補足}
+上記証明中の$\displaystyle\overline{\lim_{n\to\infty}}|c_n|^{\frac{1}{n}}=0$の場合とは結局$\displaystyle{\lim_{n\to\infty}|c_n|^{\frac{1}{n}}=0}$ということである。
 
 \begin{mysimplebox}{問5}
     $\sum_{n=0}^\infty c_nz^n$が$z=z_0$で収束すれば$|z|<|z_0|$であるような$z$に対しては絶対収束することを示せ。
