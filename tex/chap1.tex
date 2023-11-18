@@ -279,8 +279,31 @@ $\arg\bar{\alpha}z-\arg 1=\arg\bar{\alpha}+\arg z-0=-\arg\alpha+\arg z$である
 \end{align*}
 と計算でき、上記と同様の結論を得る。（証明終）
 
+
+\paragraph{別証3}
+\begin{align*}
+    \omega=\frac{z-\alpha}{\bar{\alpha}z-1}
+\end{align*}
+とおく。$z$について解くと
+\begin{align*}
+    z=\frac{\omega-\alpha}{\bar{\alpha}\omega-1}.
+\end{align*}
+$|z|<1$より
+\begin{align*}
+    \left|\frac{\omega-\alpha}{\bar{\alpha}\omega-1}\right|&<1,\\
+    |\omega-\alpha|&<|\bar{\alpha}\omega-1|,\\
+    (\omega-\alpha)(\bar{\omega}-\bar{\alpha})
+    &<(\bar{\alpha}\omega-1)(\overline{\bar{\alpha}\omega}-1),\\
+    |\omega|^2-\alpha\bar{\omega}-\bar{\alpha}\omega+|\alpha|^2
+    &<|\alpha|^2|\omega|^2-\alpha\bar{\omega}-\bar{\alpha}\omega+1,\\
+    |\alpha|^2|\omega|^2-|\omega|^2-|\alpha|^2+1&>0,\\
+    (|\alpha|^2-1)(|\omega|^2-1)&>0.
+\end{align*}
+よって$|\alpha|<1$より$|\omega|<1$が従う。（証明終）
+
 \paragraph{補足}
 この問題で扱った$\frac{z-\alpha}{\bar{\alpha}z-1}$という式は書籍のp.155に再登場する。
+
 
 \begin{mysimplebox}{問4（Cauchy--Hadamard）}
     $\sum_{n=0}^\infty c_nz^n=c_0+c_1z+\dots+c_nz^n+\dots$（①）の形の級数を$z$の\textgt{整級数}という。
