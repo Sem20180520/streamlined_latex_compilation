@@ -363,7 +363,20 @@ $|z|>0$とすると、$|z|>\frac{1}{\delta}>0$となる$\delta\,(>0)$が存在�
 本にも書いてあるとおり、これは言い換えると、「$\sum_{n=0}^\infty c_nz^n$が$z=z_1$で絶対収束しなければ$|z|>|z_1|$であるような$z$に対しては発散する」ということである。この言い換えた方を示す。
 
 $\sum_{n=0}^\infty c_nz^n$が$z=z_1$で絶対収束しなければ、収束半径$R$は、$R<|z_1|$である。よって、$|z|>|z_1|>R$では、$\sum_{n=0}^\infty c_nz^n$は発散する。（証明終）
+\paragraph{別証}
+\begin{align*}
+    S_k=\sum_{n=0}^k c_nz^n
+\end{align*}
+と定義する。任意の$\epsilon>0$に対して、ある$N>0$が存在して、$p>N$、$q>N$であるとき$|S_p-S_q|<\epsilon$であることを示す。
 
+$p>q$とすると、$|z|<|z_0|$のとき
+\begin{align*}
+    |S_p-S_q|&=\left|\sum_{n=q+1}^p c_nz^n\right|
+    <\sum_{n=q+1}^p\left| c_nz^n\right|
+    <\sum_{n=q+1}^p\left| c_nz_0^n\right|
+\end{align*}
+$\sum_{n=0}^\infty c_nz^n$は$z=z_0$で収束するため、上式の最右辺の式は$p, q$を十分大きくすれば$\epsilon$より小さくできる。$p>q$以外の場合も同様である。
+これで$\sum_{n=0}^\infty c_nz^n$は絶対収束することが示された。（証明終）
 \begin{mysimplebox}{問6}
     $c_n\neq 0\,(n=k, k+1, k+2,\dots)$、$R=\lim_{n\to\infty}|c_nc_{n+1}^{-1}|$ならば、$\sum_{n=0}^\infty c_nz^n$の収束半径は$R$であることを示せ。
 \end{mysimplebox}
@@ -394,10 +407,9 @@ $R=\lim_{n\to\infty}|c_nc_{n+1}^{-1}|$であることより、$0<\epsilon<R$で�
     \frac{|c_{n}|^\frac{1}{n+k}}{(R+\epsilon)^\frac{k}{n+k}}&\longrightarrow \frac{|c_{n}|^0}{(R+\epsilon)^1}=\frac{1}{R+\epsilon},\\
     \frac{|c_{n}|^\frac{1}{n+k}}{(R-\epsilon)^\frac{k}{n+k}}&\longrightarrow \frac{|c_{n}|^0}{(R-\epsilon)^1}=\frac{1}{R-\epsilon}.
 \end{align*}
-よって、
-\begin{align*}
-    \frac{1}{R+\epsilon}<\lim_{k\to\infty}|c_{n+k}|^\frac{1}{n+k}<\frac{1}{R-\epsilon}.
-\end{align*}
+%\begin{align*}
+%    \frac{1}{R+\epsilon}<\lim_{k\to\infty}|c_{n+k}|^\frac{1}{n+k}<\frac{1}{R-\epsilon}.
+%\end{align*}
 $\epsilon$はいくらでも小さくとれるから、
 \begin{align*}
     \lim_{k\to\infty}|c_{n+k}|^\frac{1}{n+k}=\frac{1}{R}
