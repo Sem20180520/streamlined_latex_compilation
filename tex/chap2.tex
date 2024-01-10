@@ -129,6 +129,15 @@ $z_{n_k}\longrightarrow c'$とする。$c'$は$E$の集積点であり、$E$は�
 \end{align*}
 よって矛盾である。（証明終）
 
+\paragraph{補足}
+収束する部分列の収束点$c'$に対して、$c'\in E$であるから$d\le|c'-c|$は明らかである。一方、
+\begin{align*}
+    |c'-c|\le|c'-z_{n_k}|+|z_{n_k}-c|< \epsilon + d+\frac{1}{n_k}
+\end{align*}
+である。$\epsilon+\frac{1}{n_k}$はいくらでも小さくできるから、$|c'-c|\le d$である。
+
+よって、$d=|c'-c|$である。
+
 \begin{mysimplebox}{問6}
     $E, E'$がともに閉集合で、そのうちの1つが有界であるとき、$E$と$E'$の距離が$d$ならば$d=|z-z'|, z\in E, z'\in E'$となる$z, z'$が存在することを示せ。
 \end{mysimplebox}
@@ -156,7 +165,7 @@ $E$は有界であるから、$\{z_k\}$は収束する部分列を有する。
 任意の$\epsilon>0$に対して$l$を十分大きくとれば、
 $d<|z_{k_l}-z'_{k_l}|<d+\epsilon/2$とできる。
 また同時に$|c-z_{k_l}|<\epsilon/2$とできる。
-よって$|c-z'_{k_l}|\le|c-z_{k_l}|+|z_{k_l}-z'_{k_l}|<\epsilon/2+\epsilon/2=\epsilon$である。
+よって$|c-z'_{k_l}|\le|c-z_{k_l}|+|z_{k_l}-z'_{k_l}|<\epsilon/2+d+epsilon/2=d+\epsilon$である。
 すなわち$\{z'_{k_l}\}_{l=1,2,\dots}$は有界であるから、収束する部分列を有する。
 それを$\{z'_{k_{l_m}}\}_{m=1,2,\dots}$とし、$z'_{k_{l_m}}\rightarrow c'$とする。
 $c'$は$E'$の集積点であり$E'$は閉集合であるから、$c'\in E'$である。
@@ -166,6 +175,33 @@ $c'$は$E'$の集積点であり$E'$は閉集合であるから、$c'\in E'$で�
     |z_{k_{l_m}}-z'_{k_{l_m}}|>|c-c'|.
 \end{align*}
 よって矛盾である。（証明終）
+
+\paragraph{別証}
+$E$は有界閉集合、$E'$は閉集合とする。$z\in \C$に対して、$d(z)$を次のように定義する。
+\begin{align*}
+    d(z)\coloneqq \inf_{z'\in E'}|z-z'|
+\end{align*}
+$d(z)$は点$z$と閉集合$E'$の距離である。問5の結果より、$d(z)=|z-z'|$を満たす$z'$が存在する。
+
+$E$と$E'$の距離$d$は以下のように表すことができる（本のpp.24--25）。
+\begin{align*}
+    d\coloneqq \inf_{z\in E}d(z)
+\end{align*}
+
+$d$の定義より、任意の正の整数$n$に対して$d<d(z_n)<d+\frac{1}{n}$となる$z_n\in E$をとることができる。$z_n$に対して$z'_n\in E'$を、$d(z_n)=|z_n-z'_n|$を満たす点とする。
+
+さて、$E$は有界であるから点列$\{z_n\}$は有界な無限列である。したがって収束する部分列$\{z_{n_l}\}$が存在する。
+
+$\{z_{n_l}\}$の収束点を$c$とすると、これは$E$の集積点であり、$E$が閉であることから$c\in E$である。$d$の定義より$d\le d(c)$である。
+
+一方、任意の正数$\epsilon$に対して、$l$を十分大きくとれば以下の不等式が成り立つ。
+\begin{align*}
+    d(c)\le|c-z'_{n_l}|\le|c-z_{n_l}|+|z_{n_l}-z'_{n_l}|<\epsilon+d(z_{n_l})<\epsilon+d+\frac{1}{n_l}
+\end{align*}
+
+$\epsilon+\frac{1}{n_l}$はいくらでも小さくできるため、$d(c)\le d$である。
+
+したがって、$d=d(c)$である。（証明終）
 
 \begin{mysimplebox}{問7}
     閉領域は連続体であることを示せ。
@@ -178,12 +214,13 @@ $\overline{D}=A_1\cup A_2$（$A_1, A_2$はともに閉集合、$A_1\neq\emptyset
 
 $A_1\cap D\neq\emptyset$かつ$A_2\cap D\neq\emptyset$の場合、
 $x_1\in A_1\cap D$、$x_2\in A_1\cap D$とすると、
-$x_1$と$x_2$を結ぶ$D$内の曲線がある。それを、
+$x_1$と$x_2$を結ぶ$D$内の連続曲線がある。それを、
 \begin{align*}
     C\colon z=z(t)\quad (0\le t \le 1)
 \end{align*}
 とする。ただし$z(0)=x_1, z(1)=x_2$である。
 
+連続
 曲線$C$上の点は$A_1$か$A_2$のどちらか一方に属する。
 $z(t)\in A_1$である$t$の上限を$t_0$とすると、
 $z(t_0)$の任意の近傍に$A_1$の点と$A_2$の点が存在する。
@@ -213,8 +250,33 @@ $x_3\in A_1\subset\partial D$とする。$x_3$の任意の近傍に$D$の点が�
 \end{align*}
 しかし$f(1)=\phi(1)=\arg 1=0\neq 2\pi$であるから$f(z)$が境界上で連続であることと矛盾する。よってこのような函数$f(z)$は存在しない。（証明終）
 
+\paragraph{証明（やり直して清書）}
+
+複素函数$f$が単位円板内$D\coloneqq\{z\in\C\mid|z|<1\}$で定義されており、$D$では連続であるとする。そして境界$\partial D=\{\zeta\in\C\mid|\zeta|=1\}$で境界値$\arg \zeta$をとるとする。
+
+ここで、境界値をとるとは、
+\begin{align*}
+    f(z)\longrightarrow \arg \zeta\quad(z\longrightarrow \zeta,z\in D,\zeta\in\partial D)
+\end{align*}
+ということである（書籍p.31）。すなわち、境界に近づく際にも函数の値が連続的なのである。
+
+よって$0<r<1$である実数$r$が$1$に近づく（$r\longrightarrow1$）とき、
+\begin{align*}
+    f(re^{i\theta})\longrightarrow \arg e^{i\theta}=\theta
+\end{align*}
+となるはずである。
+
+ゆえに、$\theta=0$において$f(re^{i0})=f(r)\longrightarrow0$である。
+
+また、$\theta=2\pi$において$f(re^{i2\pi})=f(r)\longrightarrow2\pi$である。
+
+しかし、これは矛盾である（証明終）
+
+（矛盾であることについてダメ押しの補足：　任意の正数$\epsilon$に対して、ある$\delta>0$が存在し、$1-\delta<r<1$のとき、$|f(r)-0|<\epsilon$かつ$|f(r)-2\pi|<\epsilon$とできる。
+よって、$|2\pi-0|\le|2\pi-f(r)|+|f(r)-0|<2\epsilon$であるが、この不等式の最左辺の値は$2\pi$であるのに、最右辺によっていくらでも小さくできるとなり矛盾が生じる）
+
 \paragraph{補足と感想}
-本のp.6では$\arg$は$2\pi$の整数倍の違いは無視するとされていたが、それは複素数平面上の点を表す記述法として見る場合に限ると解釈した。$\arg$は複素数平面上では多価函数である。この問8は連続な一価関数を拡張して境界上で多価函数となるようにはできないということを主張していると思う。
+本のp.6では$\arg$は$2\pi$の整数倍の違いは無視するとされていたが、それは複素数平面上の点を表す記述法として見る場合に限ると解釈した。$\arg$は原点を除く複素数平面上では多価函数である。この問8は連続な一価関数を拡張して境界上では多価函数となるようにはできないということを主張している。
 
 \begin{mysimplebox}{問9}
     \begin{align*}
