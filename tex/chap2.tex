@@ -203,6 +203,23 @@ $\epsilon+\frac{1}{n_l}$はいくらでも小さくできるため、$d(c)\le d$
 
 したがって、$d=d(c)$である。（証明終）
 
+\paragraph{感想}
+問4と問5を利用して問6を以下のようにして示したかった。
+
+$E$は有界閉集合、$E'$は閉集合とする。$z\in E$とする。$E'$上の函数として
+$f_{z}(z')=|z-z'|$とすれば、これは問4より連続である。
+
+$d(z)\coloneqq \inf_{z'\in E'}f_{z}(z')$とすれば、
+これは点$z\in E$と集合$E'$の距離である。
+
+$E$と$E'$の距離が$d$であるとき、
+\begin{align*}
+    d=\inf_{z\in E}d(z)
+\end{align*}
+である。
+
+もし$d(z)$が連続ならば、書籍p.30の事実より$d=d(z)$となる$z\in E$が存在する。しかし$d(z)$が連続であることをどう示せばいいか分からなかったため諦めた。
+
 \begin{mysimplebox}{問7}
     閉領域は連続体であることを示せ。
 \end{mysimplebox}
@@ -270,7 +287,7 @@ $x_3\in A_1\subset\partial D$とする。$x_3$の任意の近傍に$D$の点が�
 
 また、$\theta=2\pi$において$f(re^{i2\pi})=f(r)\longrightarrow2\pi$である。
 
-しかし、これは矛盾である（証明終）
+しかし、これは矛盾である（註：この2つの極限の経路を同じにするのではなく、異なる経路にする方がよいという指摘をいただいた）。（証明終）
 
 （矛盾であることについてダメ押しの補足：　任意の正数$\epsilon$に対して、ある$\delta>0$が存在し、$1-\delta<r<1$のとき、$|f(r)-0|<\epsilon$かつ$|f(r)-2\pi|<\epsilon$とできる。
 よって、$|2\pi-0|\le|2\pi-f(r)|+|f(r)-0|<2\epsilon$であるが、この不等式の最左辺の値は$2\pi$であるのに、最右辺によっていくらでも小さくできるとなり矛盾が生じる）
@@ -359,3 +376,65 @@ $0\le x\le 1$とすれば、$0\le x^{m+1}\le 1$から
     \lim_{x\to 1-0}\sum_{n=0}^{\infty}c_nx^n=\sum_{n=0}^{\infty}c_n
 \end{align*}
 （証明終）
+
+\paragraph{別証}
+※F氏が吉田洋一の意図を汲んだ証明を成し遂げた。それをここに再現する。
+
+$x\in\R$とする。次のようにおく。
+\begin{align*}
+    s_k&=\sum_{n=0}^{k}c_n\\
+    s_k(x)&=\sum_{n=0}^{k}c_nx^n
+\end{align*}
+問題の条件より$s_k$は収束する。
+また、$|x|<1$において$s_k(x)$は広義の一様収束をする。
+よって、
+\begin{align*}
+    s_k&\longrightarrow s\\
+    s_k(x)&\longrightarrow s(x)\quad(|x|<1)
+\end{align*}
+とする。$s(x)$は$|x|<1$において連続である。
+
+$\lim_{x\to1-0}s(x)=s$を示せばよい。
+ここで、演習問題I-9より、$0<x<1$において、
+\begin{align*}
+    (1-x)^{-1}(s(x)-s)
+    &=(1-x)^{-1}\left\{\sum_{n=0}^{\infty}s_n(x)-s\right\}\\
+    &=\sum_{n=0}^{\infty}\{(c_0-s)+c_1+\cdots+c_n\}x^n\\
+    &=\sum_{n=0}^{\infty}(s_n-s)x^n
+\end{align*}
+である。ゆえに
+\begin{align*}
+    s(x)-s
+    &=(1-x)\sum_{n=0}^{N-1}(s_n-s)x^n+(1-x)\sum_{n=N}^{\infty}(s_n-s)x^n
+\end{align*}
+である。
+
+\begin{align*}
+    t_N(x)&=(1-x)\sum_{n=0}^{N-1}(s_n-s)x^n\\
+    u_N(x)&=(1-x)\sum_{n=N}^{\infty}(s_n-s)x^n
+\end{align*}
+とする。$t_N(x)$は$x$の多項式であるから連続である。
+
+任意の$\epsilon>0$に対して、ある$N>0$が存在し、$n>N$であるとき$|s_n-s|<\epsilon$となる。
+この$N$に対してある$0<\delta_N<1$が存在し、$1-\delta_N<x<1$のとき
+\begin{align*}
+    |t_N(x)-t_N(1)|=|t_N(x)|<\epsilon
+\end{align*}
+とできる。また、
+\begin{align*}
+    |u_N(x)|
+    &=(1-x)\left|\sum_{n=N}^{\infty}(s_n-s)x^n\right|\\
+    &\le(1-x)\sum_{n=N}^{\infty}|s_n-s|x^n\\
+    &\le(1-x)\sum_{n=N}^{\infty}\epsilon x^n\\
+    &=(1-x)\frac{x^N}{1-x}\epsilon\\
+    &\le\epsilon
+\end{align*}
+である。
+
+このとき、$|s(x)-s|\le \epsilon+\epsilon=2\epsilon$である。
+したがって
+\begin{align*}
+    \lim_{x\to1-0}s(x)=s
+\end{align*}
+である。（証明終）
+
