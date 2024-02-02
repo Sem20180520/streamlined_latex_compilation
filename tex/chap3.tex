@@ -1,5 +1,262 @@
 \chapter{導函数}%第3章
 
 \begin{mysimplebox}{問1}
-    点集合$E\subset\C$が閉集合であるためには$E$の境界$\partial E$が$E$の部分であることが必要十分であることを示せ。 
+    Cauchy--Riemannの関係式は次の関係式と同等であることを示せ：
+    \begin{align*}
+        \frac{\partial P}{\partial r}
+        =\frac{1}{r}\frac{\partial Q}{\partial \theta},\quad
+        \frac{\partial P}{\partial \theta}
+        =-r\frac{\partial Q}{\partial r}\quad
+        (z=re^{\theta i},r\neq0)
+    \end{align*}
 \end{mysimplebox}
+\paragraph{証明}
+$z=re^{\theta i}=r(\cos\theta+i\sin\theta)$、
+$x=r\cos\theta,y=r\sin\theta$である。
+
+$x^2+y^2=r^2, \frac{y}{x}=\tan\theta$より
+\begin{align*}
+    &\frac{\partial r}{\partial x}=\frac{x}{r}=\cos\theta,\quad
+    \frac{\partial \theta}{\partial x}=-\frac{\sin\theta}{r}\\
+    &\frac{\partial r}{\partial y}=\frac{y}{r}=\sin\theta,\quad
+    \frac{\partial \theta}{\partial y}=\frac{\cos\theta}{r}
+\end{align*}
+である。
+
+微分の変数変換によって以下のような計算ができる。
+\begin{align*}
+    \begin{bmatrix}
+        P_x & Q_x\\
+        P_y & Q_y
+    \end{bmatrix}
+    &=
+    \begin{bmatrix}
+        \frac{\partial r}{\partial x} & \frac{\partial \theta}{\partial x}\\
+        \frac{\partial r}{\partial y} & \frac{\partial \theta}{\partial y}
+    \end{bmatrix}
+    \begin{bmatrix}
+        P_r & Q_r\\
+        P_\theta & Q_\theta
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \cos\theta & -\frac{\sin\theta}{r}\\
+        \sin\theta & \frac{\cos\theta}{r}
+    \end{bmatrix}
+    \begin{bmatrix}
+        P_r & Q_r\\
+        P_\theta & Q_\theta
+    \end{bmatrix}\\
+    %%%%%%%%%%%%%%%%%%%%%
+    \begin{bmatrix}
+        P_r & Q_r\\
+        P_\theta & Q_\theta
+    \end{bmatrix}
+    &=
+    \begin{bmatrix}
+        \cos\theta & -\frac{\sin\theta}{r}\\
+        \sin\theta & \frac{\cos\theta}{r}
+    \end{bmatrix}^{-1}
+    \begin{bmatrix}
+        P_x & Q_x\\
+        P_y & Q_y
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \cos\theta & \sin\theta\\
+        -r\sin\theta & r\cos\theta
+    \end{bmatrix}
+    \begin{bmatrix}
+        P_x & Q_x\\
+        P_y & Q_y
+    \end{bmatrix}
+\end{align*}
+Cauchy--Riemannの関係式より,
+$P_x=Q_y, P_y=-Q_x$であるから
+\begin{align*}
+    \begin{bmatrix}
+        P_r & Q_r\\
+        P_\theta & Q_\theta
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \cos\theta & \sin\theta\\
+        -r\sin\theta & r\cos\theta
+    \end{bmatrix}
+    \begin{bmatrix}
+        P_x & -P_y\\
+        P_y & P_x
+    \end{bmatrix}
+\end{align*}
+
+$P_x=P_y=0$のとき$P_r=P_\theta=Q_r=Q_\theta=0$であるから示すべき式が成り立つ\footnote{上の行列の式よりすぐに極座標でのCauchy--Riemannの関係式が導かれるが、ここではわざわざ回転行列で書いた。}。
+
+$P_x^2+P_y^2\neq0$であるとき、
+$\frac{P_x}{\sqrt{P_x^2+P_y^2}}=\cos\alpha,
+\frac{P_y}{\sqrt{P_x^2+P_y^2}}=\sin\alpha$とする。
+$R(\theta)=
+\begin{bmatrix}
+    \cos\theta & -\sin\theta\\
+    \sin\theta & \cos\theta
+\end{bmatrix}$とすると
+\begin{align*}
+    \begin{bmatrix}
+        P_r & Q_r\\
+        P_\theta & Q_\theta
+    \end{bmatrix}
+    &=
+    \begin{bmatrix}
+        1 & 0\\
+        0 & r
+    \end{bmatrix}
+    R(-\theta)\cdot\sqrt{P_x^2+P_y^2}R(\alpha)
+    =\sqrt{P_x^2+P_y^2}
+    \begin{bmatrix}
+        1 & 0\\
+        0 & r
+    \end{bmatrix}
+    R(\alpha-\theta)
+\end{align*}
+
+よって、
+\begin{align*}
+    P_r&=\frac{1}{r}Q_\theta=\sqrt{P_x^2+P_y^2}\cos(\alpha-\theta)\\
+    P_\theta&=-rQ_r=-\sqrt{P_x^2+P_y^2}\sin(\alpha-\theta)
+\end{align*}
+
+逆に、$P_r=\frac{1}{r}Q_\theta,P_\theta=-rQ_r$が成り立つとき
+\begin{align*}
+    \begin{bmatrix}
+        P_x & Q_x\\
+        P_y & Q_y
+    \end{bmatrix}
+    &=
+    \begin{bmatrix}
+        \cos\theta & -\frac{\sin\theta}{r}\\
+        \sin\theta & \frac{\cos\theta}{r}
+    \end{bmatrix}
+    \begin{bmatrix}
+        P_r & Q_r\\
+        P_\theta & Q_\theta
+    \end{bmatrix}
+    =
+   R(\theta)
+    \begin{bmatrix}
+        1 & 0\\
+        0 & \frac{1}{r}
+    \end{bmatrix}
+    \begin{bmatrix}
+        P_r & Q_r\\
+        P_\theta & Q_\theta
+    \end{bmatrix}\\
+    &=
+    R(\theta)
+    \begin{bmatrix}
+        P_r & Q_r\\
+        \frac{1}{r}P_\theta & \frac{1}{r}Q_\theta
+    \end{bmatrix}
+    =
+    R(\theta)
+    \begin{bmatrix}
+        P_r & Q_r\\
+        -Q_r & P_r
+    \end{bmatrix}
+\end{align*}
+これより$P_x=Q_y,P_y=-Q_x$が成り立つ。（証明終）
+
+\begin{mysimplebox}{問2}
+領域$|z|>0$、$|\arg z|<\pi$で$h(z)=\log|z|+i\arg z$は正則で、
+$z=e^{h(z)}=\exp(\log|z|+i\arg z)$であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$r=|z|$、$\theta=\arg z$であるから$h(z)=\log r+i\theta$である。
+ただし、$-\pi<\theta<\pi$である。
+
+$P(r,\theta)=\log r, Q(r,\theta)=\theta$とすると
+\begin{align*}
+    &P_r=\frac{1}{r},\quad
+    Q_r=0\\
+    &P_\theta=0,\quad
+    Q_\theta=1
+\end{align*}
+である。
+よって、$P_r=\frac{1}{r}Q_\theta,P_\theta=-rQ_r$が満たされるため、問1により$h(z)$は$r>0,|\theta|<\pi$で正則である。
+
+また
+\begin{align*}
+    e^{h(z)}&=e^{\log r+i\theta}=e^{\log r}e^{i\theta}\\
+    &=r(\cos\theta+i\sin\theta)=x+iy=z
+\end{align*}
+（証明終）
+
+\begin{mysimplebox}{問3}
+    $c\neq0,e^z=c$である$z$のなかには不等式$|z|\le|\log|c||+\pi$を満たすものが必ず存在することを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+複素平面上の$c\neq0$は$c=|c|e^{i\theta}\ (-\pi\le\theta<\pi)$と書くことができる。
+
+$z=\log|c|+i\theta$とすると
+\begin{align*}
+    e^z&=e^{\log|c|+i\theta}=e^{\log|c|}e^{i\theta}\\
+    &=|c|(\cos\theta+i\sin\theta)=c
+\end{align*}
+である。
+
+この$z$は次を満たす。
+\begin{align*}
+    |z|&=|\log|c|+i\theta|\le|\log|c||+|\theta|\le|\log|c||+\pi
+\end{align*}
+（証明終）
+
+\begin{mysimplebox}{問4}
+    $z=c$で$f(z)$が微分可能ならば、
+    $z=\overline{c}$で$\overline{f(\overline{z})}$
+    は微分可能であることを示せ。
+    ただし、$\Im c\neq0$である。
+\end{mysimplebox}
+\paragraph{証明}
+次の極限値が存在するとする。
+\begin{align*}
+    \lim_{z\to c}\frac{f(z)-f(c)}{z-c}=f'(c)
+\end{align*}    
+%$\lim_{z\to c}\frac{f(z)-f(c)}{z-c}$は存在するとする。
+このとき
+\begin{align*}
+    \lim_{z\to\overline{c}}
+    \frac{\overline{f(\overline{z})}-\overline{f(\overline{\overline{c}})}}{z-\overline{c}}
+    &=\lim_{z\to\overline{c}}
+    \frac{\overline{f(\overline{z})}-\overline{f(c)}}{z-\overline{c}}
+    =\lim_{w\to c}
+    \frac{\overline{f(w)}-\overline{f(c)}}{\overline{w}-\overline{c}}
+    =\overline{\lim_{w\to c}\frac{f(w)-f(c)}{w-c}}
+    =\overline{f'(c)}
+\end{align*}
+である。ただし、途中で$w=\overline{z}$とおいた。
+これで$z=\overline{c}$で$\overline{f(\overline{z})}$は微分可能であることを示せたうえに、その微分係数が$\overline{f'(c)}$であることもわかった。（証明終）
+
+\begin{mysimplebox}{問5}
+    $\overline{z}$を$z$の有理函数として表すことは不可能であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$z=x+iy\ (x,y\in\R)$とする。
+
+実函数$P(x,y),Q(x,y)$によって$\overline{z}=P(x,y)+iQ(x,y)$とすると
+\begin{align*}
+    P(x,y)=x,\quad Q(x,y)=-y
+\end{align*}
+である。
+\begin{align*}
+    &P_x=1,\quad Q_x=0\\
+    &P_y=0,\quad Q_y=-1
+\end{align*}
+であるから、$\overline{z}$はCauchy--Riemannの関係式を満たさない。
+ゆえに$\overline{z}$は正則でない。
+
+ここで
+\begin{align*}
+    \overline{z}=\frac{a_0+a_1z+\cdots+a_nz^n}{b_0+b_1z+\cdots+b_mz^m}
+\end{align*}
+と書けるとする。
+この右辺は分母の零点を除いた領域で正則である。
+しかし左辺は正則でないから矛盾である。
+よって、$\overline{z}$を$z$の有理函数として表すことは不可能である。（証明終）
