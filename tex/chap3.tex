@@ -260,3 +260,88 @@ $z=x+iy\ (x,y\in\R)$とする。
 この右辺は分母の零点を除いた領域で正則である。
 しかし左辺は正則でないから矛盾である。
 よって、$\overline{z}$を$z$の有理函数として表すことは不可能である。（証明終）
+
+\begin{mysimplebox}{問6}
+    $f(z)$は領域$D$で正則な函数、$C$は$D$の2点$c_1, c_2$を結ぶ$D$内の線分であるとき、$C$上の2点$c, c'$を適当に選べば
+    \begin{align*}
+        f(c_2)-f(c_1)=(c_2-c_1)[\Re (f'(c))+i\Im(f'(c'))]
+    \end{align*}
+    とできることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$f(z)$の実部と虚部を$P(x,y),Q(x,y)$とする。
+つまり、$z=x+yi$（$x,y\in\R$）に対して実数関数$P(x,y),Q(x,y)$によって$f(z)=P(x,y)+iQ(x,y)$と書けるとする。
+さらに
+\begin{align*}
+    c_1&=a+bi\\
+    c_2&=a+h+(b+k)i
+\end{align*}
+とする。
+ただし、$a,b,h,k\in\R$である。
+
+線分$C$上の点は$t\in[0,1]$によって、
+\begin{align*}
+    c_1+t(c_2-c_1)=a+bi+t(h+ki)=a+th+(b+tk)i
+\end{align*}
+と表される。
+
+ここで、次のように$t$に関する函数$g(t)$を定義する。
+\begin{align*}
+    g(t)&=\frac{f(c_1+t(c_2-c_1))}{c_2-c_1}\\
+    &=\frac{P(a+th,b+tk)+iQ(a+th,b+tk)}{h+ki}\\
+    &=\frac{(P+iQ)(h-ki)}{h^2+k^2}=\frac{Ph+Qk+i(Qh-Pk)}{h^2+k^2}
+\end{align*}
+
+$g(t)$の実部と虚部を$U(t),V(t)$とする。次が成り立つ。
+\begin{align*}
+    U(t)&=\frac{P(a+th,b+tk)h+Q(a+th,b+tk)k}{h^2+k^2}\\
+    V(t)&=\frac{Q(a+th,b+tk)h-P(a+th,b+tk)k}{h^2+k^2}
+\end{align*}
+
+$U(t),V(t)$は$t$に関する連続函数であるから、平均値の定理により次が成り立つ。
+\begin{align*}
+    g(1)-g(0)&=\frac{f(c_2)-f(c_1)}{c_2-c_1}=U(1)-U(0)+i(V(1)-V(0))\\
+    &=U'(\theta_1)+iV'(\theta_2)
+\end{align*}
+ただし、$\theta_1,\theta_2\in(0,1)$である。
+
+Cauchy--Riemannの関係式から、次が成り立つ。
+\begin{align*}
+    U'(t)=\frac{1}{h^2+k^2}
+    &\left\{P_x(a+th,b+tk)h^2+P_y(a+th,b+tk)hk\right.\\
+    &\left.+Q_x(a+th,b+tk)hk+Q_y(a+th,b+tk)k^2\right\}\\
+    =\frac{1}{h^2+k^2}
+    &\left\{P_x(a+th,b+tk)h^2
+    +Q_y(a+th,b+tk)k^2\right\}\\
+    =\frac{1}{h^2+k^2}
+    &P_x(a+th,b+tk)(h^2+k^2)=P_x(a+th,b+tk)\\
+    %%%%%%
+    V'(t)=\frac{1}{h^2+k^2}
+    &\left\{Q_x(a+th,b+tk)h^2+Q_y(a+th,b+tk)hk\right.\\
+    &\left.-P_x(a+th,b+tk)hk-P_y(a+th,b+tk)k^2\right\}\\
+    =\frac{1}{h^2+k^2}
+    &\left\{Q_x(a+th,b+tk)h^2
+    -P_y(a+th,b+tk)k^2\right\}\\
+    =\frac{1}{h^2+k^2}
+    &Q_x(a+th,b+tk)(h^2+k^2)=Q_x(a+th,b+tk)
+\end{align*}
+
+よって、
+\begin{align*}
+    c&=c_1+\theta_1(c_2-c_1)=a+\theta_1 h+(b+\theta_1 k)i\\
+    c'&=c_1+\theta_2(c_2-c_1)=a+\theta_2 h+(b+\theta_2 k)i
+\end{align*}
+とすると、
+\begin{align*}
+    \frac{f(c_2)-f(c_1)}{c_2-c_1}
+    &=P_x(a+\theta_1 h,b+\theta_1 k)+iQ_x(a+\theta_2 h,b+\theta_2 k)\\
+    &=\Re(f'(c))+i\Im(f'(c'))
+\end{align*}
+ここで$f'(z)=P_x+iQ_x$であることを用いた。
+
+以上より、
+\begin{align*}
+    f(c_2)-f(c_1)=(c_2-c_1)[\Re(f'(c))+i\Im(f'(c'))]
+\end{align*}
+が成り立つ。
+（証明終）
