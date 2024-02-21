@@ -345,3 +345,130 @@ Cauchy--Riemannの関係式から、次が成り立つ。
 \end{align*}
 が成り立つ。
 （証明終）
+
+\begin{mysimplebox}{問7}
+    領域$D$のどの2点をとっても$D$内の線分で結び得るとき$D$は\textbf{凸領域}と呼ばれる。
+    $f(z)$が凸領域$D$で正則で$\Re[f'(z)]\neq0$ならば、$f(z)$は$D$の異なる2点で同じ値をとることはない。
+    これを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$c_1,c_2$を$D$の異なる2点とする。
+$D$が凸領域であることから、$c_1$と$c_2$を結ぶ線分$C$は$D$に含まれる。
+問6の結果より、次が成り立つような$C$上の2点$c,c'$が存在する。
+\begin{align*}
+    f(c_2)-f(c_1)=(c_2-c_1)[\Re(f'(c))+i\Im(f'(c'))]
+\end{align*}
+
+$D$において$\Re[f'(z)]\neq0$であり、また$c_1\neq c_2$であるから、
+\begin{align*}
+    (c_2-c_1)[\Re(f'(c))+i\Im(f'(c'))]\neq0
+\end{align*}
+よって、$f(c_2)\neq f(c_1)$である。（証明終）
+
+\begin{mysimplebox}{問8}
+    $|\arg z|<\frac{\pi}{2}-\delta\,(0<\delta<\frac{\pi}{2})$で
+    $|z|\longrightarrow+\infty$ならば$e^z\longrightarrow\infty$
+
+    また、$|\arg z-\pi|<\frac{\pi}{2}-\delta\,(0<\delta<\frac{\pi}{2})$で
+    $|z|\longrightarrow+\infty$ならば$e^z\longrightarrow0$であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$|\arg z|<\frac{\pi}{2}-\delta\,(0<\delta<\frac{\pi}{2})$のとき、
+$z$の偏角は図\ref{fig:chap3prob8-1}のグレーで示した範囲である。
+
+よって、$z=x+iy$（$x,y\in\R$）とすると、$x>0$である。
+
+$|z|\longrightarrow+\infty$ならば、$x\longrightarrow+\infty$である。
+よって、$e^z=e^{x+iy}=e^xe^{iy}\longrightarrow\infty$である。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6cm]{chap3_fig/chap3_fig001.png}
+    \caption{問8の偏角1}
+    \label{fig:chap3prob8-1}
+\end{figure}
+
+また、
+$|\arg z-\pi|<\frac{\pi}{2}-\delta\,(0<\delta<\frac{\pi}{2})$のとき、
+$z$の偏角は図\ref{fig:chap3prob8-2}のグレーで示した範囲である。
+
+よって、$z=x+iy$（$x,y\in\R$）とすると、$x<0$である。
+
+$|z|\longrightarrow+\infty$ならば、$x\longrightarrow-\infty$である。
+よって、$e^z=e^{x+iy}=e^xe^{iy}\longrightarrow0$である。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6cm]{chap3_fig/chap3_fig002.png}
+    \caption{問8の偏角2}
+    \label{fig:chap3prob8-2}
+\end{figure}
+(証明終)
+\clearpage
+
+\begin{mysimplebox}{問9}
+    $\delta$がどのように小さい正数でも、また、$c$が0でないどの複素数でも、領域$|\arg z-\frac{\pi}{2}|<\delta$および領域$|\arg z+\frac{\pi}{2}|<\delta$の各々において$e^z=c$なる$z$が無数に存在することを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$z=x+iy$（$x,y\in\R$）とする。次が成り立つ。
+\begin{align*}
+    e^z&=e^{x+iy}=e^xe^{iy}
+\end{align*}
+$e^z=c$とすると$e^x=|c|(\neq0)$、
+%\begin{align*}
+%    |e^z|&=|c|\\
+%    |e^xe^{iy}|&=|c|\\
+%    e^x&=|c|
+%\end{align*}
+よって$x=\log|c|$であり、$x$は一意的に決まる。
+
+$c=|c|e^{i\theta}$（$0\le\theta<2\pi$）と表すことができる。
+このとき、$y=\theta+2n\pi$（$n\in\Z$）に対して
+\begin{align*}
+    e^xe^{iy}&=|c|e^{i(\theta+2n\pi)}=|c|e^{i\theta}=c
+\end{align*}
+よって$e^z=c$が成り立つ。
+
+$y=\theta+2n\pi$において、$n$を正の方向に十分大きくとれば
+任意の$\delta>0$に対して$|\arg z-\frac{\pi}{2}|<\delta$が成り立つようにできる。そのような$n$は無数に存在する。
+
+また、$n$を負の方向に十分大きくとれば任意の$\delta>0$に対して$|\arg z+\frac{\pi}{2}|<\delta$が成り立つようにできる。そのような$n$も無数に存在する。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{chap3_fig3/chap3_fig3001.png}
+    \caption{問9の$x$と$y$}
+    \label{fig:chap3prob9}
+\end{figure}
+（証明終）
+
+\begin{mysimplebox}{問10}
+    $\sinh z=2^{-1}(e^z-e^{-z})$、$\cosh z=2^{-1}(e^z+e^{-z})$
+    とすると
+    \begin{align*}
+        &\cosh^2z-\sinh^2z=1\\
+        &\sinh(z_1+z_2)=\sinh z_1\cdot\cosh z_2+\cosh z_1\cdot\sinh z_2
+    \end{align*}
+    が成り立つことを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+第1式について
+\begin{align*}
+    \cosh^2z-\sinh^2z&=(\cosh z+\sinh z)(\cosh z-\sinh z)\\
+    &=\left(\frac{e^z+e^{-z}}{2}+\frac{e^z-e^{-z}}{2}\right)
+    \left(\frac{e^z+e^{-z}}{2}-\frac{e^z-e^{-z}}{2}\right)\\
+    &=e^ze^{-z}=e^0=1
+\end{align*}
+
+第2式について。まずは$\sinh z_1\cdot\cosh z_2$を計算してみる。
+\begin{align*}
+    \sinh z_1\cdot\cosh z_2
+    &=\frac{e^{z_1}-e^{-z_1}}{2}\frac{e^{z_2}+e^{-z_2}}{2}\\
+    &=\frac{e^{z_1+z_2}+e^{z_1-z_2}-e^{-z_1+z_2}-e^{-z_1-z_2}}{4}
+\end{align*}
+$\cosh z_1\cdot\sinh z_2$は上式の1と2を入れ替えたものである。
+
+よって
+\begin{align*}
+    &\sinh z_1\cdot\cosh z_2+\cosh z_1\cdot\sinh z_2\\
+    =&\frac{e^{z_1+z_2}-e^{-z_1-z_2}}{2}\\
+    =&\sinh(z_1+z_2)
+\end{align*}
+（証明終）
