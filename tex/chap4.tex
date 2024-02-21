@@ -1,0 +1,26 @@
+\chapter{積分}%第4章
+
+\begin{mysimplebox}{問1}
+   $\int_{0}^{1+i}\Re(z)dz$（$z=0$から$z=1+i$に至る線分に沿って）
+\end{mysimplebox}
+\paragraph{解}
+この積分路では$z=x+ix$であり、$x$は0から1まで動くから
+\begin{align*}
+    \int_{0}^{1+i}\Re(z)dz
+    &=\int_{0}^{1}xd(x+ix)
+    =\int_{0}^{1}x(1+i)dx
+    =(1+i)\left[\frac{x^2}{2}\right]_0^1
+    =\frac{1+i}{2}
+\end{align*}
+
+\begin{mysimplebox}{問2}
+    $\int_{-i}^{i}|z|dz$（円$|z|=1$の左半分に沿って）
+ \end{mysimplebox}
+ \paragraph{解}
+ \begin{align*}
+    \int_{-i}^{i}|z|dz
+    &=\int_{\frac{3\pi}{2}}^{\frac{\pi}{2}}|e^{i\theta}|d(e^{i\theta})
+    =\int_{\frac{3\pi}{2}}^{\frac{\pi}{2}}ie^{i\theta}d\theta
+    =\left[e^{i\theta}\right]_{\frac{3\pi}{2}}^{\frac{\pi}{2}}
+    =e^{\frac{\pi}{2}}-e^{\frac{3\pi}{2}}=i-(-i)=2i
+ \end{align*}
