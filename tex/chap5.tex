@@ -1,6 +1,96 @@
 \chapter{正則函数}%第5章
 
 \begin{mysimplebox}{問1}
-   
+   $f(z)=u(r,\theta)+iv(r,\theta)$（$z=re^{\theta i}$）が$|z|<R$で正則ならば
+   \begin{align*}
+    \frac{f^{(n)}(0)}{n!}
+    =\frac{1}{\pi r^n}\int_{0}^{2\pi}u(r,\theta)e^{-in\theta}d\theta\quad(0<r<R)
+   \end{align*}
 \end{mysimplebox}
-\paragraph{解}
+\paragraph{証明}
+書籍のp.87の§28より、原点を中心とする半径$R$の円の内部において$f(z)$はべき級数で表される。
+すなわち
+\begin{align*}
+    f(z)=c_0+c_1z+c_2+\dots+c_kz^k+\dots
+    =\sum_{k=0}^{\infty}c_kz^k
+\end{align*}
+$\frac{f^{(n)}(0)}{n!}=c_n$である。
+
+ここで$c_k=a_k+ib_k$（$a_k,b_k\in\R$）とし、$f(z)$に$z=re^{\theta i}$を代入すると
+\begin{align*}
+    f(re^{\theta i})
+    &=\sum_{k=0}^{\infty}(a_k+ib_k)r^ke^{k\theta i}\\
+    &=\sum_{k=0}^{\infty}r^k(a_k+ib_k)(\cos k\theta+i\sin k\theta)\\
+    &=\sum_{k=0}^{\infty}r^k\{a_k\cos k\theta-b_k\sin k\theta+i(a_k\sin k\theta+b_k\cos k\theta)\}
+\end{align*}
+$f(z)=u(r,\theta)+iv(r,\theta)$であるから
+\begin{align*}
+    u(r,\theta)
+    =\sum_{k=0}^{\infty}r^k(a_k\cos k\theta-b_k\sin k\theta)
+\end{align*}
+$n=0$のときは$\int_{0}^{2\pi}u(r,\theta)d\theta=a_0\int_{0}^{2\pi}d\theta=2\pi a_0\neq \pi c_0$であり、成り立たない。よって$n\neq0$とする。
+
+\begin{align*}
+    u(r,\theta)e^{-in\theta}
+    =&\sum_{k=0}^{\infty}r^k(a_k\cos k\theta-b_k\sin k\theta)(\cos n\theta-i\sin n\theta)\\
+    =&\sum_{k=0}^{\infty}r^k
+    \{a_k\cos k\theta\cos n\theta-b_k\sin k\theta\cos n\theta
+    \\
+    &-i(a_k\cos k\theta\sin n\theta-b_k\sin k\theta\sin n\theta)\}
+\end{align*}
+$k\neq n$のとき
+\begin{align*}
+    %%%cos cos
+    \int_{0}^{2\pi}\cos k\theta\cos n\theta d\theta
+    &=\int_{0}^{2\pi}\frac{1}{2}\{\cos(k+n)\theta+\cos(k-n)\theta\} d\theta\\
+    &=\frac{1}{2}\left[\frac{\sin(k+n)\theta}{k+n}+\frac{\sin(k-n)\theta}{k-n}\right]_0^{2\pi}=0\\
+    %%%sin cos
+    \int_{0}^{2\pi}\sin k\theta\cos n\theta d\theta
+    &=\int_{0}^{2\pi}\frac{1}{2}\{\sin(k+n)\theta+\sin(k-n)\theta\} d\theta\\
+    &=-\frac{1}{2}\left[\frac{\cos(k+n)\theta}{k+n}+\frac{\cos(k-n)\theta}{k-n}\right]_0^{2\pi}=0\\
+    %%%sin sin
+    \int_{0}^{2\pi}\sin k\theta\sin n\theta d\theta
+    &=\int_{0}^{2\pi}\frac{1}{2}\{\cos(k+n)\theta-\cos(k-n)\theta\} d\theta\\
+    &=\frac{1}{2}\left[\frac{\sin(k+n)\theta}{k+n}+\frac{\sin(k-n)\theta}{k-n}\right]_0^{2\pi}=0
+\end{align*}
+一方、$k=n\neq0$のとき
+\begin{align*}
+    %%%cos cos
+    \int_{0}^{2\pi}\cos n\theta\cos n\theta d\theta
+    &=\int_{0}^{2\pi}\frac{1}{2}(\cos 2n\theta+1) d\theta\\
+    &=\frac{1}{2}\left[\frac{\sin 2n\theta}{2n}+\theta\right]_0^{2\pi}=\pi\\
+    %%%sin cos
+    \int_{0}^{2\pi}\sin n\theta\cos n\theta d\theta
+    &=\int_{0}^{2\pi}\frac{1}{2}\sin 2n\theta d\theta\\
+    &=-\frac{1}{2}\left[\frac{\cos 2n\theta}{2n}\right]_0^{2\pi}=0\\
+    %%%sin sin
+    \int_{0}^{2\pi}\sin n\theta\sin n\theta d\theta
+    &=\int_{0}^{2\pi}\frac{1}{2}\{1-\cos 2n\theta\} d\theta\\
+    &=\frac{1}{2}\left[\theta-\frac{\sin 2n\theta}{2n}\right]_0^{2\pi}=\pi
+\end{align*}
+したがって
+\begin{align*}
+    \int_{0}^{2\pi}u(r,\theta)e^{-in\theta}d\theta
+    &=r^n(\pi a_n+i\pi b_n)=\pi r^nc_n\\
+    \frac{1}{\pi r^n}\int_{0}^{2\pi}u(r,\theta)e^{-in\theta}d\theta
+    &=c_n
+\end{align*}
+これで$n\neq0$のときは示せた。
+\paragraph{補足}
+\begin{align*}
+    \int_{0}^{2\pi}f(re^{\theta i})e^{-in\theta}d\theta
+    &=\int_{0}^{2\pi}u(r,\theta)e^{-in\theta}d\theta
+    +i\int_{0}^{2\pi}v(r,\theta)e^{-in\theta}d\theta\\
+    &=2\pi c_nr^n
+\end{align*}
+よって、$n\neq0$に対して
+\begin{align*}
+    i\int_{0}^{2\pi}v(r,\theta)e^{-in\theta}d\theta
+    &=\pi c_nr^n
+\end{align*}
+また、$n=0$のとき
+\begin{align*}
+    i\int_{0}^{2\pi}v(r,\theta)d\theta
+    &=2\pi ib_0
+\end{align*}
+
