@@ -7,7 +7,7 @@
     =\frac{1}{\pi r^n}\int_{0}^{2\pi}u(r,\theta)e^{-in\theta}d\theta\quad(0<r<R)
    \end{align*}
 \end{mysimplebox}
-\paragraph{証明}
+\paragraph{証明1}（泥臭い方法）
 書籍のp.87の§28より、原点を中心とする半径$R$の円の内部において$f(z)$はべき級数で表される。
 すなわち
 \begin{align*}
@@ -94,3 +94,334 @@ $k\neq n$のとき
     &=2\pi ib_0
 \end{align*}
 
+\paragraph{証明2}
+$u(r,\theta)=\frac{1}{2}\{f(z)+\overline{f(z)}\}$であるから、$n\ge1$のとき、
+\begin{align*}
+    \frac{1}{\pi r^n}\int_{0}^{2\pi}u(r,\theta)e^{-in\theta}d\theta
+    =\frac{1}{2\pi r^n}\int_{0}^{2\pi}f(z)e^{-in\theta}d\theta
+     +\frac{1}{2\pi r^n}\int_{0}^{2\pi}\overline{f(z)}e^{-in\theta}d\theta
+\end{align*}
+右辺の第1項の積分は、
+\begin{align*}
+    \frac{1}{2\pi r^n}\int_{0}^{2\pi}f(z)e^{-in\theta}d\theta
+    &=\frac{1}{2\pi}\int_{0}^{2\pi}\frac{f(z)}{(re^{i\theta})^n}d\theta
+    =\frac{1}{2\pi}\int_{0}^{2\pi}\frac{f(z)}{z^n}\frac{d(re^{i\theta})}{ire^{i\theta}}\\
+    &=\frac{1}{2\pi i}\oint\frac{f(z)}{z^{n+1}}dz=\frac{f^{(n)}(0)}{n!}
+\end{align*}
+第2項の積分は、
+\begin{align*}
+    \int_{0}^{2\pi}\overline{f(z)}e^{-in\theta}d\theta
+    &=\overline{\int_{0}^{2\pi}f(z)e^{in\theta}d\theta}
+    =\overline{\oint f(z)\frac{z^n}{r^n}\frac{dz}{iz}}\\
+    &=-\frac{1}{ir^n}\overline{\oint f(z)z^{n-1}dz}=0
+\end{align*}
+最後の部分は、この被積分函数が積分路内で正則であるため、積分の値は0だからである。
+
+したがって、
+\begin{align*}
+    \frac{1}{\pi r^n}\int_{0}^{2\pi}u(r,\theta)e^{-in\theta}d\theta
+    =\frac{f^{(n)}(0)}{n!}
+\end{align*}
+
+一方、$n=0$のとき、
+\begin{align*}
+    \frac{1}{\pi}\int_{0}^{2\pi}u(r,\theta)d\theta
+    &=\frac{1}{2\pi}\int_{0}^{2\pi}f(z)d\theta
+     +\frac{1}{2\pi}\int_{0}^{2\pi}\overline{f(z)}d\theta\\
+    &=\frac{1}{2\pi}\oint f(z)\frac{dz}{iz}
+    +\frac{1}{2\pi}\overline{\oint f(z)\frac{dz}{iz}}\\
+    &=\frac{1}{2\pi i}2\pi if(0)-\frac{1}{2\pi i}\overline{2\pi if(0)}\\
+    &=f(0)+\overline{f(0)}=2\Re(f(0))
+\end{align*}
+よって、$n=0$のとき、問題の等式は一般には成り立たない。（証明終）
+
+\paragraph{例}
+$f(z)=z=r\cos\theta+ir\sin\theta$のとき
+\begin{align*}
+    \frac{f^{(n)}(0)}{n!}=
+    \begin{cases}
+        0 & (n=0)\\
+        1 & (n=1)\\
+        0 & (n\ge2)
+    \end{cases}
+\end{align*}
+\begin{align*}
+    \frac{1}{\pi r^n}\int_{0}^{2\pi}r\cos\theta e^{-in\theta}d\theta
+    &=\frac{1}{\pi r^n}\int_{0}^{2\pi}r\frac{e^{i\theta}+e^{-i\theta}}{2} e^{-in\theta}d\theta\\
+    &=\begin{cases}
+        0 & (n=0)\\
+        1 & (n=1)\\
+        0 & (n\ge2)
+    \end{cases}
+\end{align*}
+よって、この場合は$n=0$でも偶然成り立つ。
+
+しかし、$g(z)=z+1=r\cos\theta+1+ir\sin\theta$のとき
+\begin{align*}
+    \frac{g^{(n)}(0)}{n!}=
+    \begin{cases}
+        1 & (n=0)\\
+        1 & (n=1)\\
+        0 & (n\ge2)
+    \end{cases}
+\end{align*}
+\begin{align*}
+    \frac{1}{\pi r^n}\int_{0}^{2\pi}(r\cos\theta+1) e^{-in\theta}d\theta
+    &=\frac{1}{\pi r^n}\int_{0}^{2\pi}r\left\{\frac{e^{i\theta}+e^{-i\theta}}{2}+1\right\} e^{-in\theta}d\theta\\
+    &=\begin{cases}
+        2 & (n=0)\\
+        1 & (n=1)\\
+        0 & (n\ge2)
+    \end{cases}
+\end{align*}
+よって、この場合は$n=0$で成り立たない。（例終）
+
+\begin{mysimplebox}{問2}
+    $f(z)$が$D$で正則ならば$D$の各点$z$で
+    \begin{align*}
+     \frac{\partial^2|f(z)|^2}{\partial x^2}
+     +\frac{\partial^2|f(z)|^2}{\partial y^2}
+     =4|f'(z)|^2\quad(z=x+iy)
+    \end{align*}
+\end{mysimplebox}
+\paragraph{証明}
+$f(z)=P(x,y)+iQ(x,y)$（$P(x,y),Q(x,y)$は実函数）とすると
+\begin{align*}
+    \frac{\partial^2|f(z)|^2}{\partial x^2}
+   &=\frac{\partial^2}{\partial x^2}\left\{P(x,y)^2+Q(x,y)^2\right\}\\
+   &=\frac{\partial}{\partial x}\left\{2PP_x+2QQ_x\right\}\\
+   &=2\left\{{P_x}^2+PP_{xx}+{Q_x}^2+QQ_{xx}\right\}\\
+\end{align*}
+よって
+\begin{align*}
+    \frac{\partial^2|f(z)|^2}{\partial x^2}
+     +\frac{\partial^2|f(z)|^2}{\partial y^2}
+     &=2\left\{P_x^2+P_y^2+P(P_{xx}+P_{yy})+Q_x^2+Q_y^2+Q(Q_{xx}+Q_{yy})\right\}\\
+     &=4(P_x^2+P_y^2)=4|f'(z)|^2
+\end{align*}
+これで示せた。
+ただし、$f(z)$が$D$において正則であることから、次のことを利用した。
+\begin{align*}
+    &P_x=Q_y,& &P_y=-Q_x\\
+    &P_{xx}=Q_{yx}=Q_{xy}=-P_{yy},    & &Q_{xx}=-P_{yx}=-P_{xy}=-Q_{yy}\\
+    &f'(z)=P_x+iQ_x=P_x-iP_y,& &|f'(z)|^2=P_x^2+P_y^2
+\end{align*}
+（証明終）
+
+\paragraph{補足}
+この証明中で正則函数の実部と虚部はそれぞれ調和函数であることを示した。
+
+$P_{xx}+P_{yy}=0$、$Q_{xx}+Q_{yy}=0$
+
+\begin{mysimplebox}{問3}
+    領域$D$で$f(z),g(z)$が正則で$f(z)\cdot g(z)\equiv0$ならば、
+    $f(z)\equiv0$または$g(z)\equiv0$でなければならない。
+\end{mysimplebox}
+\paragraph{証明1}
+$c\in D$を固定し、$z\in D$は$c$の十分近くにある任意の点とする。
+$f(z),g(z)$が正則であることから
+\begin{align*}
+    f(z)&=a_0+a_1(z-c)+a_2(z-c)^2+\cdots\\
+    g(z)&=b_0+b_1(z-c)+b_2(z-c)^2+\cdots
+\end{align*}
+と表される。
+
+$g(z)\equiv0$ではないと仮定すると、$b_n\neq0$となる最小の$n\in\N$が存在する。
+よって
+\begin{align*}
+    g(z)&=b_n(z-c)^n+b_{n+1}(z-c)^{n+1}+b_{n+2}(z-c)^{n+2}+\cdots
+\end{align*}
+ゆえに
+\begin{align*}
+    f(z)g(z)=&a_0b_n(z-c)^n+(a_0b_{n+1}+a_1b_n)(z-c)^{n+1}
+    +(a_0b_{n+2}+a_1b_{n+1}+a_2b_n)(z-c)^{n+2}\\
+    &+\cdots+(a_0b_{n+k}+a_1b_{n+k-1}+\cdots+a_{n+k-1}b_1+a_{n+k}b_0)(z-c)^{n+k}+\cdots
+\end{align*}
+ここで、$f(z)g(z)=0,b_n\neq0$であることから
+\begin{align*}
+    a_0=0,a_1=0,a_2=0,\dots,a_{n+k}=0,\dots
+\end{align*}
+となり、$f(z)=0$であることがわかる。
+$c\in D$は任意であったから、結局$D$において$f(z)\equiv0$であることとなる。（証明終）
+
+%※p.89の内容に則して修正が必要
+\paragraph{証明2}
+$f(z)g(z)\equiv0$であるとき、$g(z)\not\equiv0$ならば$f(z)\equiv0$であることを示す。
+
+$f(z)g(z)\equiv0$より、$z_k\to c$、$z_k\neq c$、$z_k\in D$、$c\in D$である点列$\{z_k\}$の各点において$f(z_k)g(z_k)=0$である。
+
+$g\not\equiv0$の仮定より、$g(z_k)\neq0$である正の整数$k$が無限に存在する。そのような$k$を選んで$\{z_k\}$の部分列$\{z_{k_l}\}$を用意する。
+
+$f(z_{k_l})g(z_{k_l})=0$かつ$g(z_k)\neq0$であるから$f(z_k)=0$である。また、$z_{k_l}\to c$、$z_{k_l}\neq c$、$z_{k_l}\in D$、$c\in D$
+である。
+
+したがって、p.88の定理から$f(z)\equiv0$である。（証明終）
+
+\begin{mysimplebox}{問4}
+    $f(z)$が$|z|<R$で正則であるとき、円$|z|=r$（$r<R$）の写像$w=f(z)$による像曲線の長さを$L(z)$で表せば
+    \begin{align*}
+        L(r)\ge2\pi r|f'(0)|
+    \end{align*}
+\end{mysimplebox}
+\paragraph{証明1}
+%\begin{align*}
+%    L(r)=\int_{0}^{2\pi}|f'(z(r\theta))|rd\theta
+%\end{align*}
+%ここで、$|z|=r$において、$f(z)=c_0+c_1z+c_2z^2+\dots$と表される。
+%よって、
+%\begin{align*}
+%    f'(z)&=c_1+2c_2z+\dots\\
+%    |f'(z)|&\ge|c_1|=|f'(0)|
+%\end{align*}※この不等式は普通に間違っている。
+%ゆえに、
+%\begin{align*}
+%    L(r)&\ge|f'(0)|r\int_{0}^{2\pi}d\theta=2\pi r|f'(0)|
+%\end{align*}
+半径$r$の円周$C_r$上の点は、弧の長さ$s=r\theta$によるパラメータ表示で、$z=z(s)=r\left(\cos\frac{s}{r}+i\sin\frac{s}{r}\right)=re^{i\frac{s}{r}}$（$0\le s \le2\pi r$）と書ける。
+
+\begin{align*}
+    dz
+    =i\frac{1}{r}re^{i\frac{s}{r}}ds
+\end{align*}
+であるから、$ds=\frac{r}{iz}dz$である。
+
+写像$w=f(z)$による円周の像は$w=f(e^{i\frac{s}{r}})$（$0\le s\le2\pi r$）である。その長さは以下のようになる。
+\begin{align*}
+    L(r)&=\int_{0}^{2\pi r}|f'(z(s))|ds
+    \ge \left|\int_{0}^{2\pi r}f'(z(s))ds\right|
+    =\left|\int_{C_r}f'(z)\frac{r}{iz}dz\right|\\
+    &=r\left|\int_{C_r}\frac{f'(z)}{iz}dz\right|
+    =r\left|2\pi i \frac{f'(0)}{i}\right|
+    =2\pi r|f'(0)|
+\end{align*}
+（証明終）
+\paragraph{証明2}（根本から計算する方法）
+$f(z)=u(x,y)+iv(x,y)$と実部、虚部に分けて書く。極座標表示で
+\begin{align*}
+    u&=u(r\cos\theta,r\sin\theta)\\
+    v&=v(r\cos\theta,r\sin\theta)
+\end{align*}
+である。よって、以下のように微分を計算できる。
+\begin{align*}
+    du&=-ru_x\sin\theta d\theta+ru_y\cos\theta d\theta\\
+    &=r(-u_x\sin\theta+u_y\cos\theta)d\theta\\
+    &=r(-v_y\sin\theta-v_x\cos\theta)d\theta\\
+    dv&=r(-v_x\sin\theta+v_y\cos\theta)d\theta
+\end{align*}
+ここで、コーシー・リーマンの関係式を利用した。以上より、
+\begin{align*}
+    ds^2=du^2+dv^2=r^2(v_x^2+v_y^2)d\theta^2
+\end{align*}
+よって、
+\begin{align*}
+    ds=r\sqrt{v_x^2+v_y^2}d\theta=r|f'(re^{i\theta})|d\theta
+\end{align*}
+ゆえに
+\begin{align*}
+    L(r)&=\int_{\Gamma}ds=r\int_{0}^{2\pi}|f'(re^{i\theta})|d\theta
+\end{align*}
+この後は前述の計算と同じである。（証明終）
+\paragraph{例}
+$f(z)=a+bz$（$a,b\in\C$）のとき、
+\begin{align*}
+    L(r)&=\int_{0}^{2\pi}|f'(z)|rd\theta=\int_{0}^{2\pi}|b|rd\theta\\
+    &=2\pi r|b|=2\pi r|f'(0)|
+\end{align*}
+この場合は等号が成立する。
+この$f(z)$は$b$倍して$a$だけ平行移動する写像であるから、$2\pi r$の円周は$2\pi r|b|$の円周に移される。（例終）
+
+\begin{mysimplebox}{問5}
+    領域$D$で正則な函数$f(z)$が$D$の境界の各点$\zeta$で境界値$\phi(\zeta)$を有するとき、
+    $|\phi(\zeta)|=M$（$M$は定数）ならば、$f(z)$が$D$で定数でない限り、$f(z)$は$D$で零点を有する。
+\end{mysimplebox}
+\paragraph{証明}
+\paragraph{$D$が有界であるとき}
+
+$f(z)$が$D$で零点を持たないと仮定する。
+$g(z)=\frac{1}{f(z)}$とすると、$g(z)$は$D$で正則である。
+最大値の原理により、$|g(z)|$は$\partial D$において最大値を持つ。
+よって、$|f(z)|$は$\partial D$において最小値を持つ(p.100参照)。
+
+しかし、$\zeta\in\partial D$において$|\phi(\zeta)|=M$であるから、
+$|f(z)|$の最大値と最小値はともに$M$である。
+よって、$D$の任意の点$z$において、$|f(z)|=M$であるから、
+$f(z)$は$D$で定数である（p.99参照）。
+
+したがって、$f(z)$が$D$で定数でないならば、$f(z)$は$D$で零点を有する。
+
+\paragraph{$D$が有界でないとき}
+$D$の外点$a$をとり、$\frac{1}{z-a}=w$とする。
+この変換によって、$a$は$\infty$に、$\infty$は0に移る。
+
+$D$において$z\neq a$であるから、
+$D$と$a$の距離を$d$とすると、$|z-a|>d>0$である。
+よって、$|w|=\frac{1}{|z-a|}<\frac{1}{d}<\infty$である。
+ゆえに、$w$は有界な領域内を動く。その領域を$D'$とする。
+\begin{align*}
+    f(z)=f\left(\frac{1}{w}+a\right)
+\end{align*}
+であるから、$f\left(\frac{1}{w}+a\right)=h(w)$とすると、
+$h(w)$は有界な領域$D'$で正則であり、境界値が$M$であるから、
+前半の場合に帰着できる。（証明終）
+
+\paragraph{例}
+$f(z)=z$は単位円内において正則であり、境界値$e^{i\theta}$を有する。
+境界において$|z|=1$である。原点が零点である。
+
+（あまり良い例が思い浮かばない）
+
+\begin{mysimplebox}{問6}
+    $f(z)$は有界領域$D$で正則な函数であるとする。
+    領域$D$のどの境界点$\zeta$、どの正数$\epsilon$を与えても、
+    $z\in D$、$|z-\zeta|<\delta(\zeta,\epsilon)$ならば
+    $|f(z)|<M+\epsilon$（$M$は定数）であるように正数$\delta(\zeta,\epsilon)$を選びうるときは、
+    $D$の各点$z$で$|f(z)|\le M$である。
+    なお、このとき、$z\in D$、$|f(z)|=M$なる$z$があれば$f(z)\equiv Me^{\theta i}$である。
+\end{mysimplebox}
+\paragraph{証明}
+ある$D$の点$z_0$において、$|f(z_0)|>M$と仮定する。
+領域$D$は開集合であるから、$z_0$は境界点ではない。
+
+$D$の任意の境界点$\zeta$に対して、$\epsilon_0=|f(z_0)|-M>0$として、
+$z\in D$、$|z-\zeta|<\delta(\zeta,\epsilon_0)$ならば、
+$|f(z)|<M+\epsilon_0=|f(z_0)|$となる正数$\delta(\zeta,\epsilon_0)$をとることができる。
+
+\begin{align*}
+    B_\zeta=\{z\in\C\mid|z-\zeta|<\delta(\zeta,\epsilon_0)\}
+\end{align*}
+とする。
+\begin{align*}
+    \partial D\subset\bigcup_{\zeta\in\partial D}B_\zeta
+\end{align*}
+であるが、$\partial D$は有界閉集合でありコンパクトであるから、
+有限個の$B_\zeta$で覆うことができる。
+したがって、ある有限個の境界点$\zeta_k$（$k=1,\dots,n$）に対して
+\begin{align*}
+    \partial D\subset\bigcup_{k=1}^{n}B_{\zeta_k}
+\end{align*}
+とできる。
+
+よって、$z\in (\bigcup_{k=1}^{n}B_{\zeta_k})\cap D$ならば、
+$|f(z)|<|f(z_0)|$である。
+
+最大値の原理より、これは不合理である（そうか？）。
+
+後半について、$|f(z)|=M$となる$z\in D$があれば$f(z)\equiv Me^{\theta i}$
+であることはp.99参照。（証明終）
+
+%$(\bigcup_{k=1}^{n}B_{\zeta_k})\cap D$に含まれる積分路$c$に対して、
+%\begin{align*}
+%    |f(z_0)|=|\frac{1}{2\pi i}\int_{c}\frac{f(z)}{z-z_0}dz|
+%    \le \frac{1}{2\pi}\int_{c}|\frac{f(z)}{z-z_0}|dz
+%    < \frac{|f(z_0)|}{2\pi}\int_{c}\frac{1}{z-z_0}dz
+%\end{align*}
+%
+%$z_0\in D$、$|z_0-z_0|=0<\delta(z_0,\epsilon_0)$であるから、
+%$|f(z_0)|<|f(z_0)|$となり、不合理である。よって、$z_0$は$D$の境界点ではありえない。
+%
+%よって、$z_0$が$D$の境界点でないとする。
+%最大値の原理により、$|z|>|z_0|$である$z\in D$
+%
+%
+%
+%$z$と$\partial D$の距離を$r$
