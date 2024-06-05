@@ -380,20 +380,31 @@ $f(z)=z$は単位円内において正則であり、境界値$e^{i\theta}$を�
 \end{mysimplebox}
 \paragraph{証明}
 ある$D$の点$z_0$において、$|f(z_0)|>M$と仮定する。
-領域$D$は開集合であるから、$z_0$は境界点ではない。
 
-$D$の任意の境界点$\zeta$に対して、$\epsilon_0=|f(z_0)|-M>0$として、
+$\epsilon_0=|f(z_0)|-M>0$とする。
+
+$D$の任意の境界点$\zeta$に対して、
 $z\in D$、$|z-\zeta|<\delta(\zeta,\epsilon_0)$ならば、
-$|f(z)|<M+\epsilon_0=|f(z_0)|$となる正数$\delta(\zeta,\epsilon_0)$をとることができる。
+$|f(z)|<M+\epsilon_0=|f(z_0)|$となる正数$\delta(\zeta,\epsilon_0)$をとることができる。境界の各点$\zeta$に対して、そのような$\delta(\zeta,\epsilon_0)$を選んでおく。
 
 \begin{align*}
     B_\zeta=\{z\in\C\mid|z-\zeta|<\delta(\zeta,\epsilon_0)\}
 \end{align*}
 とする。
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{chap5_fig/prob6-1.png}
+    \caption{領域$D$}
+    \label{fig:chap5-6-1}
+\end{figure}
+
 \begin{align*}
     \partial D\subset\bigcup_{\zeta\in\partial D}B_\zeta
 \end{align*}
-であるが、$\partial D$は有界閉集合でありコンパクトであるから、
+である。
+
+$\partial D$は有界閉集合、すなわちコンパクトであるから、
 有限個の$B_\zeta$で覆うことができる。
 したがって、ある有限個の境界点$\zeta_k$（$k=1,\dots,n$）に対して
 \begin{align*}
@@ -401,10 +412,44 @@ $|f(z)|<M+\epsilon_0=|f(z_0)|$となる正数$\delta(\zeta,\epsilon_0)$をとる
 \end{align*}
 とできる。
 
-よって、$z\in (\bigcup_{k=1}^{n}B_{\zeta_k})\cap D$ならば、
-$|f(z)|<|f(z_0)|$である。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{chap5_fig/prob6-2.png}
+    \caption{$D$の境界を有限個の円板で覆う}
+    \label{fig:chap5-6-2}
+\end{figure}
 
-最大値の原理より、これは不合理である（そうか？）。
+\begin{align*}
+    D'&:=D\setminus\bigcup_{k=1}^{n}B_{\zeta_k}\\
+    c&:=\partial D'
+\end{align*}
+とする。
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{chap5_fig/prob6-3.png}
+    \caption{$D':=D\setminus\bigcup_{k=1}^{n}B_{\zeta_k}$}
+    \label{fig:chap5-6-3}
+\end{figure}
+
+$z\in D\cap \bigcup_{k=1}^{n}B_{\zeta_k}$に対して$|f(z)|<|f(z_0)|$であるから$z_0\not\in D\cap \bigcup_{k=1}^{n}B_{\zeta_k}$である。
+よって$z_0\in D'$である。$c$は有限個の$B_{\zeta_k}$の境界をつなげた曲線である。個々の$B_{\zeta_k}$の境界は円弧である。
+
+$\overline{D'}\subset D$であるから、
+$f(z)$は$D'$で正則であり、$\overline{D'}$で連続である。
+
+$\overline{D'}$における$|f(z)|$の最大値を$M'$とすると、最大値の原理により、$|f(z')|=M'$となる$\partial D'=c$上の点$z'$が存在する（p.99）。
+
+$M'=|f(z_0)|$とすると、$f(z)$は$\overline{D'}$で定数であり、よって一致の定理から$D$でも定数となる。しかし、$D\setminus\overline{D'}$の点$z$では$|f(z)|<|f(z_0)|$であるから不合理である。ゆえに、$M'>|f(z_0)|>M$である。
+$d=M'-M>0$とする。
+
+ここで、$z'\in\overline{B_{\zeta_k}}$となる$k$（$1\le k\le n$）が存在する。$z'$の任意の近傍に$D\cap B_{\zeta_k}$の点$z$が存在する。その点$z$において、$|f(z)|<M$である。よって$|f(z')|-|f(z)|=M'-|f(z)|>M'-M=d>0$であるから$f(z)$が連続であることに反する。
+
+したがって、$D$の各点$z$で$|f(z)|\le M$である。
+
+
+%よって、$c\in (\bigcup_{\zeta\in \partial D}B{\zeta})\cap D$である曲線をとれば、$c$で囲まれる領域において$f(z)$は正則である。この領域を$D'$とする。$z_0\in D'$である。$z\in c$において
+%$|f(z)|<|f(z_0)|$である。%%しかし、最大値の原理より、$c$上のある点$z$において、$|(z)|$は$\overline{D'}$における最大値をとる。ゆえに、$|f(z_0)|\le|f(z)|$である。これは不合理である。
 
 後半について、$|f(z)|=M$となる$z\in D$があれば$f(z)\equiv Me^{\theta i}$
 であることはp.99参照。（証明終）
