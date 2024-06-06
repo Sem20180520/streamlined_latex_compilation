@@ -435,6 +435,8 @@ $\partial D$は有界閉集合、すなわちコンパクトであるから、
 $z\in D\cap \bigcup_{k=1}^{n}B_{\zeta_k}$に対して$|f(z)|<|f(z_0)|$であるから$z_0\not\in D\cap \bigcup_{k=1}^{n}B_{\zeta_k}$である。
 よって$z_0\in D'$である。$c$は有限個の$B_{\zeta_k}$の境界をつなげた曲線である。個々の$B_{\zeta_k}$の境界は円弧である。
 
+実は$D'$は連結である保証はないが、以降では$z_0$を含む連結成分を考えればよい。
+
 $\overline{D'}\subset D$であるから、
 $f(z)$は$D'$で正則であり、$\overline{D'}$で連続である。
 
@@ -454,6 +456,26 @@ $d=M'-M>0$とする。
 後半について、$|f(z)|=M$となる$z\in D$があれば$f(z)\equiv Me^{\theta i}$
 であることはp.99参照。（証明終）
 
+\paragraph{感想}
+最大値の原理は、$f(z)$が有界な領域$D$で正則であり、
+かつ$\overline{D}$で連続であるときに適用できる（p.99）。
+
+$f(z)$が有界な閉領域$\overline{D}$で連続ならば、
+$f(z)$は$\overline{D}$で有界であることが重要である（p.30）。
+
+ところが、この問6では、$\overline{D}$での連続性が仮定されていない。
+そして、境界の近傍での有界性は仮定されているが、
+$\overline{D}$での有界性は仮定されていない。
+
+そこで、領域$D$をうまく縮めて、$f(z)$が連続な閉領域$\overline{D'}$をつくり、
+最大値の原理を利用した。
+
+その結果、有界領域について境界の近傍での正則函数の有界性から、
+もとの有界領域での正則函数の有界性が導けた。
+
+しかし、背理法によるこの証明は、なかなか矛盾に辿り着けず、
+難儀している。
+
 %$(\bigcup_{k=1}^{n}B_{\zeta_k})\cap D$に含まれる積分路$c$に対して、
 %\begin{align*}
 %    |f(z_0)|=|\frac{1}{2\pi i}\int_{c}\frac{f(z)}{z-z_0}dz|
@@ -470,3 +492,70 @@ $d=M'-M>0$とする。
 %
 %
 %$z$と$\partial D$の距離を$r$
+
+\begin{mysimplebox}{問7}
+    $f(z)$が整函数のとき、$|z|=r$における$|f(z)|$、$|f'(z)|$の最大値をそれぞれ$M(r)$、$M_1(r)$とすれば、次の不等式が成り立つことを示せ。
+    \begin{align*}
+        \frac{M(r)-|f(0)|}{r}\le M_1(r)\le\frac{M(R)}{R-r}
+        \quad(0<r<R)
+    \end{align*}
+\end{mysimplebox}
+\paragraph{証明}
+微分積分学の基本定理から
+\begin{align*}
+    \int_{0}^{z}f'(z)dz=f(z)-f(0)
+\end{align*}
+よって、$f(z)=f(0)+\int_{0}^{z}f'(z)dz$である。
+
+積分路を円の半径に沿ってとる。
+$z=te^{i\theta}$（$\theta$は一定）とし、$t=0$から$t=r$まで積分する。
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{chap5_fig/prob7-1.png}
+    \caption{円の半径に沿った積分路}
+    \label{fig:chap5-7-1}
+\end{figure}
+
+$dz=e^{i\theta}dt$であるから
+\begin{align*}
+    f(z)&=f(re^{i\theta})
+    =f(0)+\int_{0}^{r}f'(te^{i\theta})e^{i\theta}dt\\
+    |f(re^{i\theta})|
+    &=\left|f(0)+\int_{0}^{r}f'(te^{i\theta})e^{i\theta}dt\right|\\
+    &\le|f(0)|+\left|\int_{0}^{r}f'(te^{i\theta})e^{i\theta}dt\right|\\
+    M(r)&\le|f(0)|+M_1(r)r
+\end{align*}
+よって
+\begin{align*}
+    \frac{M(r)-|f(0)|}{r}\le M_1(r)
+\end{align*}
+
+また、コーシーの積分公式から
+\begin{align*}
+    f'(z)&=\frac{1}{2\pi i}\int_{|\zeta|=R}\frac{f(\zeta)}{(\zeta-z)^2}d\zeta
+    =\frac{1}{2\pi i}\int_{|\zeta-z|=R-r}\frac{f(\zeta)}{(\zeta-z)^2}d\zeta
+\end{align*}
+である。ここでは$f(\zeta)$が整函数であり、$\C$において正則であることから、積分路を中心$z$、半径$R-r$の円周にとりなおしている。
+
+ここで、$|\zeta-z|=R-r$から、$\zeta=z+(R-r)e^{i\theta}$である。
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{chap5_fig/prob7-2.png}
+    \caption{積分路の変更}
+    \label{fig:chap5-7-2}
+\end{figure}
+
+よって、
+\begin{align*}
+    f'(z)&=\frac{1}{2\pi i}\int_{0}^{2\pi}
+    \frac{f(z+(R-r)e^{i\theta})}{(R-r)^2e^{2i\theta}}(R-r)ie^{i\theta}d\theta\\
+    &=\frac{1}{2\pi(R-r)}\int_{0}^{2\pi}
+    f(z+(R-r)e^{i\theta})e^{-i\theta}d\theta
+\end{align*}
+ゆえに
+\begin{align*}
+    |f'(z)|\le\frac{1}{2\pi(R-r)}2\pi M(R)=\frac{M(R)}{R-r}
+\end{align*}
+したがって、$M_1(r)\le\frac{M(r)}{R-r}$である。（証明終）
