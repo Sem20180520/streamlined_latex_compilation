@@ -420,7 +420,7 @@ $\partial D$は有界閉集合、すなわちコンパクトであるから、
 \end{figure}
 
 \begin{align*}
-    D'&:=D\setminus\bigcup_{k=1}^{n}B_{\zeta_k}\\
+    D'&:=D\setminus\overline{\bigcup_{k=1}^{n}B_{\zeta_k}}\\
     c&:=\partial D'
 \end{align*}
 とする。
@@ -428,12 +428,12 @@ $\partial D$は有界閉集合、すなわちコンパクトであるから、
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{chap5_fig/prob6-3.png}
-    \caption{$D':=D\setminus\bigcup_{k=1}^{n}B_{\zeta_k}$}
+    \caption{$D':=D\setminus\overline{\bigcup_{k=1}^{n}B_{\zeta_k}}$（図中の数式にバーがないのは誤り）}
     \label{fig:chap5-6-3}
 \end{figure}
 
 $z\in D\cap \bigcup_{k=1}^{n}B_{\zeta_k}$に対して$|f(z)|<|f(z_0)|$であるから$z_0\not\in D\cap \bigcup_{k=1}^{n}B_{\zeta_k}$である。
-よって$z_0\in D'$である。$c$は有限個の$B_{\zeta_k}$の境界をつなげた曲線である。個々の$B_{\zeta_k}$の境界は円弧である。
+よって$z_0\in D'$である（$z_0\notin\overline{D'}\setminus D$であることは後で分かる）。$c$は有限個の$B_{\zeta_k}$の境界をつなげた曲線である。個々の$B_{\zeta_k}$の境界は円弧である。
 
 実は$D'$は連結である保証はないが、以降では$z_0$を含む連結成分を考えればよい。
 
@@ -559,3 +559,95 @@ $dz=e^{i\theta}dt$であるから
     |f'(z)|\le\frac{1}{2\pi(R-r)}2\pi M(R)=\frac{M(R)}{R-r}
 \end{align*}
 したがって、$M_1(r)\le\frac{M(r)}{R-r}$である。（証明終）
+
+\paragraph{感想}
+$f(z)$と$f'(z)$に関する式として、微分積分学の基本定理とコーシーの積分定理がある。前者から左側の不等式、後者から右側の不等式が得られる。そのことに気付けず、証明を思いつくことができなかった。最大値をとって$M(r)$や$M_1(r)$などが出てくるときに、$f(z)$などが姿を消すことも、難しいと感じた。
+
+\begin{mysimplebox}{問8}
+    Riemannのゼータ函数$\zeta(z)=\sum_{n=1}^{\infty}n^{-z}$は領域$\Re(z)>1$で正則な函数であることを示せ。ただし、$n^{-z}=e^{-z\log n}$。
+\end{mysimplebox}
+\paragraph{証明}
+$D:=\Re(z)>1$とする。
+$D$における任意の有界閉領域$\Delta$で、$x_\Delta:=\min_{z\in\Delta}\{\Re(z)\}$とすると、$x_\Delta>1$である。
+
+よって、$z\in\Delta$において、
+\begin{align*}
+    |\zeta(z)|&\le\sum_{n=1}^{\infty}|n^{-z}|
+    =\sum_{n=1}^{\infty}|e^{-z\log n}|
+    =\sum_{n=1}^{\infty}|e^{-\Re(z)\log n}|
+    =\sum_{n=1}^{\infty}|n^{-\Re(z)}|
+    =\sum_{n=1}^{\infty}\frac{1}{n^{\Re(z)}}\\
+    &\le\sum_{n=1}^{\infty}\frac{1}{n^{x_\Delta}}
+    <\infty
+\end{align*}
+が成り立つ。
+
+ゆえに、$\zeta(z)$は絶対収束するから、$\zeta(z)$自体も収束する。
+この収束は$\Delta$の各点で成り立つから、
+%ゆえに、
+%\begin{align*}
+%    S_m:=\sum_{n=1}^{m}n^{-z}
+%\end{align*}
+%とすると、正則な函数列$\{S_m(z)\}$は$\Re(z)>1$
+$\zeta(z)$は$D$で広義の一様収束をする。
+
+したがって、Weierstrassの二重級数定理（p.104）から、極限函数$\zeta(z)$は$\Re(z)>1$で正則である。
+
+\begin{mysimplebox}{問9}
+    領域$D$で正則な函数ばかりからなる函数族$\mathfrak{F}$が$D$の各点の近傍で正規族ならば、$\mathfrak{F}$は$D$で正規族である。
+\end{mysimplebox}
+\paragraph{証明}
+
+
+\begin{mysimplebox}{問10}
+    領域$D$での正規函数族$\mathfrak{F}$に属する函数がすべて$D$で正則ならば、$\mathfrak{F}$に属する函数の導函数全部からなる函数族も$D$で正規族である。
+\end{mysimplebox}
+\paragraph{証明}
+$\mathfrak{F}$に属する函数の導函数全部からなる函数族を$\mathfrak{F'}$とする。
+
+$\mathfrak{F'}$の函数列は、$\mathfrak{F}$の函数列$\{f_n(z)\}$によって、$\{f'_n(z)\}$と表される。
+
+$\mathfrak{F}$は正規族であるから、$\{f_n(z)\}$は$D$において広義一様収束する部分列$\{f_{n_k}(z)\}$を有する。
+
+このとき、Weierstrassの二重級数定理から、$\{f'_{n_k}(z)\}$も$D$において広義一様収束する。
+
+よって、$\mathfrak{F'}$は正規族である。（証明終）
+
+\begin{mysimplebox}{問11}
+    §36の最後の定理において、$F^{(k)}(z)=\int_{C}\frac{\partial^k\phi(z,\zeta)}{\partial z^k}d\zeta$であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+積分路$C$の方程式を$\zeta=\zeta(t)$（$0\le t\le1$）とし、$\zeta_\nu=\zeta(\frac{\nu}{n})$（$\nu=0,1,2,\dots,n$）とおく。
+
+\begin{align*}
+    S^{(k)}_n(z)=\sum_{\nu=1}^{n}\frac{\partial^k \phi(z,\zeta_\nu)}{\partial z^k}(\zeta_\nu-\zeta_{\nu-1})
+\end{align*}
+とする。
+
+p.112より、$\{S_n(z)\}$は正則な函数の列であり、広義一様収束する。
+
+よって、Weierstrassの二重級数定理から、$\{S^{(k)}_n(z)\}$も$D$で広義一様収束し、その極限函数は$F^{(k)}(z)$である。
+
+また、$S^{(k)}_n(z)\longrightarrow\int_{C}\frac{\partial^k\phi(z,\zeta)}{\partial z^k}d\zeta$である。
+
+以上から、$F^{(k)}(z)=\int_{C}\frac{\partial^k\phi(z,\zeta)}{\partial z^k}d\zeta$である。（証明終）
+
+\begin{mysimplebox}{問12}
+    領域$D$の点$z$を与えれば、$\phi(z,t)$は$t$の函数として$0\le t\le+\infty$で連続、また、$z$が$D$のどの点であっても$|\phi(z,t)|\le M(t)$で、しかも$\int_{0}^{+\infty}M(t)dt<+\infty$ならば、$f(z)=\int_{0}^{+\infty}\phi(z,t)dt$は$D$で正則な函数である。これを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$D$の任意の点$z$において、$T>0$に対して、
+\begin{align*}
+    \left|\int_{0}^{T}\phi(z,t)dt\right|
+    &\le\int_{0}^{T}|\phi(z,t)|dt
+    \le\int_{0}^{T}M(t)dt
+    \le\int_{0}^{\infty}M(t)dt<+\infty
+\end{align*}
+よって、$\lim_{T\to\infty}\int_{0}^{T}\phi(z,t)dt$は収束する。$z$は任意であるから、これは一様収束である。
+
+したがって、その極限函数は正則である。（証明終）
+
+\begin{mysimplebox}{問13}
+    $\Gamma(z)=\int_{0}^{+\infty}e^{-t}t^{z-1}dt$（ただし、$t$は実変数、$t^{z-1}=e^{(z-1)\log t}$）は、半平面$\Re(z)>0$において正則函数で$\Gamma(z+1)=z\Gamma(z)$なる函数方程式を満たす（Eulerの\textbf{ガンマ函数}）。これを示せ。
+\end{mysimplebox}
+\paragraph{証明}
