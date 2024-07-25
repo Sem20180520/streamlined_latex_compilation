@@ -592,11 +592,43 @@ $D$における任意の有界閉領域$\Delta$で、$x_\Delta:=\min_{z\in\Delta
 $\zeta(z)$は$D$で広義の一様収束をする。
 
 したがって、Weierstrassの二重級数定理（p.104）から、極限函数$\zeta(z)$は$\Re(z)>1$で正則である。
+（証明終）
+
+\paragraph{補足}
+この後、Weierstrassの二重級数定理が頻繁に使われる。
+この定理はコーシーの積分定理から得られるということが重要である。
 
 \begin{mysimplebox}{問9}
     領域$D$で正則な函数ばかりからなる函数族$\mathfrak{F}$が$D$の各点の近傍で正規族ならば、$\mathfrak{F}$は$D$で正規族である。
 \end{mysimplebox}
 \paragraph{証明}
+$\mathfrak{F}$に属する任意の函数列$\{f_n(z)\}$が、$D$で広義の一様収束をすることを示す。そのためには、$D$における任意の有界閉領域$\Delta$において、一様収束する部分列を有することを示せばよい。
+
+$\Delta$の任意の点$z$において、$z$の近傍で$\mathfrak{F}$が正規族となるようなものがある。それを$V_z$とする。
+
+\begin{align*}
+    \Delta\subset\bigcup_{z\in\Delta}V_z
+\end{align*}
+であり、$\Delta$は有界閉集合（コンパクト）であるから、有限個の$\Delta$の点$\{z_1,z_2,\dots,z_l\}$で、
+\begin{align*}
+    \Delta\subset\bigcup_{k=1,2,\dots,l}V_{z_k}
+\end{align*}
+となるものがある。
+
+$V_{z_1}$で$\mathfrak{F}$は正規族であるから、$\{f_n(z)\}$は$V_{z_1}$で広義一様収束する部分列をもつ。それを改めて$\{f_n(z)\}$とする。
+
+$V_{z_2}$でも$\mathfrak{F}$は正規族であるから、$\{f_n(z)\}$は$V_{z_2}$で広義一様収束する部分列をもつ。再び、それを改めて$\{f_n(z)\}$とする。
+
+この操作を$l$回繰り返し、$\{f_n(z)\}$は$\Delta$で広義一様収束する部分列をもつことが分かる。
+
+ゆえに、$\{f_n(z)\}$は$\Delta$で一様収束する部分列をもつ。
+
+したがって、$\{f_n(z)\}$は$D$で広義一様収束する部分列をもつから、$\mathfrak{F}$は$D$で正規族である。
+（証明終）
+
+
+
+
 
 
 \begin{mysimplebox}{問10}
@@ -633,7 +665,7 @@ p.112より、$\{S_n(z)\}$は正則な函数の列であり、広義一様収束
 以上から、$F^{(k)}(z)=\int_{C}\frac{\partial^k\phi(z,\zeta)}{\partial z^k}d\zeta$である。（証明終）
 
 \begin{mysimplebox}{問12}
-    領域$D$の点$z$を与えれば、$\phi(z,t)$は$t$の函数として$0\le t\le+\infty$で連続、また、$z$が$D$のどの点であっても$|\phi(z,t)|\le M(t)$で、しかも$\int_{0}^{+\infty}M(t)dt<+\infty$ならば、$f(z)=\int_{0}^{+\infty}\phi(z,t)dt$は$D$で正則な函数である。これを示せ。
+    領域$D$の点$z$を与えれば、$\phi(z,t)$は正則、かつ$t$の函数として$0\le t\le+\infty$で連続、また、$z$が$D$のどの点であっても$|\phi(z,t)|\le M(t)$で、しかも$\int_{0}^{+\infty}M(t)dt<+\infty$ならば、$f(z)=\int_{0}^{+\infty}\phi(z,t)dt$は$D$で正則な函数である。これを示せ。
 \end{mysimplebox}
 \paragraph{証明}
 $D$の任意の点$z$において、$T>0$に対して、
@@ -645,9 +677,83 @@ $D$の任意の点$z$において、$T>0$に対して、
 \end{align*}
 よって、$\lim_{T\to\infty}\int_{0}^{T}\phi(z,t)dt$は収束する。$z$は任意であるから、これは一様収束である。
 
-したがって、その極限函数は正則である。（証明終）
+したがって、Weierstrassの二重級数定理より、その極限函数は正則である。（証明終）
+
+\paragraph{補足}
+書籍では条件として$\phi(z,t)$が正則であることが抜けていた。
+
 
 \begin{mysimplebox}{問13}
     $\Gamma(z)=\int_{0}^{+\infty}e^{-t}t^{z-1}dt$（ただし、$t$は実変数、$t^{z-1}=e^{(z-1)\log t}$）は、半平面$\Re(z)>0$において正則函数で$\Gamma(z+1)=z\Gamma(z)$なる函数方程式を満たす（Eulerの\textbf{ガンマ函数}）。これを示せ。
 \end{mysimplebox}
 \paragraph{証明}
+半平面$\Re(z)>0$を$D$とする。
+\begin{align*}
+    I(z)&=\int_{0}^{1}e^{-t}t^{z-1}dt\\
+    J(z)&=\int_{1}^{\infty}e^{-t}t^{z-1}dt
+\end{align*}
+とする。$I(z)$と$J(z)$が広義積分として値をもつことを示し、さらにWeierstrassの二重級数定理を使って正則であることを示す。
+
+$D$の中の任意の有界閉集合$\Delta$について、
+\begin{align*}
+    \min_{z\in\Delta}\{\Re(z)\}=x_\Delta
+\end{align*}
+とする。$D$の定義から$x_\Delta>0$である。
+
+\begin{align*}
+    I_n(z)=\int_{1/n}^{1}e^{-t}t^{z-1}dt
+\end{align*}
+とすると、
+\begin{align*}
+    |I_n(z)|&=\left|\int_{1/n}^{1}e^{-t}t^{z-1}dt\right|
+    \le\int_{1/n}^{1}|e^{-t}t^{z-1}|dt
+    \le\int_{1/n}^{1}t^{x_\Delta-1}dt\\
+    &=\left[\frac{t^{x_\Delta}}{x_\Delta}\right]_{1/n}^1
+    =\frac{1}{x_\Delta}\left\{1-\left(\frac{1}{n}\right)^{x_\Delta}\right\}
+    \longrightarrow\frac{1}{x_\Delta}\quad(n\longrightarrow\infty)
+\end{align*}
+
+よって、$I(z)$は広義積分として値をもつ。
+p.111の定理から、$I_n(z)$は$\Delta$で正則である。
+また、上の計算から$\Delta$において$I(z)$に一様収束する。
+よって、$I_n(z)$は$D$で$I(z)$に広義一様収束する。
+ゆえに、Weierstrassの二重級数定理から、$I_n(z)$は正則である。
+
+$J(z)$も同様の方法で正則であることを示す。
+
+再び$D$の中の任意の有界閉集合$\Delta$で考える。
+
+さきほどと同じ記号を用いて、
+\begin{align*}
+    \max_{z\in\Delta}\{\Re(z)\}=x_\Delta
+\end{align*}
+とする。
+
+自然数$m$で、$m\le x_\Delta<m+1$を満たすものが存在する。
+
+$t\ge1$において、
+\begin{align*}
+    |e^{-t}t^{z-1}|&\le\frac{t^{x_\Delta-1}}{e^t}\\
+    &=\frac{t^{x_\Delta-1}}{1+t+\cdots+t^m/m!+t^{m+1}/(m+1)!+\cdots}\\
+    &\le\frac{t^{x_\Delta-1}}{t^{m+1}/(m+1)!}
+    =(m+1)!t^{t^{x_\Delta-m-2}}
+\end{align*}
+ここで、$x_\Delta-m-2<-1$である。
+
+よって、
+\begin{align*}
+    J_n(z)=\int_{1}^{n}e^{-t}t^{z-1}dt
+\end{align*}
+とすると
+\begin{align*}
+    |J_n(z)|&=\left|\int_{1}^{n}e^{-t}t^{z-1}dt\right|
+    \le\int_{1}^{n}|e^{-t}t^{z-1}|dt\\
+    &\le\int_{1}^{n}(m+1)!t^{x_\Delta-m-2}
+    =(m+1)!\left[\frac{t^{x_\Delta-m-1}}{x_\Delta-m-1}\right]_1^n
+    =\frac{(m+1)!}{x_\Delta-m-1}(n^{x_\Delta-m-1}-1)\\
+    &\longrightarrow-\frac{(m+1)!}{x_\Delta-m-1}
+\end{align*}
+$I(z)$と同じ理由で$J(z)$も正則である。
+
+以上から、$\Gamma(z)=I(z)+J(z)$は$D$で正則であることがわかった。
+函数方程式については、実軸の正の部分で、部分積分によって示し、一致の定理によって$D$でも成り立つことが言える。（証明終）
