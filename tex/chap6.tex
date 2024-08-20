@@ -1,0 +1,236 @@
+\chapter{有理型函数}%第6章
+
+\begin{mysimplebox}{問1}
+    円環$0<|c_1|<|z|<|c_2|$における$\frac{1}{(z-c_1)(z-c_2)}$のLaurent展開を求めよ。
+\end{mysimplebox}
+\paragraph{解答}
+部分分数展開によって、
+\begin{align*}
+    \frac{1}{(z-c_1)(z-c_2)}=\frac{1}{c_1-c_2}\left(\frac{1}{z-c_1}-\frac{1}{z-c_2}\right)
+\end{align*}
+となる。
+
+ここで、円環において、次が成り立つ。
+\begin{align*}
+    0<\left|\frac{c_1}{z}\right|<1,\quad0<\left|\frac{z}{c_2}\right|<1
+\end{align*}
+
+よって、
+\begin{align*}
+    \frac{1}{z-c_1}
+    &=\frac{1}{z}\cdot\frac{1}{1-\frac{c_1}{z}}
+    =\frac{1}{z}\left\{1+\frac{c_1}{z}+\left(\frac{c_1}{z}\right)^2+\cdots\right\}\\
+    \frac{1}{z-c_2}
+    &=-\frac{1}{c_2}\cdot\frac{1}{1-\frac{z}{c_2}}
+    =-\frac{1}{c_2}\left\{1+\frac{z}{c_2}+\left(\frac{z}{c_2}\right)^2+\cdots\right\}
+\end{align*}
+
+ゆえに、
+\begin{align*}
+    \frac{1}{(z-c_1)(z-c_2)}
+    =\frac{1}{c_1-c_2}\left(\cdots+\frac{c_1^2}{z^3}+\frac{c_1}{z^2}+\frac{1}{z}+\frac{1}{c_2}+\frac{z}{c_2^2}+\frac{z^2}{c_2^3}+\cdots\right)
+\end{align*}
+（解答終）
+
+\begin{mysimplebox}{問2}
+    $f(z)$が整函数で$|f(z)|\le|\sin z|$ならば$f(z)\equiv A\sin z$（$A$は定数）であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+
+\begin{align*}
+    g(z)=\frac{f(z)}{\sin z}
+\end{align*}
+とする。$g(z)$は複素数平面上の$\sin z$の零点（$z=n\pi$、ただし$n$は整数）を除いた領域で定義された函数である。その領域を$D$とする。
+すなわち、
+\begin{align*}
+    D:=\C\setminus\{n\pi\mid n\in\Z\}
+\end{align*}
+である。
+
+$|f(z)|\le|\sin z|$から、$D$において$|g(z)|\le1$である。
+
+$c$は$\sin z$の零点のうちの一つとする。たとえば$c=\pi$とすればよい。以下の議論はそれ以外の零点でも同様に成り立つ。
+
+実数$r$は$0<r<\pi$を満たすとする。$0<|z-c|<r$において、$g(z)$は正則であり、次のLaurent展開
+\begin{align*}
+    g(z)=\sum_{k=0}^{\infty}a_k(z-c)^k+\sum_{k=1}^{\infty}\frac{a_{-k}}{(z-c)^k}
+\end{align*}
+が可能である。
+
+よって、
+\begin{align*}
+    |a_{-k}|
+    &=\left|\frac{1}{2\pi i}\int_{|z-c|=r}g(z)(z-c)^{k-1}dz\right|\\
+    &\le\frac{1}{2\pi}\int_{|z-c|=r}\left|g(z)(z-c)^{k-1}\right||dz|\\
+    &\le\frac{1}{2\pi}r^{k-1}\cdot2\pi r
+    =r^k
+\end{align*}
+が成り立つ。
+
+$r\longrightarrow0$の極限をとることで、$a_{-k}=0$（$k\ge1$）であることがわかる。
+
+よって、Laurent展開の式から
+\begin{align*}
+    g(z)=\sum_{k=0}^{\infty}a_k(z-c)^k
+\end{align*}
+である。ゆえに、$z=c$は除去可能特異点であり、
+\begin{align*}
+    \lim_{z\rightarrow c}g(z)=a_0
+\end{align*}
+が成り立つ（$D$において$|g(z)|\le1$であるから、$|a_0|\le1$である）。
+
+よって、$g(c)=a_0$と定義する。他の零点でも同様にすれば、$g(z)$は全平面において正則である（$z=\infty$においても$|g(z)|\le1$である）。
+
+したがって、Liouvilleの定理から$g(z)$は定数であることがわかり、証明が完了する。（証明終）
+
+\paragraph{補足1}
+この結果はRiemannの特異点除去定理と呼ばれる有名なものである。
+
+\paragraph{補足2}
+$|f(z)|\le|\sin z|$から$\sin z$の零点はすべて$f(z)$の零点でもある。そうであるなら、
+\begin{align*}
+    f(z)=A_1\sin z+A_2\sin 2z+A_3\sin 3z+\dots+A_k\sin kz
+\end{align*}
+となることもあり得るのでは？と思ってしまう。
+
+しかし、$z=-it$とし、$t$は十分大きい正の実数、$k>1$とすると、
+\begin{align*}
+    \left|\sin kz\right|
+    &=\left|\sin(-ikt)\right|
+    =\frac{e^{kt}-e^{-kt}}{2}
+    >\frac{e^{t}-e^{-t}}{2}
+    =|\sin(-it)|
+\end{align*}
+が成り立つ。
+
+よって、$|f(z)|\le|\sin z|$が成り立たなくなる点が存在することになってしまう。
+ゆえに、2倍音以上の正弦函数は現れないのである。
+
+\paragraph{補足3}
+\begin{align*}
+    \lim_{z\longrightarrow n\pi}\frac{z-n\pi}{\sin z}
+    =\lim_{z\longrightarrow n\pi}\frac{z-n\pi}{\sin(z-n\pi)}
+    =1
+\end{align*}
+であるから、$n\pi$は$\frac{1}{\sin z}$の1位の極である。
+
+$|f(z)|\le|\sin z|$より、$f(z)$は$n\pi$に零点をもつから、
+$\frac{f(z)}{\sin z}$は$n\pi$において除去可能特異点をもつ。
+
+
+\begin{mysimplebox}{問3}
+    $f(z)$が$z=\infty$において$m$位の零点または極を有するとき、$f'(z)$は$z=\infty$において零点または極を有するか。
+\end{mysimplebox}
+\paragraph{解答}
+$f(z)$が$z=\infty$で$m$位の零点を有するとき
+\begin{align*}
+    f(z)&=\cdots+\frac{c_{-(m+1)}}{z^{m+1}}+\frac{c_{-m}}{z^{m}}\\
+    f(z)&=\cdots-(m+1)\frac{c_{-(m+1)}}{z^{m+2}}-m\frac{c_{-m}}{z^{m+1}}
+\end{align*}
+よって、任意の$m\ge1$に対して、$f'(z)$も$z=\infty$で零点を有する。
+
+$f(z)$が$z=\infty$で$m$位の極を有するとき
+\begin{align*}
+    f(z)&=\cdots+c_{m-1}z^{m-1}+c_mz^m\\
+    f(z)&=\cdots+(m-1)c_{m-1}z^{m-2}+mc_mz^{m-1}
+\end{align*}
+よって、$m\ge2$ならば$f'(z)$も$z=\infty$で極を有する。
+$m=1$ならば$f'(z)$は$z=\infty$に極をもたない。
+（解答終）
+
+\begin{mysimplebox}{問4}
+    単連結な領域$D$から有限個の点$c_1,c_2,\dots,c_k$を取り除いた残りの領域$D'$で、$f(z)$が正則で$\lim_{z\longrightarrow c_\nu}(z-c_\nu)f(z)=0$（$\nu=1,2,\dots,k$）であるとき、$C$が$D'$内の長さのある閉曲線ならば、
+    \begin{align*}
+        \int_Cf(z)dz=0
+    \end{align*}
+    が成り立つことを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$\nu=1,2,\dots,k$に対して、$c_\nu$を中心とする$D$内の$k$個の円$C_\nu$が存在する。さらに、どの2つの円も交わらないようにできる。
+
+$D'$で$f(z)$は正則であるから
+\begin{align*}
+    \int_Cf(z)dz
+    =\sum_{\nu=1}^{k}\int_{C_\nu}f(z)dz
+\end{align*}
+である。
+
+円$C_\nu$の半径を$r_\nu$とすると、$0<|z-c_\nu|<r_\nu$であるとき、
+\begin{align*}
+    f(z)
+    =\sum_{n=0}^{\infty}a_{\nu,n}(z-c_\nu)^n
+    +\sum_{n=1}^{\infty}\frac{a_{\nu,-n}}{(z-c_\nu)^{n-1}}
+\end{align*}
+とLaurent展開できる。このとき、
+\begin{align*}
+    \int_{C_\nu}f(z)dz=2\pi i a_{\nu,-1}
+\end{align*}
+であるから、
+\begin{align*}
+    \int_Cf(z)dz
+    =2\pi i \sum_{\nu=1}^{k}a_{\nu,-1}
+\end{align*}
+が成り立つ。
+
+ここで、$\lim_{z\longrightarrow c_\nu}(z-c_\nu)f(z)=0$であるから、任意の$\epsilon>0$に対して、ある$\delta>0$が存在し、$0<|z-c_\nu|<\delta$ならば、
+\begin{align*}
+    |(z-c_\nu)f(z)|<\epsilon
+\end{align*}
+が成り立つ。
+
+よって、
+\begin{align*}
+    |a_{\nu,-1}|
+    &=\frac{1}{2\pi}\left| \int_{C_\nu}(z-c_\nu)f(z)dz\right|\\
+    &\le \frac{1}{2\pi}\int_{C_\nu}|z-c_\nu|\left|f(z)\right||dz|\\
+    &\le \frac{1}{2\pi}\epsilon\cdot2\pi r=\epsilon r\\
+    &\longrightarrow 0\quad(r\longrightarrow0)
+\end{align*}
+であるから、$a_{\nu,-1}=0$である。
+
+ゆえに、
+\begin{align*}
+    \int_Cf(z)dz=0
+\end{align*}
+が成り立つ。（証明終）
+
+\paragraph{補足}
+任意の$l\in\N$に対して、$\lim_{z\longrightarrow c_\nu}(z-c_\nu)^lf(z)=0$であるから、上記のLaurent展開において、$c_{\nu,-l}=0$である。よって、$f(z)$の主要部は0であるから、$c_\nu$は除去可能な特異点である。
+
+\begin{mysimplebox}{問5}
+    $-1<\Re(z)\le0$ならば$\Gamma(z)=\frac{\Gamma(z+1)}{z}$とおき、次に、$-2<\Re(z)\le-1$ならば$\Gamma(z)=\frac{\Gamma(z+1)}{z}$とおくというふうに、この手順を繰り返していくと$\Gamma(z)$を平面$|z|<+\infty$全体で定義することができる。こうして定義された$\Gamma(z)$は有理型函数であるが、その極はどのような点か。
+\end{mysimplebox}
+\paragraph{解答}
+$\Re(z)>0$において$\Gamma(z)$は正則で、$\Gamma(z+1)=z\Gamma(z)$が成り立つことはp.113の問13で示した。
+
+$-1<\Re(z)\le0$において$\Gamma(z)=\frac{\Gamma(z+1)}{z}$とおく。
+\begin{align*}
+    \Gamma(1)
+    &=\int_{0}^{\infty}e^{-x}dx=\left[-e^{-x}\right]_0^\infty=1
+\end{align*}
+であるから、$z=0$は1位の極である。
+
+同様に、$-2<\Re(z)\le-1$において$\Gamma(z)=\frac{\Gamma(z+1)}{z}$とおく。
+\begin{align*}
+    \lim_{z\longrightarrow-1}(z+1)\Gamma(z)
+    &=\lim_{z\longrightarrow-1}\frac{(z+1)\Gamma(z+1)}{z}
+    =-\lim_{z\longrightarrow0}z\Gamma(z)=-1
+\end{align*}
+であるから、$z=-1$も1位の極である。
+
+$-3<\Re(z)\le-2$において$\Gamma(z)=\frac{\Gamma(z+1)}{z}$とおく。
+\begin{align*}
+    \lim_{z\longrightarrow-2}(z+2)\Gamma(z)
+    &=\lim_{z\longrightarrow-2}\frac{(z+2)\Gamma(z+1)}{z}
+    =\lim_{z\longrightarrow-2}\frac{(z+2)\Gamma(z+2)}{z(z+1)}=\frac{1}{-2(-1)}=\frac{1}{2}
+\end{align*}
+であるから、$z=-2$も1位の極である。
+
+\begin{align*}
+    (z+k)\Gamma(z)
+    &=\frac{(z+k)\Gamma(z+1)}{z}
+    =\frac{(z+k)\Gamma(z+2)}{z(z+1)}
+    =\cdots=\frac{(z+k)\Gamma(z+k)}{z(z+1)\cdots(z+k-1)}\\
+    &\longrightarrow \frac{(-1)^k}{k!}\quad(z\longrightarrow-k)
+\end{align*}
+であるから、$z=-k$（$k\in\Z_{\ge0}$）は1位の極である。（解答終）
