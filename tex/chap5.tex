@@ -679,8 +679,35 @@ $D$の任意の点$z$において、$T>0$に対して、
 
 したがって、Weierstrassの二重級数定理より、その極限函数は正則である。（証明終）
 
-\paragraph{補足}
+\paragraph{補足1}
 書籍では条件として$\phi(z,t)$が正則であることが抜けていた。
+
+\paragraph{補足2}
+上記では広義積分の収束を調べるために、M--テスト（優関数の方法）を用いている。
+それについて説明する。
+
+\begin{align*}
+    \int_{0}^{T}\phi(z,t)dt
+\end{align*}
+が$T\longrightarrow\infty$の極限で収束する必要十分条件は、コーシー条件を満たすことである。すなわち、任意の$\epsilon>0$に対して、ある$T_0>0$が存在し、任意の$a,b$（$b>a>T_0$）に対して
+\begin{align*}
+    \left|\int_{a}^{b}\phi(z,t)dt\right|<\epsilon
+\end{align*}
+が満たされることである。
+
+この問12の条件では、適当な$T_0$に対して、$b>a>T_0$であるとき、次が成り立つ。
+\begin{align*}
+    \left|\int_{a}^{b}\phi(z,t)dt\right|
+    &\le\int_{a}^{b}|\phi(z,t)|dt
+    \le\int_{a}^{b}M(t)dt
+    <\epsilon
+\end{align*}
+
+上式の最右辺の不等式は、次の広義積分が収束することから言える。
+\begin{align*}
+    \int_{0}^{\infty}M(t)dt<+\infty
+\end{align*}
+
 
 
 \begin{mysimplebox}{問13}
@@ -713,7 +740,7 @@ $D$の中の任意の有界閉集合$\Delta$について、
     \longrightarrow\frac{1}{x_\Delta}\quad(n\longrightarrow\infty)
 \end{align*}
 
-よって、$I(z)$は広義積分として値をもつ。
+よって、$I(z)$は広義積分として値をもつ。\footnote{ここで問12の補足2で記したM--テストを利用している。}
 p.111の定理から、$I_n(z)$は$\Delta$で正則である。
 また、上の計算から$\Delta$において$I(z)$に一様収束する。
 よって、$I_n(z)$は$D$で$I(z)$に広義一様収束する。
