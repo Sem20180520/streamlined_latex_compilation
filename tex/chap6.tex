@@ -109,8 +109,8 @@ $|f(z)|\le|\sin z|$から$\sin z$の零点はすべて$f(z)$の零点でもあ�
 \paragraph{補足3}
 \begin{align*}
     \lim_{z\longrightarrow n\pi}\frac{z-n\pi}{\sin z}
-    =\lim_{z\longrightarrow n\pi}\frac{z-n\pi}{\sin(z-n\pi)}
-    =1
+    =\pm\lim_{z\longrightarrow n\pi}\frac{z-n\pi}{\sin(z-n\pi)}
+    =\pm1
 \end{align*}
 であるから、$n\pi$は$\frac{1}{\sin z}$の1位の極である。
 
@@ -146,7 +146,7 @@ $m=1$ならば$f'(z)$は$z=\infty$に極をもたない。
     が成り立つことを示せ。
 \end{mysimplebox}
 \paragraph{証明}
-$\nu=1,2,\dots,k$に対して、$c_\nu$を中心とする$D$内の$k$個の円$C_\nu$が存在する。さらに、どの2つの円も交わらないようにできる。
+$\nu=1,2,\dots,k$に対して、$c_\nu$を中心とする$D$内の$k$個の円$C_\nu$が存在する。さらに、どの2つの円も交わらないようにできる。閉曲線$C$で囲まれた内部に点$c_1,c_2,\dots,c_k$があるとしてよい（点$c_1,c_2,\dots,c_k$のうち、閉曲線$C$の内部にない点がある場合、そういった点を無視しても以下の議論では差し支えない）。
 
 $D'$で$f(z)$は正則であるから
 \begin{align*}
@@ -159,7 +159,7 @@ $D'$で$f(z)$は正則であるから
 \begin{align*}
     f(z)
     =\sum_{n=0}^{\infty}a_{\nu,n}(z-c_\nu)^n
-    +\sum_{n=1}^{\infty}\frac{a_{\nu,-n}}{(z-c_\nu)^{n-1}}
+    +\sum_{n=1}^{\infty}\frac{a_{\nu,-n}}{(z-c_\nu)^n}
 \end{align*}
 とLaurent展開できる。このとき、
 \begin{align*}
@@ -180,13 +180,36 @@ $D'$で$f(z)$は正則であるから
 
 よって、
 \begin{align*}
-    |a_{\nu,-1}|
-    &=\frac{1}{2\pi}\left| \int_{C_\nu}(z-c_\nu)f(z)dz\right|\\
-    &\le \frac{1}{2\pi}\int_{C_\nu}|z-c_\nu|\left|f(z)\right||dz|\\
-    &\le \frac{1}{2\pi}\epsilon\cdot2\pi r=\epsilon r\\
-    &\longrightarrow 0\quad(r\longrightarrow0)
+    |a_{\nu,-2}|
+    &=\frac{1}{2\pi}\left| \int_{C_\nu}(z-c_\nu)f(z)dz\right|
+    \le \frac{1}{2\pi}\int_{C_\nu}|z-c_\nu|\left|f(z)\right||dz|\\
+    &\le \frac{1}{2\pi}\epsilon\cdot2\pi \delta=\epsilon \delta
 \end{align*}
-であるから、$a_{\nu,-1}=0$である。
+であり、$\epsilon \delta$はいくらでも小さくできるから、$a_{\nu,-2}=0$である。
+
+同様に、$k\ge2$に対して、
+\begin{align*}
+    |a_{\nu,-k}|
+    &=\frac{1}{2\pi}\left| \int_{C_\nu}(z-c_\nu)^{k-1}f(z)dz\right|
+    \le \frac{1}{2\pi}\int_{C_\nu}|z-c_\nu|^{k-1}\left|f(z)\right||dz|\\
+    &\le \frac{1}{2\pi}\epsilon^{k-1}\cdot2\pi \delta=\epsilon^{k-1} \delta
+\end{align*}
+であり、$\epsilon^{k-1} \delta$はいくらでも小さくできるから、$a_{\nu,-k}=0$である。
+
+よって、$0<|z-c_\nu|<\delta$において、
+\begin{align*}
+    f(z)
+    =\sum_{n=0}^{\infty}a_{\nu,n}(z-c_\nu)^n
+    +\frac{a_{\nu,-1}}{(z-c_\nu)}
+\end{align*}
+である。さらに、
+\begin{align*}
+    \lim_{z\longrightarrow c_\nu}(z-c_\nu)f(z)
+    &=\lim_{z\longrightarrow c_\nu}\left\{\sum_{n=0}^{\infty}a_{\nu,n}(z-c_\nu)^{n+1}
+    +a_{\nu,-1}\right\}\\
+    &=a_{\nu,-1}=0
+\end{align*}
+
 
 ゆえに、
 \begin{align*}
@@ -194,8 +217,20 @@ $D'$で$f(z)$は正則であるから
 \end{align*}
 が成り立つ。（証明終）
 
-\paragraph{補足}
-任意の$l\in\N$に対して、$\lim_{z\longrightarrow c_\nu}(z-c_\nu)^lf(z)=0$であるから、上記のLaurent展開において、$c_{\nu,-l}=0$である。よって、$f(z)$の主要部は0であるから、$c_\nu$は除去可能な特異点である。
+\paragraph{別解}
+任意の$l\in\N$に対して、$\lim_{z\longrightarrow c_\nu}(z-c_\nu)f(z)=0$であるから、書籍p.117のRiemannの定理より、$c_\nu$は$(z-c_\nu)f(z)$の除去可能な特異点である。よって、$c_\nu$のある近傍において、
+\begin{align*}
+    (z-c_\nu)f(z)
+    =\sum_{k=0}^{\infty}b_{\nu,k}(z-c_\nu)^k
+\end{align*}
+と表される。
+
+再び$\lim_{z\longrightarrow c_\nu}(z-c_\nu)f(z)=0$から、$b_{\nu,0}=0$である。ゆえに、
+\begin{align*}
+    f(z)
+    =\sum_{k=0}^{\infty}b_{\nu,k+1}(z-c_\nu)^k
+\end{align*}
+である。以上から、$\int_Cf(z)dz=0$が言える。（証明終）
 
 \begin{mysimplebox}{問5}
     $-1<\Re(z)\le0$ならば$\Gamma(z)=\frac{\Gamma(z+1)}{z}$とおき、次に、$-2<\Re(z)\le-1$ならば$\Gamma(z)=\frac{\Gamma(z+1)}{z}$とおくというふうに、この手順を繰り返していくと$\Gamma(z)$を平面$|z|<+\infty$全体で定義することができる。こうして定義された$\Gamma(z)$は有理型函数であるが、その極はどのような点か。
@@ -234,3 +269,297 @@ $-3<\Re(z)\le-2$において$\Gamma(z)=\frac{\Gamma(z+1)}{z}$とおく。
     &\longrightarrow \frac{(-1)^k}{k!}\quad(z\longrightarrow-k)
 \end{align*}
 であるから、$z=-k$（$k\in\Z_{\ge0}$）は1位の極である。（解答終）
+
+\begin{mysimplebox}{問6}
+    立体射影は等角な写像である。
+    すなわち、球面$S$上の二つの円の交角はその立体射影である平面上の二つの円（直線）の交角に等しいことを示せ。
+\end{mysimplebox}
+\paragraph{証明（この証明は間違っている）}
+立体射影を$\pi$と書くことにする。
+\begin{align*}
+    \pi\colon S &\to \C\\
+    (\xi,\eta,\zeta) &\mapsto \left(\frac{\xi}{1-\zeta},\frac{\eta}{1-\zeta}\right)\quad((\xi,\eta,\zeta)\neq(0,0,1))\\
+    (0,0,1)&\mapsto\infty
+\end{align*}
+$S$の二つの円がともにN$(0,0,1)$とS$(0,0,0)$を通るならば、$\pi$による像は$\C$上の直線であり、$\pi$によって等角に移されることは明らかである。
+
+p.130の記述をヒントにする。
+
+$\C$上の円または直線
+\begin{align}
+    a(x^2+y^2)+2bx+2cy+d=0 \label{eq:6en}
+\end{align}
+には、空間における平面
+\begin{align}
+    a\zeta+2b\xi+2c\eta+d(1-\zeta)=0 \label{eq:6S}
+\end{align}
+と$S$の交線である円が対応する。
+
+$(\ref{eq:6S})$を変形すると
+\begin{align*}
+    2b\xi+2c\eta+(a-d)\zeta+d=0
+\end{align*}
+とできるから、平面$(\ref{eq:6S})$の法線ベクトルは
+\begin{align*}
+    \bm{n}=\begin{bmatrix}
+        2b \\ 2c \\ a-d
+    \end{bmatrix}
+\end{align*}
+である。
+
+$k=1,2$に対し、
+\begin{align*}
+    \bm{n}_k=\begin{bmatrix}
+        2b_k \\ 2c_k \\ a_k-d_k
+    \end{bmatrix}
+\end{align*}
+とする。
+\begin{align*}
+    \cos\theta
+    =\frac{\bm{n}_1\cdot\bm{n}_2}{|\bm{n}_1||\bm{n}_2|}
+    =\frac{4b_1b_2+4c_1c_2+(a_1-d_1)(a_2-d_2)}{\prod_{k=1,2}\sqrt{4b_k^2+4c_k^2+(a_k-d_k)^2}}
+\end{align*}
+$\theta$は二つの法線$\bm{n}_1,\bm{n}_2$の角度である。この角を$S$上の二つの円の交角とする\footnote{法線のなす角を二つの円の交角とするのは誤りであり、この証明は正しくない。}。ただし、二つの円が交わると仮定している。
+
+$a\neq0$とすると、$(\ref{eq:6en})$から
+\begin{align*}
+    \left(x+\frac{b}{a}\right)^2
+    +\left(y+\frac{c}{a}\right)^2
+    =\frac{b^2+c^2-ad}{a^2}
+\end{align*}
+このような$\C$上の二つの円が交わるとし、その交点におけるそれぞれの接線のなす角を求める？
+
+（保留）←この証明は間違っている。次の証明を参照。
+\newpage
+\paragraph{証明}
+球面上の交わる円弧の一部を$AB$、$CD$とする。その交点を$P$とする。
+さらに、$P,A,B,C,D$の立体射影による像を$P',A',B',C',D'$とする。
+%\begin{align*}
+%    \pi(P)&=P'\\
+%    \pi(A)&=A'\\
+%    \pi(B)&=B'\\
+%    \pi(C)&=C'\\
+%    \pi(D)&=D'
+%\end{align*}
+%とおく。
+
+円弧$AB$の点$P$における接線と$\zeta=1$平面との交点を$Q$とする。同様に、円弧$CD$の点$P$における接線と$\zeta=1$平面との交点を$R$とする。
+
+線分$PQ$と$NQ$はどちらも球面の接線であるから、$|PQ|=|NQ|$である。同様に、$|PR|=|NR|$である。
+
+よって、$\triangle PQR\equiv\triangle NQR$であるから、$\angle QPR=\angle QNR$である。
+
+また、
+$\overrightarrow{QQ'}
+=\overrightarrow{RR'}
+=\overrightarrow{NP'}$とする。
+$Q',R'$は$\zeta=0$平面上の点である。
+
+$P,N,Q,P',Q'$は同一平面上にある。
+同様に、$P,N,R,P',R'$は同一平面上にある。
+
+$\angle Q'P'R'=\angle QNR$であるから、
+$\angle Q'P'R'=\angle QPR$である。
+
+直線$P'Q'$は円弧$A'B'$の$P'$における接線である。
+同様に、直線$P'R'$は円弧$C'D'$の$P'$における接線である。
+
+以上で、立体射影が等角写像であることが示された。
+（証明終）
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{chap6_fig/prob6.png}
+    \caption{立体射影は等角写像}
+    \label{fig:prob6}
+\end{figure}
+
+\newpage
+\begin{mysimplebox}{問7}
+    (44.1)、(44.2)を示せ。
+\end{mysimplebox}
+\paragraph{証明}
+球面$S$の半径を$r$とおく。$r=\frac{1}{2}$である。
+
+$S$の中心の座標は$(0,0,r)$である。
+
+P$(\xi,\eta,\zeta)$は$S$上の点であるから
+\begin{align*}
+    \xi^2+\eta^2+(\zeta-r)^2=r^2
+\end{align*}
+が成り立つ。
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{chap6_fig/ONP.jpg}
+    \caption{ONP平面}
+    \label{fig:ONP}
+\end{figure}
+
+図$\ref{fig:ONP}$から、次の比の計算ができる。
+\begin{align*}
+    (1-\zeta):1&=\sqrt{\xi^2+\eta^2}:\sqrt{x^2+y^2}\\
+    \sqrt{x^2+y^2}&=\frac{\sqrt{\xi^2+\eta^2}}{1-\zeta}
+    =\frac{\sqrt{r^2-(\zeta-r)^2}}{1-\zeta}
+    =\frac{\sqrt{\zeta(1-\zeta)}}{1-\zeta}\\
+    x^2+y^2&=\frac{\zeta}{1-\zeta}
+\end{align*}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{chap6_fig/xON.jpg}
+    \caption{xON平面}
+    \label{fig:xON}
+\end{figure}
+
+$x$ON平面への射影である図$\ref{fig:xON}$から、次の比の計算ができる。
+\begin{align*}
+    (1-\zeta):1&=\xi:x\\
+    \xi&=x(1-\zeta)\\
+    x&=\frac{\xi}{1-\zeta}
+\end{align*}
+
+同様にして、
+\begin{align*}
+    (1-\zeta):1&=\eta:y\\
+    \eta&=y(1-\zeta)\\
+    y&=\frac{\eta}{1-\zeta}
+\end{align*}
+
+上で得られた式から、$\zeta,\xi,\eta$について次のように書ける。
+\begin{align*}
+    (x^2+y^2)(1-\zeta)&=\zeta\\
+    x^2+y^2-(x^2+y^2)\zeta&=\zeta\\
+    x^2+y^2&=(1+x^2+y^2)\zeta\\
+    \zeta&=\frac{x^2+y^2}{1+x^2+y^2}\\
+    1-\zeta&=\frac{1}{1+x^2+y^2}\\
+    \xi&=x(1-\zeta)=\frac{x}{1+x^2+y^2}\\
+    \eta&=y(1-\zeta)=\frac{y}{1+x^2+y^2}
+\end{align*}
+（証明終）
+\newpage
+\begin{mysimplebox}{問8}
+    平面上の2点$z,z'$に対応する球面$S$上の2点の距離を$[z,z']$で表すと、$[z,z']$は次の式で表される：
+    \begin{align*}
+        [z,z']&=\frac{|z-z'|}{\sqrt{(1+|z|^2)(1+|z'|^2)}}
+        \quad(z\neq\infty,z'\neq\infty)\\
+        [z,z']&=\frac{1}{\sqrt{1+|z|^2}}
+        \quad(z\neq\infty,z'=\infty)
+    \end{align*}
+\end{mysimplebox}
+\paragraph{証明}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{chap6_fig/Sdis.jpg}
+    \caption{$[z,z']$}
+    \label{fig:Sdis}
+\end{figure}
+
+図$\ref{fig:Sdis}$のように、$\theta=\angle zNz'$とする。
+\begin{align*}
+    zN&=\sqrt{1+|z|^2}\\
+    z'N&=\sqrt{1+|z'|^2}\\
+    1:(1-\zeta)=\sqrt{1+x^2+y^2}:NP\\
+    NP&=(1-\zeta)\sqrt{1+x^2+y^2}=\frac{1}{\sqrt{1+x^2+y^2}}=\frac{1}{\sqrt{1+|z|^2}}\\
+    NP'&=\frac{1}{\sqrt{1+|z'|^2}}
+\end{align*}
+$\triangle zNz'$において、余弦定理から、
+\begin{align*}
+    \cos\theta=\frac{|z-z'|^2-(1+|z|^2)-(1+|z'|^2)}{2\sqrt{1+|z|^2}\sqrt{1+|z'|^2}}
+\end{align*}
+
+$\triangle PNP'$において、余弦定理から、
+\begin{align*}
+    PP'^2
+    &=NP^2+NP'^2+2NP\cdot NP'\cos\theta\\
+    &=\frac{1}{1+|z|^2}+\frac{1}{1+|z'|^2}+\frac{|z-z'|^2-(1+|z|^2)-(1+|z'|^2)}{(1+|z|^2)(1+|z'|^2)}\\
+    &=\frac{|z-z'|^2}{(1+|z|^2)(1+|z'|^2)}
+\end{align*}
+
+よって、
+\begin{align*}
+    [z,z']&=PP'=\frac{|z-z'|}{\sqrt{(1+|z|^2)(1+|z'|^2)}}
+    \quad(z\neq\infty,z'\neq\infty)
+\end{align*}
+である。
+
+$z'=\infty$ならば、
+\begin{align*}
+    [z,z']&=NP=\frac{1}{\sqrt{1+|z|^2}}
+\end{align*}
+である。
+（証明終）
+
+\paragraph{別証明}
+44.1式を利用して示せる。入力未。
+
+\newpage
+\begin{mysimplebox}{問9}
+    $\epsilon$がどの正数でも$m\ge N(\epsilon),n\ge N(\epsilon)$ならば$[z_m,z_n]<\epsilon$であるように自然数$N(\epsilon)$を定めうるとき、数列$\{z_n\}$は球面収束するという。$\{z_n\}$が球面収束するためには$\{z_n\}$が極限値$\alpha$（$|\alpha|\le+\infty$）をもつことが必要十分であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+（必要性）
+
+$\{|z_n|\mid n\in\N\}$が有界であるとき、$\sup_{n\in\N}|z_n|=M<\infty$とする。
+
+$m,n\ge N(\epsilon)$ならば、
+\begin{align*}
+    [z_m,z_n]
+    &=\frac{|z_m-z_n|}{\sqrt{(1+|z_m|^2)(1+|z_n|^2)}}
+    <\epsilon
+\end{align*}
+
+よって、
+\begin{align*}
+    |z_m-z_n|<\epsilon\sqrt{(1+|z_m|^2)(1+|z_n|^2)}
+    \le\epsilon\sqrt{(1+M^2)(1+M^2)}=\epsilon(1+M^2)
+\end{align*}
+となるが、$\epsilon$が任意の正数であるから、この最右辺はいくらでも小さくできる。よって、$\{z_n\}$は収束して極限値をもつ。
+
+$\{|z_n|\mid n\in\N\}$が有界でないとき、$z_n\longrightarrow\infty$であることは明らか。
+
+（十分性）
+
+$z\longrightarrow\alpha$（$|\alpha|<\infty$）のとき
+
+\begin{align*}
+    0\le[z_n,z_m]
+    =\frac{|z_m-z_n|}{\sqrt{(1+|z_m|^2)(1+|z_n|^2)}}
+    \le|z_m-z_n|\longrightarrow0\quad(m,n\longrightarrow\infty)
+\end{align*}
+
+$z\longrightarrow\infty$のときは
+
+\begin{align*}
+    [z_m,z_n]
+    &=\frac{|z_m-z_n|}{\sqrt{(1+|z_m|^2)(1+|z_n|^2)}}
+    \le\frac{|z_m|+|z_n|}{\sqrt{(1+|z_m|^2)(1+|z_n|^2)}}\\
+    &\le\frac{\sqrt{1+|z_m|^2}+\sqrt{1+|z_n|^2}}{\sqrt{(1+|z_m|^2)(1+|z_n|^2)}}\\
+    &=\frac{1}{\sqrt{1+|z_m|^2}}+\frac{1}{\sqrt{1+|z_n|^2}}
+    =[z_m,\infty]+[z_n,\infty]\longrightarrow0
+    \quad(m,n\longrightarrow\infty)
+\end{align*}
+（証明終）
+\newpage
+\paragraph{別証明}
+球面距離と平面の距離が同値な距離であることを利用する。入力未。
+
+\newpage
+\begin{mysimplebox}{問10}
+    点集合$E$で定義された函数$f_n(z)\ (n=1,2,\dots)$は$\infty$なる値をとり得るものとし、$E$の各点で数列$\{f_n(z)\}$が球面収束するときは、函数列$\{f_n(z)\}$は$E$で球面収束するという。
+
+    また、$f(z)=\lim_{n\to\infty}f_n(z)$とおくと、$z$が$E$のどの点でも、また$\epsilon$がどの正数でも、$n\ge N(\epsilon)$に対しては$[f_n(z),f(z)]<\epsilon$であるように$z$に無関係な自然数$N(\epsilon)$を選び得るとき、函数列$\{f_n(z)\}$は$E$で``球面一様収束''するという。
+
+    $f_n(z)\ (n=1,2,\dots)$が領域$D$で有理型で、$D$内のどの閉集合でも函数列$\{f_n(z)\}$が球面一様収束するとき（$D$で``広義の球面一様収束''するとき）、極限函数$f(z)$は$D$で至る所$\infty$に等しいか、または$D$で有理型函数である。これを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$c\in D$において$f(c)=\infty$とする。
+$D$内で$f(z)\neq\infty$となる点$z$が存在するならば、$f(z)$は有理型であることを示す。
+
+\begin{align*}
+    [f(c),f_n(c)]=\frac{1}{\sqrt{1+\left|f_n(c)\right|^2}}
+\end{align*}
+であり、任意の正数$r$に対する閉集合$|z-c|\le r$において、任意の正数$\epsilon$に対して、ある自然数$N(\epsilon)$が存在して、$n\ge N(\epsilon)$に定しては$[f(z),f_n(z)]<\epsilon$である。
+
+特に、$[f(c),f_n(c)]<\epsilon$であるから、
