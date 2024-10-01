@@ -1,2 +1,96 @@
 \chapter{留数}%第7章
 
+\begin{mysimplebox}{問1}
+    $\frac{1}{\sin z}$の留数を求める。
+\end{mysimplebox}
+\paragraph{解答}
+$\frac{1}{\sin z}$は$z=n\pi\ (n\in\Z)$に極をもつ。
+\begin{align*}
+    \lim_{z\to n\pi}\frac{z-n\pi}{\sin z}
+    &=\lim_{z\to n\pi}\left(\frac{\sin z}{z-n\pi}\right)^{-1}
+    =\lim_{z\to n\pi}\left\{\frac{\sin z-\sin n\pi}{z-n\pi}\right\}^{-1}\\
+    &=\left\{\left.\left(\sin z\right)'\right|_{z=n\pi}\right\}^{-1}
+    =\left\{\cos n\pi\right\}^{-1}
+    =\left\{(-1)^n\right\}^{-1}
+    =(-1)^n
+\end{align*}
+が成り立つから、$\frac{1}{\sin z}$の$z=n\pi\ (n\in\Z)$における留数は$(-1)^n$である。（終）
+
+\newpage
+\begin{mysimplebox}{問2}
+    $\int_{0}^{+\infty}\frac{\sin x}{x}dx=\frac{\pi}{2}$を証明せよ。
+    （ヒント：$\lim_{R\to+\infty}\int_{-R}^{R}\frac{e^{xi}}{x}dx=\pi i$）
+\end{mysimplebox}
+\paragraph{証明}
+上半平面における半径$R$の半円の弧$C_R$と、半径$\epsilon$の半円の弧$C_\epsilon$を考える。ただし、$0<\epsilon<R$である。
+
+$\frac{e^{iz}}{z}$の極は$z=0$であるから、
+積分路$\int_C=\int_{C_R}+\int_{-R}^{-\epsilon}+\int_{C_\epsilon}+\int_{\epsilon}^{R}$とすると、
+\begin{align}
+    \int_C\frac{e^{iz}}{z}dz=0\label{eq:ch7-toi2-1}
+\end{align}
+である。
+
+\begin{align}
+    \int_{C_R}\frac{e^{iz}}{z}dz
+    =&\int_{0}^{\pi}\frac{e^{iR(\cos\theta+i\sin\theta)}}{Re^{i\theta}}iRe^{i\theta}d\theta\nonumber\\
+    =&i\int_{0}^{\pi}e^{iR\cos\theta}e^{-R\sin\theta}d\theta\nonumber\\
+    \left|\int_{C_R}\frac{e^{iz}}{z}dz\right|
+    \le&\int_{0}^{\pi}e^{-R\sin\theta}d\theta
+    =2\int_{0}^{\pi/2}e^{-R\sin\theta}d\theta\nonumber\\
+    \le&2\int_{0}^{\pi/2}e^{-R\frac{2}{\pi}\theta}d\theta
+    =2\left[\frac{e^{-2R\theta/\pi}}{-2R/\pi}\right]_0^{\pi/2}\nonumber\\
+    =&\frac{\pi}{R}(1-e^{-R})
+    \longrightarrow0\quad(R\longrightarrow\infty)\label{eq:ch7-toi2-2}
+\end{align}
+
+次に、$C_\epsilon$上において、正則函数$P(z)$として、
+\begin{align*}
+    \frac{e^{iz}}{z}=\frac{1}{z}+P(z)
+\end{align*}
+と書ける。
+ゆえに、
+\begin{align*}
+    \int_{C_\epsilon}\frac{e^{iz}}{z}dz
+    =&\int_{C_\epsilon}\left(\frac{1}{z}+P(z)\right)dz
+    =\int_{\pi}^{0}\frac{i\epsilon e^{i\theta}}{\epsilon e^{i\theta}}d\theta+\int_{C_\epsilon}P(z)dz\\
+    =&-\pi i+\int_{C_\epsilon}P(z)dz\\
+    \left|\int_{C_\epsilon}P(z)dz\right|
+    \le&M\int_{C_\epsilon}dz
+    \le M\pi\epsilon\longrightarrow0
+    \quad(\epsilon\longrightarrow0)
+\end{align*}
+よって、
+\begin{align}
+    \int_{C_\epsilon}\frac{e^{iz}}{z}dz
+    \longrightarrow-\pi i\label{eq:ch7-toi2-3}
+\end{align}
+
+また、
+\begin{align*}
+    &\int_{-R}^{-\epsilon}\frac{e^{ix}}{x}dx+\int_{\epsilon}^{R}\frac{e^{ix}}{x}dx\\
+    =&\int_{R}^{\epsilon}\frac{e^{-ix}}{-x}(-1)dx+\int_{\epsilon}^{R}\frac{e^{ix}}{x}dx\\
+    =&-\int_{\epsilon}^{R}\frac{e^{-ix}}{x}dx+\int_{\epsilon}^{R}\frac{e^{ix}}{x}dx\\
+    =&2i\int_{\epsilon}^{R}\frac{\sin x}{x}dx
+    \longrightarrow
+    2i\int_{0}^{\infty}\frac{\sin x}{x}dx
+    \quad(\epsilon\longrightarrow0,R\longrightarrow\infty)
+\end{align*}
+これは最初の行の2つの積分に現れる$\epsilon$について同時に極限をとっている。$R$についても同様である。このような積分をコーシーの主値積分と呼び、$\mathrm{p.v.}$をつける。
+
+すなわち、
+\begin{align}
+    \mathrm{p.v.}\int_{-\infty}^{\infty}\frac{e^{ix}}{x}dx=2i\int_{0}^{\infty}\frac{\sin x}{x}dx\label{eq:ch7-toi2-4}
+\end{align}
+である。
+
+式$(\ref{eq:ch7-toi2-1}),(\ref{eq:ch7-toi2-2}),(\ref{eq:ch7-toi2-3}),(\ref{eq:ch7-toi2-4})$から、
+\begin{align*}
+    -\pi i+2i\int_{0}^{\infty}\frac{\sin x}{x}dx=0
+\end{align*}
+したがって、
+\begin{align*}
+    \int_{0}^{\infty}\frac{\sin x}{x}dx
+    =\frac{\pi}{2}
+\end{align*}
+が成り立つ。（証明終）
