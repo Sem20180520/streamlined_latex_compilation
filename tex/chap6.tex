@@ -492,7 +492,19 @@ $z'=\infty$ならば、
 （証明終）
 
 \paragraph{別証明}
-44.1式を利用して示せる。入力未。
+(44.1),(44.2)式を利用して示せる。
+\begin{align*}
+    z&\leftrightarrow(\xi,\eta,\zeta)
+    =\left(\frac{1}{2}\frac{z+\overline{z}}{1+|z|^2},\frac{1}{2i}\frac{z-\overline{z}}{1+|z|^2},\frac{1}{2}\frac{z+\overline{z}}{1+|z|^2}\right)\\
+    z'&\leftrightarrow(\xi',\eta',\zeta')
+    =\left(\frac{1}{2}\frac{z'+\overline{z'}}{1+|z'|^2},\frac{1}{2i}\frac{z'-\overline{z'}}{1+|z'|^2},\frac{1}{2}\frac{z'+\overline{z'}}{1+|z|^2}\right)
+\end{align*}
+より、
+\begin{align*}
+    [z,z']=\sqrt{(\xi-\xi')^2+(\eta-\eta')^2+(\zeta-\zeta')^2}
+\end{align*}
+を素直に計算すればよい。具体的な計算は入力が大変であるため、省略する。（別証明終）
+
 
 \newpage
 \begin{mysimplebox}{問9}
@@ -517,11 +529,19 @@ $m,n\ge N(\epsilon)$ならば、
 \end{align*}
 となるが、$\epsilon$が任意の正数であるから、この最右辺はいくらでも小さくできる。よって、$\{z_n\}$は収束して極限値をもつ。
 
-$\{|z_n|\mid n\in\N\}$が有界でないとき、$z_n\longrightarrow\infty$であることは明らか。
+$\{|z_n|\mid n\in\N\}$が有界でないとき、部分列$\{z_{l_n}\}$で$z_{l_n}\longrightarrow\infty$であるものが存在する。
+
+$[\cdot,\cdot]$は三角不等式を満たすため（問10で示す）、次が成り立つ。
+\begin{align*}
+    [z_n,\infty]
+    =\frac{1}{\sqrt{(1+|z_n|^2)}}
+    \le[z_n,z_{l_m}]+[z_{l_m},\infty]
+\end{align*}
+この最右辺は、十分大きな$n,m$をとればいくらでも小さくできるから、$z_n\longrightarrow\infty$が言える。
 
 （十分性）
 
-$z\longrightarrow\alpha$（$|\alpha|<\infty$）のとき
+$z_n\longrightarrow\alpha$（$|\alpha|<\infty$）のとき
 
 \begin{align*}
     0\le[z_n,z_m]
@@ -529,7 +549,7 @@ $z\longrightarrow\alpha$（$|\alpha|<\infty$）のとき
     \le|z_m-z_n|\longrightarrow0\quad(m,n\longrightarrow\infty)
 \end{align*}
 
-$z\longrightarrow\infty$のときは
+$z_n\longrightarrow\infty$のときは
 
 \begin{align*}
     [z_m,z_n]
@@ -543,7 +563,21 @@ $z\longrightarrow\infty$のときは
 （証明終）
 \newpage
 \paragraph{別証明}
-球面距離と平面の距離が同値な距離であることを利用する。入力未。
+$\{|z_n|\mid n\in\N\}$が有界であるときに関しては、次のようにも示せる。$\sup_{n\in\N}|z_n|=M<\infty$とする。
+
+\begin{align*}
+    [z_m,z_n]
+    &=\frac{|z_m-z_n|}{\sqrt{(1+|z_m|^2)(1+|z_n|^2)}}
+    \ge\frac{|z_m-z_n|}{1+M^2}
+\end{align*}
+であるから、
+\begin{align*}
+    \frac{|z_m-z_n|}{1+M^2}
+    \le[z_m,z_n]
+    \le|z_m-z_n|
+\end{align*}
+が成り立つ。よって、$[z_m,z_n]$に関してコーシー条件を満たすことと、$|z_m-z_n|$に関してコーシー条件を満たすことは同値である。したがって、$\{|z_n|\mid n\in\N\}$が有界であるときは、球面収束するためには極限値をもつことが必要十分であることが言えた。
+（証明終）
 
 \newpage
 \begin{mysimplebox}{問10}
@@ -554,12 +588,150 @@ $z\longrightarrow\infty$のときは
     $f_n(z)\ (n=1,2,\dots)$が領域$D$で有理型で、$D$内のどの閉集合でも函数列$\{f_n(z)\}$が球面一様収束するとき（$D$で``広義の球面一様収束''するとき）、極限函数$f(z)$は$D$で至る所$\infty$に等しいか、または$D$で有理型函数である。これを示せ。
 \end{mysimplebox}
 \paragraph{証明}
-$c\in D$において$f(c)=\infty$とする。
-$D$内で$f(z)\neq\infty$となる点$z$が存在するならば、$f(z)$は有理型であることを示す。
+最初に、$[\cdot,\cdot]$は三角不等式を満たすことを説明しておく。$k=1,2,3$に対して、立体射影における球面$S$上の点$(\xi_k,\eta_k,\zeta_k)$と$\C$平面上の点$z_k$が対応するとき、
+\begin{align*}
+    [z_1,z_3]
+    =&\frac{|z_1-z_3|}{\sqrt{(1+|z_1|^2)(1+|z_3|^2)}}\\
+    =&\sqrt{(\xi_1-\xi_3)^2+(\eta_1-\eta_3)^2+(\zeta_1-\zeta_3)^2}\\
+    \le&\sqrt{(\xi_1-\xi_2)^2+(\eta_1-\eta_2)^2+(\zeta_1-\zeta_2)^2}\\
+    &+\sqrt{(\xi_2-\xi_3)^2+(\eta_2-\eta_3)^2+(\zeta_2-\zeta_3)^2}\\
+    =&\frac{|z_1-z_2|}{\sqrt{(1+|z_1|^2)(1+|z_2|^2)}}+\frac{|z_2-z_3|}{\sqrt{(1+|z_2|^2)(1+|z_3|^2)}}\\
+    =&[z_1,z_2]+[z_2,z_3]
+\end{align*}
+が成り立つ。
+
+さて、領域$D$の2点$z_1,z_2$において、
+\begin{align*}
+    [f(z_1),f(z_2)]
+    \le[f(z_1),f_n(z_1)]+[f_n(z_1),f_n(z_2)]+[f_n(z_2),f(z_2)]
+\end{align*}
+が成り立つ。$z_2$は閉円板$\{z\in\C\mid|z-z_1|\le r\}$に属するとし、この閉円板上で$\{f_n(z)\}$は球面一様収束するから、任意の正数$\epsilon$に対して、ある自然数$N$が存在し、$n>N$に対して、
+\begin{align*}
+    [f(z_1),f_n(z_1)]<\epsilon,\quad
+    [f(z_2),f_n(z_2)]<\epsilon
+\end{align*}
+が成り立つ。
+
+%また、$\{f_n(z)\}$は有理型函数列であるから閉円板上で$\infty$の値もとり得るが、$|z_1-z_2|$を十分小さくすれば$[f_n(z_1),f_n(z_2)]<\epsilon$を成り立たせることができる。
+また、$f_n(z_1),f_n(z_2)$ともに$\infty$ではないとき、
+\begin{align*}
+    [f_n(z_1),f_n(z_2)]
+    &=\frac{|f_n(z_1)-f_n(z_2)|}{\sqrt{(1+|f_n(z_1)|^2)(1+|f_n(z_2)|^2)}}
+    \le|f_n(z_1)-f_n(z_2)|
+\end{align*}
+であるから$z_1$と$z_2$が十分近ければ、$[f_n(z_1),f_n(z_2)]$はいくらでも小さくできる。
+
+さらに、また、$f_n(z_1)\neq\infty$、$f_n(z_2)=\infty$のとき、$z_2$は$f_n(z)$の極であるから、
+\begin{align*}
+    [f_n(z_1),f_n(z_2)]
+    &=\frac{1}{\sqrt{(1+|f_n(z_1)|^2)}}
+\end{align*}
+についても$z_1$を$z_2$に十分近づければ、$[f_n(z_1),f_n(z_2)]$はいくらでも小さくできる。
+
+よって、$f(z)$は$[\cdot,\cdot]$に関して連続である。
+
+次に、$f(z)\not\equiv\infty$とする。$z_0\in D$において$f(z_0)\neq\infty$ならば、ある閉円板$A=\{z\in\C\mid|z-z_0|\le r\}$において、$|f(z)|\le L$（有界）としてよい。
+
+$\{f_n(z)\}$は$A$において、球面一様収束する。
+よって、任意の正数$\epsilon$、$z\in A$、十分大きい$n$に対して、
+\begin{align*}
+    [f_n(z),f(z)]
+    =&\frac{|f_n(z)-f(z)|}{\sqrt{\left(1+\left|f_n(z)\right|^2\right)\left(1+\left|f(z)\right|^2\right)}}
+    <\epsilon\\
+    |f_n(z)-f(z)|
+    <&\epsilon\sqrt{\left(1+\left|f_n(z)\right|^2\right)\left(1+\left|f(z)\right|^2\right)}\\
+    <&\epsilon\sqrt{\left(1+2\left|f_n(z)\right|+\left|f_n(z)\right|^2\right)\left(1+2L+L^2\right)}\\
+    =&\epsilon\left(1+\left|f_n(z)\right|\right)\left(1+L\right)\\
+    |f_n(z)|-|f(z)|
+    <&\epsilon\left(1+\left|f_n(z)\right|\right)\left(1+L\right)\\
+    \{1-\epsilon(1+L)\}|f_n(z)|
+    <&\epsilon(1+L)+|f(z)|<\epsilon(1+L)+L\\
+    |f_n(z)|<&\frac{\epsilon(1+L)+L}{1-\epsilon(1+L)}
+\end{align*}
+が成り立つ。最後の最右辺は$\epsilon<\frac{1}{2(1+L)}$とすれば$|f_n(z)|<1+2L$とできる。
+
+すなわち、十分大きい$n$に対して$|f_n(z)|$も$A$において有界であるから、極を持たない。ゆえに、$f_n(z)$は$A$の内部において正則であり、$A$において連続である。
+
+以上より、$z\in A$、十分大きい$n$に対して、
+\begin{align*}
+    |f_n(z)-f(z)|
+    <\epsilon(2+L)(1+L)
+\end{align*}
+が成り立つから、$A$において$\{f_n(z)\}$は通常の意味で$f(z)$に一様収束する。
+
+ゆえに、$f(z)$は$A$の内部で正則である。
+
+また、$f(z_0)=\infty$のとき、$\frac{1}{f(z_0)}=0$である。
 
 \begin{align*}
-    [f(c),f_n(c)]=\frac{1}{\sqrt{1+\left|f_n(c)\right|^2}}
+    \left[\frac{1}{f_n(z)},\frac{1}{f(z)}\right]
+    =&\frac{\left|\frac{1}{f_n(z)}-\frac{1}{f(z)}\right|}{\sqrt{1+\left|\frac{1}{f_n(z)}\right|^2}\sqrt{1+\left|\frac{1}{f(z)}\right|^2}}\\
+    =&\frac{\left|f_n(z)-f(z)\right|}{\sqrt{1+\left|f_n(z)\right|^2}\sqrt{1+\left|f(z)\right|^2}}\\
+    =&[f_n(z),f(z)]
 \end{align*}
-であり、任意の正数$r$に対する閉集合$|z-c|\le r$において、任意の正数$\epsilon$に対して、ある自然数$N(\epsilon)$が存在して、$n\ge N(\epsilon)$に定しては$[f(z),f_n(z)]<\epsilon$である。
+であるから、有理型函数列$\left\{\frac{1}{f_n(z)}\right\}$は$\frac{1}{f(z)}$に広義球面一様収束する。先ほどの議論と同様にして$\frac{1}{f(z)}$は正則であることが言えるから、$f(z)$は有理型である。（証明終）
 
-特に、$[f(c),f_n(c)]<\epsilon$であるから、
+
+
+%
+%以下は最初に書こうとした証明だが、方針があまりよくなかったため、手放した。
+%
+%$c\in D$において$f(c)=\infty$とする。
+%$D$内で$f(z)\neq\infty$となる点$z$が存在するならば、$f(z)$は有理型であることを示す。
+
+%仮定により、$D$内の$c$を含む任意の有界閉集合$\Delta$において、有理型函数列$\{f_n(z)\}$は$f(z)$に球面一様収束する。
+%
+%次の2つの場合があり得る。
+%\begin{enumerate}
+%    \item 十分大きい$n$に対して、$f_n(z)$は$c$で極をもたないが、$\left|f_n(c)\right|\longrightarrow\infty\ (n\longrightarrow\infty)$\label{enum:1}
+%    \item 十分大きい$n$に対して、$f_n(z)$が$c$で極をもつ。\label{enum:2}
+%\end{enumerate}
+%
+%$\ref{enum:1}$の場合、$c$の近傍で$f_n(z)$は正則であるから、
+%\begin{align*}
+%    f_n(z)=a_0+a_1(z-c)+a_2(z-c)^2+\cdots
+%\end{align*}
+%と表される。
+%
+%任意の$R>0$に対して、十分大きな$n$をとれば、$z\in\Delta$において、$\left|f_n(z)\right|>R$とできる。よって、$\left|f_n(z)\right|\longrightarrow\infty\ (n\longrightarrow\infty)$であるから、$f(z)=\infty$である。ゆえに、$\Delta$において$f(z)=\infty$である。
+%
+%結局、$D$において$f(z)=\infty$である。
+%
+%次に、$\ref{enum:2}$の場合、ある正数$r$に対して$0<|z-c|<r$で$f_n(z)$は正則であるとしてよい。
+%
+%この円環領域において、$f_n(z)\longrightarrow f(z)$が広義一様収束であることを示せば、$f(z)$が$0<|z-c|<r$において正則であることが言えて、$f(z)$が有理型であると分かる。
+%
+%$f_n(z)\longrightarrow f(z)$が球面広義一様収束であることを用いて、広義一様収束であることを示す。
+%（保留）
+%
+
+%\begin{align*}
+%    [f(c),f_n(c)]=\frac{1}{\sqrt{1+\left|f_n(c)\right|^2}}
+%\end{align*}
+%であり、任意の正数$r$に対する閉集合$|z-c|\le r$において、任意の正数$\epsilon$に対して、ある自然数$N(\epsilon)$が存在して、$n\ge N(\epsilon)$に定しては$[f(z),f_n(z)]<\epsilon$である。
+%
+%特に、$[f(c),f_n(c)]<\epsilon$であるから、
+
+\newpage
+\begin{mysimplebox}{問11}
+   前題において、特に、$f_n(z)\ (n=1,2,\cdots)$が$D$で正則な場合には、函数列$\{f_n(z)\}$が$D$で広義の一様収束するか、または函数列$\left\{\frac{1}{f_n(z)}\right\}$が$D$で定数0に広義の一様収束するか、そのいずれかである。
+\end{mysimplebox}
+\paragraph{証明}
+$\{f_n(z)\}$が正則函数列である場合も、前題と同様にして、極限関数$\{f(z)\}$が存在して、$[\cdot,\cdot]$に関して連続であることがわかる。
+
+$f(z)\not\equiv\infty$であるとき、前題と同様にして、$D$内の任意の閉集合$A$において、十分大きい$n$に対して$|f_n(z)|$は有界であり、$f_n(z)$は通常の意味で$f(z)$に広義一様収束する。
+
+$f(z)\equiv\infty$であるとき、任意の閉集合$A$において球面一様収束するから、任意の正数$\epsilon$に対して、十分大きい$n$に対して、以下のようにできる。
+\begin{align*}
+    [f_n(z),\infty]
+    =\frac{1}{\sqrt{1+|f_n(z)|^2}}
+    &<\epsilon\\
+    \frac{1}{1+|f_n(z)|^2}
+    &<\epsilon^2\\
+    1&<\epsilon^2+\epsilon^2|f_n(z)|^2\\
+    \frac{1-\epsilon^2}{\epsilon^2}&<|f_n(z)|^2\\
+    \frac{1}{|f_n(z)|^2}&<\frac{\epsilon^2}{1-\epsilon^2}
+\end{align*}
+最下行の右辺はいくらでも小さくできるから、$\left\{\frac{1}{f_n(z)}\right\}$は$A$において0に一様収束する。
+
+したがって、$\left\{\frac{1}{f_n(z)}\right\}$は0に広義一様収束する。（証明終）
