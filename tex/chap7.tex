@@ -94,3 +94,209 @@ $\frac{e^{iz}}{z}$の極は$z=0$であるから、
     =\frac{\pi}{2}
 \end{align*}
 が成り立つ。（証明終）
+
+\newpage
+\begin{mysimplebox}{問3}
+    $\int_{0}^{2\pi}\frac{d\theta}{a+\cos\theta}=\frac{2\pi}{\sqrt{a^2-1}}\ (a>1)$を証明せよ。
+
+    （ヒント：$2\cos\theta=z+z^{-1}$、ただし$z=e^{\theta i}$。）
+\end{mysimplebox}
+\paragraph{証明}
+\begin{align*}
+    z=&e^{i\theta}=\cos\theta+i\sin\theta\\
+    z^{-1}=&e^{-i\theta}=\cos\theta-i\sin\theta\\
+    z+z^{-1}=&2\cos\theta\\
+    dz=&ie^{i\theta}d\theta=izd\theta
+\end{align*}
+以上から、
+\begin{align*}
+    \int_{0}^{2\pi}\frac{d\theta}{a+\cos\theta}
+    =&\int_{|z|=1}\frac{1}{a+(z+1/z)/2}\frac{dz}{iz}
+    =\frac{2}{i}\int_{|z|=1}\frac{dz}{2az+z^2+1}\\
+    =&\frac{2}{i}\int_{|z|=1}\frac{1}{(z-z_+)(z-z_-)}dz\\
+    =&\frac{2}{i}\frac{1}{2\sqrt{a^2-1}}\int_{|z|=1}\left(\frac{1}{z-z_+}-\frac{1}{z-z_-}\right)dz\\
+    =&\frac{1}{i\sqrt{a^2-1}}(2\pi i-0)
+    =\frac{2\pi}{\sqrt{a^2-1}}
+\end{align*}
+が成り立つ。
+積分の計算にはコーシーの積分公式を適用している。
+
+ただし、
+\begin{align*}
+    z^2+2az+1=0
+\end{align*}
+を解いて、
+\begin{align*}
+    z=-a\pm\sqrt{a^2-1}
+\end{align*}
+であるから、
+\begin{align*}
+    z_+&=-a+\sqrt{a^2-1}\\
+    z_-&=-a-\sqrt{a^2-1}
+\end{align*}
+としている。
+$z_+z_-=1$であるから、
+\begin{align*}
+    z_-<-1<z_+<0
+\end{align*}
+である。ゆえに、単位円内にある極は$z_+$のみである。
+
+留数定理を用いるならば、
+\begin{align*}
+    2\pi i\Res(a_+)
+    =&2\pi i\lim_{z\to z_+}(z-z_+)\frac{2}{i}\frac{1}{(z-z_+)(z-z_-)}
+    =4\pi\lim_{z\to z_+}\frac{1}{z-z_-}\\
+    =&4\pi\frac{1}{z_+-z_-}
+    =4\pi\frac{1}{2\sqrt{a^2-1}}
+    =\frac{2\pi}{\sqrt{a^2-1}}
+\end{align*}
+となる。
+
+不定積分を利用すると、
+\begin{align*}
+    \int\left(\frac{1}{z-z_+}-\frac{1}{z-z_-}\right)dz
+    =&\log(z-z_+)-\log(z-z_-)
+    =\log\frac{z-z_+}{z-z_-}
+\end{align*}
+が得られる。
+
+\begin{align*}
+    w=f(z)=\frac{z-z_+}{z-z_-}
+\end{align*}
+とすると、$w$は単位円内では正則である。
+
+単位円周$|z|=1$を$f$で写してできる閉曲線を$\Gamma$とする。単位円周内における$f(z)=0$の根は$z=z_+$の1個だけであるから、
+\begin{align*}
+    1
+    =&\frac{1}{2\pi i}\int_{|z|=1}\frac{f'(z)}{f(z)}dz
+    =\frac{1}{2\pi i}\int_{\Gamma}\frac{dw}{w}
+\end{align*}
+である。
+これは$z$が単位円周を半時計回りに1周するとき、$w$も$\Gamma$を反時計回りに1周することを意味する。これは書籍のp.145（下から6行目）の内容である。
+
+念のため、確認しておく。$|z|=1$から、
+\begin{align*}
+    |z_-w-z_+|=|w-1|
+\end{align*}
+両辺2乗して整理すると（途中計算は省略する）、
+\begin{align*}
+    |w|=a-\sqrt{a^2-1}=-z_+
+\end{align*}
+が得られる。
+
+また、
+\begin{align*}
+    z&=1& &w=\frac{1-z_+}{1-z_-}=a-\sqrt{a^2-1}=-z_+>0\\
+    z&=i& &w=\frac{i-z_+}{i-z_-}=\frac{2+i(z_+-z_-)}{z_-^2+1}\\
+    z&=-1& &w=\frac{-1-z_+}{-1-z_-}=-a+\sqrt{a^2-1}=z_+<0\\
+    z&=-i& &w=\frac{-i-z_+}{-i-z_-}=\frac{2-i(z_+-z_-)}{z_-^2+1}
+\end{align*}
+であるから、$w$が反時計回りに動くことがわかる。
+
+以上から、
+\begin{align*}
+    &\int_{|z|=1}\left(\frac{1}{z-z_+}-\frac{1}{z-z_-}\right)dz\\
+    =&\left[\log w\right]_{\theta=0}^{\theta=2\pi}
+    =\left[\log(-z_+e^{i\theta})\right]_{\theta=0}^{\theta=2\pi}
+    =\left[\log(-z_+)+i\theta\right]_{\theta=0}^{\theta=2\pi}
+    =2\pi i
+\end{align*}
+であるから、再び同じ結果が得られた。（証明終）
+
+\newpage
+\begin{mysimplebox}{問4}
+    $f(z)$が$|z|<R$で正則、$|z|=r\ (<R)$で$f(z)\neq0$であるとき、$|z|<r$における$f(z)$の零点の数は
+    \begin{align*}
+        \frac{1}{2\pi}\int_{0}^{2\pi}\Re\left(z\frac{f'(z)}{f(z)}\right)d\theta
+    \end{align*}
+    であることを示せ。ただし、$z=re^{\theta i}$である。
+\end{mysimplebox}
+\paragraph{証明}
+$|z|<r$における$f(z)$の零点の数を$N$とすると、次が成り立つ。
+\begin{align*}
+    \frac{1}{2\pi i}\int_{|z|=r}\frac{f'(z)}{f(z)}dz=N\\
+\end{align*}
+この左辺を変形すると、
+\begin{align*}
+    \frac{1}{2\pi i}\int_{|z|=r}\frac{f'(z)}{f(z)}dz
+    =&\frac{1}{2\pi i}\int_{0}^{2\pi}\frac{f'(z)}{f(z)}izd\theta
+    =\frac{1}{2\pi}\int_{0}^{2\pi}z\frac{f'(z)}{f(z)}d\theta\\
+\end{align*}
+であるが、これは実数であるため、実部だけをとっても値は同じである。
+
+よって、
+\begin{align*}
+    \frac{1}{2\pi}\int_{0}^{2\pi}\Re\left(z\frac{f'(z)}{f(z)}\right)d\theta=N
+\end{align*}
+が成り立つ。（証明終）
+
+\newpage
+\begin{mysimplebox}{問5}
+    $f(z)=\sum_{n=0}^{\infty}c_nz^n$が収束円の内部$|z|<R$で単葉ならば、写像$w=f(z)$による$|z|\le r<R$の像の面積は$\sum_{n=0}^{\infty}n|c_n|^2r^{2n}$であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+\begin{align*}
+    w&=f(z)=u(x,y)+iv(x,y)\\
+    \frac{\partial f(z)}{\partial x}&=f_x(z)\\
+    \frac{\partial f(z)}{\partial y}&=f_y(z)\\
+\end{align*}
+とすると、
+\begin{align*}
+    f_xdx&=(u_x+iv_x)dx\leftrightarrow
+    \begin{bmatrix}
+        u_x\\v_x
+    \end{bmatrix}dx\\
+    f_ydy&=(u_y+iv_y)dy\leftrightarrow
+    \begin{bmatrix}
+        u_y\\v_y
+    \end{bmatrix}dy\\
+\end{align*}
+のように2次元ベクトルと見ることで、微小面積$dxdy$は$f$により、
+\begin{align*}
+    f_xdx\times f_ydy
+    =&(u_xv_y-v_xu_y)dxdy\\
+    =&(u_x^2+v_x^2)dxdy=|f_x|^2dxdy\\
+    =&(v_y^2+u_y^2)dxdy=|f_y|^2dxdy
+\end{align*}
+となる。ここで$f$が正則であることから、コーシー--リーマンの関係式が成り立つことを利用している。
+
+また、微分可能な複素函数は、任意の方向微分が等しいから、
+\begin{align*}
+    f'(z)&=\lim_{\Delta x\to0}\frac{f(x+\Delta x+iy)-f(x+iy)}{\Delta x}=f_x(z)\\
+    &=\lim_{\Delta y\to0}\frac{f(x+i(y+\Delta y))-f(x+iy)}{i\Delta y}=-if_y(z)
+\end{align*}
+が成り立つ（書籍のp.42も参照）。
+
+よって、
+\begin{align*}
+    f_xdx\times f_ydy
+    =&|f'(z)|^2dxdy
+\end{align*}
+であるから、求める像の面積は
+\begin{align*}
+    &\int_{|z|\le r}|f'(z)|^2dxdy\\
+    =&\int_{0}^{r}\int_{0}^{2\pi}\left(\sum_{n=1}^{\infty}nc_nz^{n-1}\right)\left(\sum_{m=1}^{\infty}m\overline{c_mz^{m-1}}\right)rdrd\theta\\
+    =&\sum_{n,m}nmc_n\overline{c_m}\int_{0}^{r}
+    \int_{0}^{2\pi}r^{n+m-2}e^{i(n-m)\theta}rdrd\theta\\
+    =&\sum_{n,m}nmc_n\overline{c_m}\int_{0}^{r}
+    r^{n+m-2}2\pi\delta_{nm}rdr\\
+    =&2\pi\sum_{n}n^2|c_n|^2\int_{0}^{r}
+    r^{2n-1}dr\\
+    =&2\pi\sum_{n}n^2|c_n|^2\left[\frac{r^{2n}}{2n}\right]_0^r\\
+    =&2\pi\sum_{n}n^2|c_n|^2\frac{r^{2n}}{2n}\\
+    =&\pi\sum_{n}n|c_n|^2r^{2n}
+\end{align*}
+（証明終）
+
+\paragraph{疑問}
+問3で現れた、
+\begin{align*}
+    w=f(z)=\frac{z-z_+}{z-z_-}
+\end{align*}
+も単葉函数である。
+
+$|z|\le1$を$f$で写すと、像は原点を中心とする半径$-z_+$の円であったから、
+\begin{align*}
+    \int_{|z|\le 1}|f'(z)|^2dxdy=\pi z_+^2
+\end{align*}
+となると思うが、計算できるだろうか？
