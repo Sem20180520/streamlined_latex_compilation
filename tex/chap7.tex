@@ -267,7 +267,7 @@ $|z|<r$における$f(z)$の零点の数を$N$とすると、次が成り立つ�
 \end{align*}
 が成り立つ（書籍のp.42も参照）。
 
-よって、
+よって、\footnote{これは要するにヤコビアンを計算している。『定本 解析概論』のp.218も参照。}
 \begin{align*}
     f_xdx\times f_ydy
     =&|f'(z)|^2dxdy
@@ -300,3 +300,288 @@ $|z|\le1$を$f$で写すと、像は原点を中心とする半径$-z_+$の円�
     \int_{|z|\le 1}|f'(z)|^2dxdy=\pi z_+^2
 \end{align*}
 となると思うが、計算できるだろうか？
+
+$\alpha=z_+$、$\beta=z_-$と置き直す。
+$\alpha+\beta=-2a,\ \alpha\beta=1$が成り立つ。
+
+\begin{align*}
+    f(z)&=\frac{z-\alpha}{z-\beta}\\
+    f'(z)&=\frac{(z-\beta)-(z-\alpha)}{(z-\beta)^2}
+    =\frac{\alpha-\beta}{(z-\beta)^2}=\frac{2\sqrt{a^2-1}}{(z-\beta)^2}\\
+    \left|f'(z)\right|^2&=f'(z)\overline{f'(z)}
+    =\frac{4(a^2-1)}{(z-\beta)^2\overline{(z-\beta)^2}}\\
+    z&=re^{i\theta}\\
+    (z-\beta)\overline{(z-\beta)}&=|z|^2-(z+\overline{z})\beta+\beta^2\\
+    &=r^2-2r\beta\cos\theta+\beta^2\\
+    I=\int_{|z|\le 1}|f'(z)|^2dxdy
+    &=\int_{0}^{2\pi}\int_{0}^{1}\frac{4(a^2-1)}{(r^2-2r\beta\cos\theta+\beta^2)^2}rdrd\theta
+\end{align*}
+$r-2\beta\cos\theta=t$とすると、$dr=dt$であり、
+\begin{align*}
+    &r^2-2r\beta\cos\theta+\beta^2\\
+    &=(r-\beta\cos\theta)^2-\beta^2\cos^2\theta+\beta^2\\
+    &=t^2+\beta^2\sin^2\theta\\
+    I&=4(a^2-1)\int_{0}^{2\pi}d\theta\int_{1-\beta\cos\theta}^{-\beta\cos\theta}\frac{t+\beta\cos\theta}{(t^2+\beta^2\sin^2\theta)^2}dt
+\end{align*}
+$t$に関する積分は、次の不定積分を利用すればよい。
+\begin{align*}
+    b\in\R,\ b\neq0&\\
+    \int\frac{xdx}{(x^2+b^2)^n}&=\begin{cases}
+        \frac{-1}{2(n-1)}\cdot\frac{1}{(x^2+b^2)^{n-1}}, & n>1\\
+        \frac{1}{2}\log(x^2+b^2), & n=1
+    \end{cases}\\
+    I_n=\int\frac{dx}{(x^2+b^2)^n}
+    &=\begin{cases}
+        \frac{1}{b^2}\left\{\frac{x}{(2n-2)(x^2+b^2)^{n-1}}+\frac{2n-3}{2n-2}I_{n-1}\right\}, & n>1\\
+        \frac{1}{b}\arctan\frac{x}{b}, & n=1
+    \end{cases}
+\end{align*}
+
+\begin{align*}
+    &\int_{0}^{2\pi}d\theta\int_{1-\beta\cos\theta}^{-\beta\cos\theta}\frac{t}{(t^2+\beta^2\sin^2\theta)^2}dt\\
+    &=\int_{0}^{2\pi}d\theta\left[-\frac{1}{2}\frac{1}{t^2+\beta^2\sin^2\theta}\right]_{1-\beta\cos\theta}^{-\beta\cos\theta}\\
+    &=-\frac{1}{2}\int_{0}^{2\pi}\left(\frac{1}{1-2\beta\cos\theta+\beta^2}-\frac{1}{\beta^2}\right)d\theta
+\end{align*}
+
+（入力保留中）
+
+
+\newpage
+\begin{mysimplebox}{問6}
+    $z+\frac{1}{z}$は$|z|<1$および$|z|>1$においてそれぞれ単葉である。写像$w=z+\frac{1}{z}$による$|z|<1$、$|z|>1$の像領域を求めよ。また、円$|z|=r$、半直線$\arg z=\theta$の像曲線を求めよ。
+\end{mysimplebox}
+\paragraph{解答}
+\begin{align*}
+    z&=re^{i\theta}\\
+    z+\frac{1}{z}&=re^{i\theta}+\frac{1}{re^{i\theta}}
+    =\left(r+\frac{1}{r}\right)\cos\theta+i\left(r-\frac{1}{r}\right)\sin\theta
+\end{align*}
+
+\begin{align*}
+    u&=\left(r+\frac{1}{r}\right)\cos\theta,\ v=\left(r-\frac{1}{r}\right)\sin\theta
+\end{align*}
+とすると、円$|z|=r$（ただし$r\neq1$）に対して、
+\begin{align*}
+    &\left\{\frac{u}{\left(r+\frac{1}{r}\right)}\right\}^2
+    +\left\{\frac{v}{\left(r-\frac{1}{r}\right)}\right\}^2
+    =\cos^2\theta+\sin^2\theta=1
+\end{align*}
+である。
+よって、円$|z|=r$（ただし$r\neq1$）の像曲線は、
+長軸の長さが$2\left(r+\frac{1}{r}\right)\ge2$、
+短軸の長さが$2\left|r-\frac{1}{r}\right|$の楕円である。
+
+なお、$|z|=r$の反時計回りに対して、
+$0<r<1$のときは$r-\frac{1}{r}<0$であるから、
+楕円の時計回りが対応する。
+$r>1$のときは$r-\frac{1}{r}>0$であるから、
+楕円の反時計回りが対応する。
+
+$r=1$のとき、
+$z+\frac{1}{z}=2\cos\theta$
+である。これは、点$(2,0)$と点$(-2,0)$
+を端点とする線分である。すなわち、単位円は長さ4の線分にうつされる。
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.4\columnwidth}
+        \centering
+        \includegraphics[width=4cm]{chap7_fig/chap7-prob6-1.jpg}
+        \caption{$|z|=r,r\neq1$の像曲線}
+        \label{fig:elliptic1}
+    \end{minipage}
+    \begin{minipage}{0.4\columnwidth}
+        \centering
+        \includegraphics[width=4cm]{chap7_fig/chap7-prob6-2.jpg}
+        \caption{$|z|=r$の像曲線の変化}
+        \label{fig:elliptic2}
+    \end{minipage}
+\end{figure}
+
+
+\newpage
+（再掲）
+\begin{align*}
+    z&=re^{i\theta}\\
+    z+\frac{1}{z}&=re^{i\theta}+\frac{1}{re^{i\theta}}
+    =\left(r+\frac{1}{r}\right)\cos\theta+i\left(r-\frac{1}{r}\right)\sin\theta\\
+    u&=\left(r+\frac{1}{r}\right)\cos\theta,\ v=\left(r-\frac{1}{r}\right)\sin\theta
+\end{align*}
+次に、半直線$\arg z=\theta$（ただし$\theta\neq n\pi/2$）に対して、
+\begin{align*}
+    &\frac{u}{\cos\theta}=r+\frac{1}{r},
+    \ \frac{v}{\sin\theta}=r-\frac{1}{r}\\
+    &\left(\frac{v}{\sin\theta}\right)^2
+    =r^2-2+\frac{1}{r^2}
+    =\left(r+\frac{1}{r}\right)^2-4
+    =\left(\frac{u}{\cos\theta}\right)^2-4\\
+    &\left(\frac{u}{\cos\theta}\right)^2-\left(\frac{v}{\sin\theta}\right)^2=4\\
+    &\left(\frac{u}{2\cos\theta}\right)^2-\left(\frac{v}{2\sin\theta}\right)^2=1
+\end{align*}
+であるから、半直線$\arg z=\theta$（ただし$\theta\neq n\pi/2$）の像曲線は、
+\begin{align*}
+(\pm\sqrt{(2\cos\theta)^2+(2\cos\theta)^2},0)=(\pm2,0)   
+\end{align*}
+を焦点とする双曲線の右側（$\cos\theta>0$のとき）、または左側（$\cos\theta<0$のとき）である。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=7cm]{chap7_fig/chap7-prob6-3.jpg}
+    \caption{$\arg z=\theta$の像曲線}
+    \label{fig:hyperbola}
+\end{figure}
+
+$\theta=0,\pi,2\pi$のとき、$u=\pm\left(r+\frac{1}{r}\right),v=0$であるから、像曲線は
+\begin{align*}
+    &\{x\in\R\mid x\ge2\},\quad(\theta=0,2\pi)\\
+    &\{x\in\R\mid x\le -2\},\quad(\theta=\pi)
+\end{align*}
+である。
+
+$\theta=\pi/2,3\pi/2$のとき、$u=0,v=\pm\left(r-\frac{1}{r}\right)$であるから、像曲線は虚軸（$x=0$）である。
+
+
+$|z|<1$、$|z|>1$の像領域はともに、複素平面から実軸の長さ4の線分を除いた部分、
+\begin{align*}
+    \C\setminus\{z\in\C\mid -2\le \Re(z)\le2,\Im(z)=0\}
+\end{align*}
+である。（解答終）
+
+\newpage
+\begin{mysimplebox}{問7}
+    Rouch\'{e}の定理を用いて代数学の基本定理を証明せよ。
+\end{mysimplebox}
+\paragraph{証明}
+\begin{align*}
+    z^n+a_{n-1}z^{n-1}+\cdots+a_1z+a_0=0\quad(a_k\in\C,k=1,\dots,n-1)
+\end{align*}
+が重複度も込めて$n$個の根をもつことを示す。
+左辺を$\phi(z)$とする。
+
+$z^n=0$は0を$n$重根としてもつことは既知とする。
+\begin{align*}
+    a:=\max_{k=1,\dots,n-1}|a_k|
+\end{align*}
+とする。
+$|z|=R>0$のとき、
+\begin{align*}
+    |\phi(z)-z^n|=&|a_{n-1}z^{n-1}+\cdots+a_1z+a_0|\\
+    \le&a|z|^{n-1}+\dots+a|z|+a\\
+    \le&a(R^{n-1}+\dots+R+1)=a\frac{R^n-1}{R-1}
+\end{align*}
+が成り立つ。ここで、
+\begin{align*}
+    R^n-a\frac{R^n-1}{R-1}
+    &=\frac{1}{R-1}(R^{n+1}-R^n-aR^n+a)\\
+    &=\frac{1}{R-1}\left[R^{n}\{R-(a+1)\}+a\right]\\
+\end{align*}
+であるから、$R>\max\{1,a+1\}$ならば、
+\begin{align*}
+    R^n>a\frac{R^n-1}{R-1}
+\end{align*}
+が成り立つ。
+
+よって、このように$R$をとれば、$|z|=R$の円周上において、
+\begin{align*}
+    |z|^n>|\phi(z)-z^n|
+\end{align*}
+が成り立つから、
+\begin{align*}
+    z^n+(\phi(z)-z^n)=\phi(z)
+\end{align*}
+は$|z|=R$において零点をもたない。
+
+ゆえに、Rouch\'{e}の定理から、
+円$|z|<R$の内部にある$z^n$の零点の数と\\
+$z^n+(\phi(z)-z^n)=\phi(z)$
+の零点の個数は等しい。
+
+したがって、$\phi(z)=0$は$n$個の根をもつ。（証明終）
+
+
+\newpage
+\begin{mysimplebox}{問8}
+    $f(z)$が領域$D$で正則、$|z|\le1$が$D$に包まれて、$|z|=1$では$|f(z)|<1$のとき、$|z|<1$における$f(z)$の零点の数を求めよ。
+\end{mysimplebox}
+\paragraph{解答}
+$k=1,2,\dots,n$に対して$a_k\in\C$、$|a_k|<1$とする。
+$|\xi|=1$ならば、
+\begin{align*}
+    |(\xi-a_1)(\xi-a_2)\cdots(\xi-a_n)|
+    \le2^n
+\end{align*}
+であるから、
+\begin{align*}
+    f(z)=\frac{1}{2^n}(z-a_1)(z-a_2)\cdots(z-a_n)
+\end{align*}
+とすると、$f(z)$は$\C$において正則であり、
+$|z|=1$において$|f(z)|<1$が成り立つ。
+
+以上のことから、この問題の条件を満たす正則函数で任意個の零点をもつものが構成できる。よって、零点の個数は一意に定まらない。（解答終）
+
+\newpage
+\begin{mysimplebox}{問9}
+    整函数$f_n(z)$（$n=1,2,\dots$）の零点がすべて実軸上にあるとき、
+    $\{f_n(z)\}$が$|z|<\infty$で$f(z)$に広義一様収束すれば、
+    $f(z)$が定数でない限り、$f(z)$の零点はすべて実軸上にあることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+Hurwitzの定理の証明にならって示す。
+
+$f(z)$は整函数列が広義一様収束する極限函数であるから、$\C$で正則である。
+$f(z)$が定数でないとすると、実軸と交わらないJordan閉曲線$C$で、
+$C$上に$f(z)$の零点がないようなものが存在する。
+
+なぜなら、もしどのようなJordan閉曲線をとっても曲線上に$f(z)$の零点が存在するならば、任意の微小領域に収まるJordan閉曲線をとり続けることにより、$f(z)$は集積点に収束する点列において$f(z)=0$を満たし、$f(z)\equiv0$が導かれるからである。
+
+%$f_n(z)$は実軸にしか零点をもたないから、$C$上で$f_n(z)\neq0$である。
+%%このことは使わない。
+
+よって、
+\begin{align*}
+    m:=\min_{z\in C}|f(z)|
+\end{align*}
+とすると、$m>0$である。
+
+$\{f_n(z)\}$は広義一様収束するから、$C$上で、
+$n>N$ならば$|f_n(z)-f(z)|<m$が成り立つような
+$N>0$が存在する。よって、$C$上で、
+\begin{align*}
+    |f_n(z)-f(z)|<m\le f(z)
+\end{align*}
+であるから、
+\begin{align*}
+    f(z)+\lambda (f_n(z)-f(z))\quad(0\le\lambda\le1)
+\end{align*}
+は$C$上で零点をもたない。
+
+よって、Rouch\'{e}の定理から、
+$C$の内部において、$f(z)$と\\
+$f(z)+(f_n(z)-f(z))=f_n(z)$の零点の個数は等しい。
+
+すなわち、$C$内で$f(z)$は零点をもたない。以上から、$f(z)$は実軸上以外に零点をもたない。（証明終）
+
+\newpage
+\begin{mysimplebox}{問10}
+    領域$D$で零点をもたない正則函数から成る函数列が$D$で広義一様収束するとき、
+    もし極限函数$f(z)$が零点をもてば、$D$で$f(z)\equiv0$である。
+\end{mysimplebox}
+\paragraph{証明}
+$f(z)\not\equiv0$とし、$f(z)$の零点を$a$とする。
+$D$に含まれるJordan閉曲線$C$は内部に$a$を含むとする。
+
+さらに、前問と同様に、$C$上で$f(z)\neq0$としてよい。
+
+\begin{align*}
+    m:=\min_{z\in\C}|f(z)|
+\end{align*}
+とすると、$m>0$である。
+
+十分大きい$N>0$に対して、$n>N$ならば$C$上で$|f_n(z)-f(z)|<m$であるから、
+\begin{align*}
+    f(z)+(f_n(z)-f(z))=f_n(z)
+\end{align*}
+は$C$上で零点をもたない。
+
+よって、Rouch\'{e}の定理より、
+$C$内における$f(z)$と$f_n(z)$の零点の個数は等しいが、これは矛盾である。
+
+したがって、$D$で$f(z)\equiv0$である。（証明終）
