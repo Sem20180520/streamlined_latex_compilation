@@ -199,15 +199,137 @@ $f(z)=z$から、
 である。
 \begin{itemize}
     \item $c\neq0$ならば、方程式$(\ref{eq:ch8-4-1})$は、重複度も込めて2個の解をもつ。
-    \item $c=0,d-a\neq0$ならば、方程式$(\ref{eq:ch8-4-1})$は、1個の解をもつ。このとき、$f(z)=(az+b)/d$である。不動点は$b/(d-a)$である。
-    \item $c=0,d-a=0,b\neq0$ならば、方程式$(\ref{eq:ch8-4-1})$は、解をもたない。このとき、$f(z)=z+b/a$である。
-    \item $c=0,d-a=0,b=0$ならば、方程式$(\ref{eq:ch8-4-1})$は、$\C$全体が解である。このとき、$f(z)=z$である。
+    \item $c=0,d-a\neq0$ならば、方程式$(\ref{eq:ch8-4-1})$は、1個の解をもつ。このとき、$f(z)=(az+b)/d$である。不動点は$b/(d-a)$である。$\infty$も不動点であると考える。
+    \item $c=0,d-a=0,b\neq0$ならば、方程式$(\ref{eq:ch8-4-1})$は、解をもたない。このとき、$f(z)=z+b/a$である。$\infty$が不動点であると考える。
+    \item $c=0,d-a=0,b=0$ならば、方程式$(\ref{eq:ch8-4-1})$は、$\C$全体が解である。このとき、$f(z)\equiv z$である。
 \end{itemize}
 以上から、不動点を2個より多くもつ一次函数は$f(z)\equiv z$のみである。（証明終）
 
 \newpage
 \begin{mysimplebox}{問6}
-    $z=f(z)$なる$z$を函数$f(z)$の不動点という。
-    2個より多くの不動点をもつ一次函数は$z$以外にはないことを示せ。
+    $w=\dfrac{az+b}{cz+d}$
+    は$\dfrac{w-\alpha}{w-\beta}=k\dfrac{z-\alpha}{z-\beta}$
+    または
+    $\dfrac{1}{w-\alpha}=\dfrac{1}{z-\alpha}+h$
+    なる形に書き直すことができることを示せ。
+    ただし、$\alpha,\beta,k,h$は定数である。
 \end{mysimplebox}
 \paragraph{証明}
+\begin{align*}
+    \begin{vmatrix}
+        a&b\\
+        c&d
+    \end{vmatrix}
+    =ad-bc=1
+\end{align*}
+としてよい。
+
+前問の場合分けで順に見ていく。
+
+$c\neq0$で、方程式$(\ref{eq:ch8-4-1})$が重根をもたないとき、
+判別式$D$とすると、
+\begin{align*}
+    D=(d-a)^2+4bc
+    =(d-a)^2+4(ad-1)
+    =(a+d)^2-4\neq0
+\end{align*}
+である。
+
+方程式$(\ref{eq:ch8-4-1})$の異なる2個の解を、$\alpha,\beta$とする。
+\begin{align*}
+    \alpha+\beta=&\frac{a-d}{c}\\
+    \alpha\beta=&-\frac{b}{c}
+\end{align*}
+が成り立つ。
+
+$\dfrac{z-\alpha}{z-\beta}$と$\dfrac{w-\alpha}{w-\beta}$の関係を考える。これは、次のような行列計算を見ればよい。
+\begin{align*}
+    \begin{bmatrix}
+        1&-\alpha\\
+        1&-\beta
+    \end{bmatrix}
+    \begin{bmatrix}
+        a&b\\
+        c&d
+    \end{bmatrix}
+    \begin{bmatrix}
+        1&-\alpha\\
+        1&-\beta
+    \end{bmatrix}^{-1}
+\end{align*}
+計算を行うと、次の行列が得られる。
+\begin{align*}
+    \frac{1}{\alpha-\beta}
+    \begin{bmatrix}
+        d\alpha-a\beta-2b&0\\
+        0&a\alpha-d\beta+2b
+    \end{bmatrix}
+\end{align*}
+なお、
+\begin{align*}
+    \begin{vmatrix}
+        1&-\alpha\\
+        1&-\beta
+    \end{vmatrix}
+    =\alpha-\beta\neq0
+\end{align*}
+である。
+
+以上で、
+\begin{align*}
+    \frac{w-\alpha}{w-\beta}
+    =k\frac{z-\alpha}{z-\beta},\quad
+    k=\frac{d\alpha-a\beta-2b}{a\alpha-d\beta+2b}
+\end{align*}
+であることが分かる。
+
+次に、$D=(a+d)^2-4=0$のとき、重根を$\alpha=\dfrac{a-d}{2c}$とする。$\dfrac{1}{z-\alpha}$と$\dfrac{1}{w-\alpha}$の関係を考える。これは、次のような行列計算を見ればよい。
+\begin{align*}
+    \begin{bmatrix}
+        0&1\\
+        1&-\alpha
+    \end{bmatrix}
+    \begin{bmatrix}
+        a&b\\
+        c&d
+    \end{bmatrix}
+    \begin{bmatrix}
+        0&1\\
+        1&-\alpha
+    \end{bmatrix}^{-1}
+\end{align*}
+計算を行うと、次の行列が得られる。
+\begin{align*}
+    \begin{bmatrix}
+        (a+d)/2&c\\
+        0&(a+d)/2
+    \end{bmatrix}
+\end{align*}
+よって、
+\begin{align*}
+    \frac{1}{w-\alpha}
+    =\frac{\{(a+d)/2\}\frac{1}{z-\alpha}+c}{\{(a+d)/2\}}
+    =\frac{1}{z-\alpha}+\frac{2c}{a+d}
+\end{align*}
+であることが分かる。
+
+不動点が$\alpha:=\dfrac{b}{d-a}$と$\infty$のとき（$d-a\neq0,c=0$）、
+\begin{align*}
+    w-\alpha
+    =\frac{az+b}{d}-\frac{b}{d-a}
+    =\frac{(az+b)(d-a)-bd}{d(d-a)}
+    =\frac{a(d-a)z-ab}{d(d-a)}
+    =\frac{a}{d}(z-\alpha)
+\end{align*}
+となり、$\dfrac{w-\alpha}{w-\beta}=k\dfrac{z-\alpha}{z-\beta}$の亜種と思うことができる。
+
+不動点が$\infty$のみの場合、$w=f(z)=z+h$（$h\neq0$）
+と書ける。$z=\dfrac{1}{\zeta}$、$w=\dfrac{1}{\xi}$とすると、$\dfrac{1}{\xi}=\dfrac{1}{\zeta}+h$であるから、
+$\dfrac{1}{w-\alpha}=\dfrac{1}{z-\alpha}+h$の
+$\alpha=0,h\neq0$の場合と思うことができる。
+
+$f(z)=\dfrac{az+b}{cz+d}$
+の不動点が2個より多いとき、$w=f(z)\equiv z$である。
+これは
+$\dfrac{1}{w-\alpha}=\dfrac{1}{z-\alpha}+h$
+で$\alpha=0,h=0$の場合である。（証明終）
