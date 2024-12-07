@@ -66,6 +66,46 @@ $h=d/c$、$h'=a/c$がすぐにわかる。
     z\mapsto \frac{a}{d}z\mapsto \frac{a}{d}z+\frac{b}{d}
 \end{align*}
 とすればよい。（終）
+\paragraph{補足}
+$c\neq0$のとき、
+\begin{align*}
+    \frac{az+b}{cz+d}
+    =\frac{\frac{a}{c}z+\frac{b}{c}}{z+\frac{d}{c}}
+    =\frac{\frac{a}{c}\left(z+\frac{d}{c}\right)-\frac{ad}{c^2}+\frac{b}{c}}{z+\frac{d}{c}}
+    =\frac{a}{c}-\frac{ad-bc}{c^2}\cdot\frac{1}{z+\frac{d}{c}}
+\end{align*}
+であるから、$\frac{d}{c}$だけ平行移動する、逆数をとる、$-\frac{ad-bc}{c^2}$倍する、$\frac{a}{c}$だけ平行移動する、という操作で$\frac{az+b}{cz+d}$という一次函数が得られる。
+
+$c=0$のとき、
+\begin{align*}
+    \frac{az+b}{d}
+    =\frac{a}{d}z+\frac{b}{d}
+\end{align*}
+であるから、$\frac{a}{d}$倍する、$\frac{b}{d}$だけ平行移動する、という操作で$\frac{az+b}{d}$という一次函数が得られる。または、$a$倍する、$b$だけ平行移動する、$\frac{1}{d}$倍する、という操作でもよい。これは、
+\begin{align*}
+    \begin{bmatrix}
+        1&b/d\\0&1
+    \end{bmatrix}
+    \begin{bmatrix}
+        a/d&0\\0&1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1/d&0\\0&1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1&b\\0&1
+    \end{bmatrix}
+    \begin{bmatrix}
+        a&0\\0&1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        a/d&b/d\\0&1
+    \end{bmatrix}
+\end{align*}
+という行列計算が対応する。
+
 
 \newpage
 \begin{mysimplebox}{問2}
@@ -158,6 +198,7 @@ $a\neq0,c\neq0$のとき、
     =\frac{a}{c}\left(1-\frac{1}{a}\cdot\frac{ad-bc}{cz+d}\right)
 \end{align*}
 と書けるから、$f$は実軸を実軸に写像する。
+\footnote{わざわざこの式変形をしなくても$f$が実軸を実軸に写像することは分かる。}
 
 $a=0,c\neq0$のとき、
 \begin{align*}
@@ -282,6 +323,7 @@ $\dfrac{z-\alpha}{z-\beta}$と$\dfrac{w-\alpha}{w-\beta}$の関係を考える�
     k=\frac{d\alpha-a\beta-2b}{a\alpha-d\beta+2b}
 \end{align*}
 であることが分かる。
+\footnote{$k$は行列の固有値の比であることも分かった。}
 
 次に、$D=(a+d)^2-4=0$のとき、重根を$\alpha=\dfrac{a-d}{2c}$とする。$\dfrac{1}{z-\alpha}$と$\dfrac{1}{w-\alpha}$の関係を考える。これは、次のような行列計算を見ればよい。
 \begin{align*}
@@ -321,7 +363,7 @@ $\dfrac{z-\alpha}{z-\beta}$と$\dfrac{w-\alpha}{w-\beta}$の関係を考える�
     =\frac{a(d-a)z-ab}{d(d-a)}
     =\frac{a}{d}(z-\alpha)
 \end{align*}
-となり、$\dfrac{w-\alpha}{w-\beta}=k\dfrac{z-\alpha}{z-\beta}$の亜種と思うことができる。
+となり、$\dfrac{w-\alpha}{w-\beta}=k\dfrac{z-\alpha}{z-\beta}$の亜種と思うことができる（追記参照）。
 
 不動点が$\infty$のみの場合、$w=f(z)=z+h$（$h\neq0$）
 と書ける。$z=\dfrac{1}{\zeta}$、$w=\dfrac{1}{\xi}$とすると、$\dfrac{1}{\xi}=\dfrac{1}{\zeta}+h$であるから、
@@ -333,3 +375,41 @@ $f(z)=\dfrac{az+b}{cz+d}$
 これは
 $\dfrac{1}{w-\alpha}=\dfrac{1}{z-\alpha}+h$
 で$\alpha=0,h=0$の場合である。（証明終）
+
+\paragraph{追記}
+亜種と書いたタイプについては、その下のタイプと同様に$z=\dfrac{1}{\zeta}$、$w=\dfrac{1}{\xi}$としてみると、
+\begin{align*}
+    \xi
+    =\frac{1}{w}
+    =\frac{d}{az+b}
+    =\frac{d/z}{a+b/z}
+    =\frac{d\zeta}{b\zeta+a}
+\end{align*}
+であり、$\zeta=\dfrac{1}{\alpha},0$が不動点である。$\alpha=0$のときの扱いが面倒である。
+
+その代わり、$z$のみ$z=\dfrac{1}{\zeta}$と変換し、$w$は$w$のままとすると、
+\begin{align*}
+    w=\frac{az+b}{d}=\frac{a+b/z}{d/z}=\frac{b\zeta+a}{d\zeta}
+\end{align*}
+である。不動点は、$\dfrac{b\zeta+a}{d\zeta}=\zeta$より、
+$d\zeta^2-b\zeta-a=0$の解である。この判別式は$D=b^2+4ac=b^2+4\ge4$であるから、異なる2個の不動点を持つことが分かる。よって、不動点を$\alpha,\beta$とすると、$\dfrac{w-\alpha}{w-\beta}=k\dfrac{\zeta-\alpha}{\zeta-\beta}$の形にできる。次の行列計算をすればよい。
+\begin{align*}
+    \begin{bmatrix}
+        1&-\alpha\\1&-\beta
+    \end{bmatrix}
+    \begin{bmatrix}
+        a&b\\0&d
+    \end{bmatrix}
+    \begin{bmatrix}
+        0&1\\1&0
+    \end{bmatrix}^{-1}
+    \begin{bmatrix}
+        1&-\alpha\\1&-\beta
+    \end{bmatrix}^{-1}
+    =\frac{1}{\alpha-\beta}
+    \begin{bmatrix}
+        -2a-\beta b&0\\0&2a+\alpha b
+    \end{bmatrix}
+\end{align*}
+これにより、$k=\dfrac{-2a-\beta b}{2a+\alpha b}$も分かる。
+片方だけ逆数にすると不動点が変わるため、有限の異なる2個の不動点の場合に帰着できるという話である。$w$を$w=\dfrac{1}{\xi}$とし、$z$は$z$のままとしても同様の結果が得られる。
