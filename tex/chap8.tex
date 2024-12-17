@@ -147,7 +147,81 @@ $c=0$のとき、
     (-|c'|^2+|c'|^2-r'^2)(-|c|^2+|c|^2-r^2)=r^2r'^2\neq0
 \end{align*}
 である。（終）
-これから問2を修正します。
+
+\paragraph{解答}
+前問から、一次函数は平行移動（$z+\alpha$）、定数倍（$\alpha z$）、逆数（$\dfrac{1}{z}$）をとる、という操作で生成されることが分かった。
+よって、円か直線に関する反転を偶数回行うことにより、平行移動、定数倍、逆数をとる、という操作を実現できればよい。
+
+書籍p.155で説明されているように、点$c$を中心とする半径$r$の円に関する反転は、
+\begin{align*}
+    z'=c+\frac{r^2}{\overline{z}-\overline{c}}
+\end{align*}
+と書ける。ここで、$z,z'$は互いの反転である。
+
+点$c$を通り、傾き$a$の直線に関する反転は
+\begin{align*}
+    \overline{\left(\frac{z-b}{a}\right)}
+    &=\frac{z'-b}{a}\\
+    z'&=a\overline{\left(\frac{z-b}{a}\right)}+b
+\end{align*}
+と書ける。
+
+まず、平行移動（$z+\alpha$）について考える。
+原点が$\alpha$まで移動することから、原点と$\alpha$を結ぶ線分$\mathrm{O}\alpha$の垂直二等分線で反転をし、
+その後に、$\alpha$を通り線分$\mathrm{O}\alpha$に垂直な直線で反転をすればよい。
+実際、
+\begin{align*}
+    \overline{\left(\frac{z-\alpha/2}{i\alpha}\right)}
+    &=\frac{z'-\alpha/2}{i\alpha}\\
+    \overline{\left(\frac{z'-\alpha}{i\alpha}\right)}
+    &=\frac{z''-\alpha}{i\alpha}
+\end{align*}
+から、
+\begin{align*}
+    \frac{z''-\alpha}{i\alpha}
+    &=\overline{\left(\frac{z'-\alpha/2-\alpha/2}{i\alpha}\right)}
+    =\frac{z-\alpha/2}{i\alpha}+\frac{\alpha/2}{i\alpha}
+    =\frac{z}{i\alpha}\\
+    z''&=z+\alpha
+\end{align*}
+が得られる。
+
+次に、定数倍（$\alpha z$）について考える。
+$1$が$\alpha$まで移ることから、原点と$\sqrt{\alpha}$を通る直線で反転をしてから、
+原点と$\alpha$を通る直線で反転をしてみる。
+\begin{align*}
+    \overline{\left(\frac{z}{\sqrt{\alpha}}\right)}
+    &=\frac{z'}{\sqrt{\alpha}}\\
+    \overline{\left(\frac{z'}{\alpha}\right)}
+    &=\frac{z''}{\alpha}
+\end{align*}
+から、
+\begin{align*}
+    z''&=\alpha\overline{\left(\frac{z'}{\alpha}\right)}
+    =\alpha\overline{\left(\frac{1}{\sqrt{\alpha}}\cdot\frac{z'}{\sqrt{\alpha}}\right)}
+    =\alpha\frac{1}{\overline{\sqrt{\alpha}}}\cdot\frac{z}{\sqrt{\alpha}}
+    =\frac{\alpha}{|\alpha|}z
+\end{align*}
+が得られる。
+
+さらに、原点を中心とする半径$r_1$、$r_2$の円に関する反転を続けて行うと
+\begin{align*}
+    z'''&=\frac{r_2^2}{\overline{\frac{r_1^2}{\overline{z''}}}}
+    =\frac{r_2^2}{r_1^2}z''
+    =\frac{r_2^2}{r_1^2}\cdot\frac{\alpha}{|\alpha|}z
+\end{align*}
+が得られる。よって、$r_2^2/r_1^2=|\alpha|$となるように$r_1,r_2$をとればよい。
+
+最後に、逆数（$\dfrac{1}{z}$）について考える。
+複素共役をとってから、原点を中心とする半径1の円に関する反転を行えばよい。
+よって、
+\begin{align*}
+    z'&=\overline{z}\\
+    z''&=\frac{1}{\overline{z'}}=\frac{1}{z}
+\end{align*}
+が得られる。（解答終）
+
+
 
 \newpage
 \begin{mysimplebox}{問3}
