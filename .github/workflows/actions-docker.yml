@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   release-pdf:
@@ -42,13 +43,13 @@ jobs:
           echo ${{ steps.version.outputs.version }}
       - name: buildx
         if: success()
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v1    
       - name: build
         if: success()
-        run: docker-compose build
+        run: docker compose build
       - name: run tex
         if: success()
-        run: docker-compose run tex
+        run: docker compose run tex
       - name: release
         if: success()
         uses: actions/create-release@v1
