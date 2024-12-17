@@ -413,3 +413,125 @@ $d\zeta^2-b\zeta-a=0$の解である。この判別式は$D=b^2+4ac=b^2+4\ge4$�
 \end{align*}
 これにより、$k=\dfrac{-2a-\beta b}{2a+\alpha b}$も分かる。
 片方だけ逆数にすると不動点が変わるため、有限の異なる2個の不動点の場合に帰着できるという話である。$w$を$w=\dfrac{1}{\xi}$とし、$z$は$z$のままとしても同様の結果が得られる。
+
+\newpage
+\begin{mysimplebox}{問7}
+    $f(z)$が$|z|<1$で正則で$|f(z)|<M$ならば
+    \begin{align*}
+        \frac{M(|f(0)|-Mr)}{M-r|f(0)|}
+        \le|f(z)|
+        \le\frac{M(|f(0)|+Mr)}{M+r|f(0)|}
+        \quad(|z|=r<1).
+    \end{align*}
+    ヒント：　$\dfrac{M(f(0)-f(z))}{M^2-\overline{f(0)}f(z)}$にSchwarzの定理を応用する。
+    または、$\dfrac{f(z)}{M}$を$f(z)$と取り直し、$\dfrac{f(0)-f(z)}{1-\overline{f(0)}f(z)}$にSchwarzの定理を応用する。
+\end{mysimplebox}
+\paragraph{証明}
+ヒントの後半にあるように、$\dfrac{f(z)}{M}$を$f(z)$と取り直し、$g(z)=\dfrac{f(0)-f(z)}{1-\overline{f(0)}f(z)}$にSchwarzの定理を応用する。
+まずは、Schwarzの定理（p.102）を適用できることを確認する。
+
+$|z|<1$において$|f(z)|<1$であるから、$g(z)$は$|z|<1$において正則である。
+また、$g(0)=0$である。さらに、
+\begin{align*}
+    &|1-\overline{f(0)}f(z)|^2-|f(0)-f(z)|^2\\
+    =&(1-\overline{f(0)}f(z))(1-f(0)\overline{f(z)})-(f(0)-f(z))(\overline{f(0)}-\overline{f(z)})\\
+    =&1-\overline{f(0)}f(z)-f(0)\overline{f(z)}+|f(0)|^2|f(z)|^2-(|f(0)|^2-f(z)\overline{f(0)}-f(0)\overline{f(z)}+|f(z)|^2)\\
+    =&1-|f(0)|^2-|f(z)|^2+|f(0)|^2|f(z)|^2\\
+    =&(1-|f(0)|)(1-|f(z)|^2)>0
+\end{align*}
+である。よって、$|g(z)|<1$である。
+
+以上から、$g(z)$にSchwarzの定理を適用できることが分かった。次の不等式が得られる。
+\begin{align*}
+    |g(z)|&\le|z|\\
+    \left|\frac{f(0)-f(z)}{1-\overline{f(0)}f(z)}\right|&\le|z|
+\end{align*}
+
+ここで、
+\begin{align*}
+    \zeta=\frac{c-w}{1-\overline{c}w}
+\end{align*}
+を考える。
+ただし、$|c|<1$である。$c=f(0)$、$w=f(z)$とすれば$\zeta=g(z)$である。
+
+\begin{align*}
+    \det\begin{bmatrix}
+        -1&c\\-\overline{c}&1
+    \end{bmatrix}
+    =-1+|c|^2<0
+\end{align*}
+であるから、$\zeta$は一次函数である。
+
+$|\zeta|=r(<1)$とすると、
+\begin{align*}
+    r&=\left|\frac{c-w}{1-\overline{c}w}\right|\\
+    r&=\left|\frac{c-w}{\overline{c}(1/\overline{c}-w)}\right|\\
+    r|\overline{c}|=r|c|&=\left|\frac{c-w}{1/\overline{c}-w}\right|
+\end{align*}
+となる。
+よって、$w$は$1/\overline{c}$と$c$からの距離の比が
+$1:r|c|$となる。すなわち、アポロニウスの円上を動く。
+ゆえに、$|\zeta|\le r$のとき、$w$はこのアポロニウスの円による閉円板上に存在する（円周を含む）。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{chap8_fig/chap8_fig001.png}
+    \caption{アポロニウスの円}
+    \label{fig:chap8_apo}
+\end{figure}
+
+実際に円の方程式を求めると、
+\begin{align*}
+    \left|w-\frac{1-r^2}{1-r^2|c|^2}c\right|
+    =\frac{(1-|c|^2)r}{1-r^2|c|^2}
+\end{align*}
+である（計算は省略する）。
+
+このアポロニウスの円上で$w=0$からの距離の最小値と最大値はそれぞれ、
+\begin{align*}
+    &\left|\frac{|c|-r}{1-r|c|}\right|
+    \left(=\left|\frac{-r|c|\frac{1}{\overline{c}}+c}{1-r|c|}\right|\right)\\
+    &\frac{|c|+r}{1+r|c|}
+    \left(=\left|\frac{r|c|\frac{1}{\overline{c}}+c}{1+r|c|}\right|\right)
+\end{align*}
+である。
+
+よって、
+\begin{align*}
+    \frac{|c|-r}{1-r|c|}
+    \le|w|
+    \le\frac{|c|+r}{1+r|c|}
+\end{align*}
+である。もとの問題の記号で表すと、
+\begin{align*}
+    \frac{|f(0)|-r}{1-r|f(0)|}
+    \le|f(z)|
+    \le\frac{|f(0)|+r}{1+r|f(0)|}
+\end{align*}
+である。
+
+さらに、$|z|<1$で$|f(z)|<M$のときは、$f(z)/M$が今示した不等式を満たすから、
+\begin{align*}
+    \frac{|f(0)|/M-r}{1-r|f(0)|/M}
+    &\le|f(z)|/M
+    \le\frac{|f(0)|/M+r}{1+r|f(0)|/M}\\
+    \frac{M(|f(0)|-Mr)}{M-r|f(0)|}
+    &\le|f(z)|
+    \le\frac{M(|f(0)|+Mr)}{M+r|f(0)|}
+\end{align*}
+が得られる。（証明終）
+
+\paragraph{別証明}
+\begin{align*}
+    \left|\frac{c-w}{1-\overline{c}w}\right|&\le r\\
+    1-\left|\frac{c-w}{1-\overline{c}w}\right|^2&\ge 1-r^2\\
+    |1-\overline{c}w|^2-|c-w|^2&\ge(1-r^2)|1-\overline{c}w|^2\\
+    &\ge(1-r^2)(1-|c||w|)^2\\
+    1-\overline{c}w-\overline{w}c+|c|^2|w|^2
+    -(|c|^2-\overline{c}w-\overline{w}c+|w|^2)
+    &\ge(1-r^2)(1-2|c||w|+|c|^2|w|^2)\\
+    (1-r^2|c|^2)|w|^2-2(1-r^2)|c||w|+|c|^2-r^2&\le0\\
+    \{(1+r|c|)|w|-(|c|+r)\}\{(1-r|c|)|w|-(|c|-r)\}&\le0\\
+    \frac{|c|-r}{1-r|c|}&\le|w|\le\frac{|c|+r}{1+r|c|}
+\end{align*}
+（別証明終）
+
