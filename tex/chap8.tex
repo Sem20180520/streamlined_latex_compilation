@@ -111,42 +111,42 @@ $c=0$のとき、
 \begin{mysimplebox}{問2}
     一次函数は円（または直線）に関し偶数回反転することによってできたものと考えられることを示せ。
 \end{mysimplebox}
-\paragraph{解答}
-書籍p.155で説明されているように、点$c$を中心とする半径$r$の円に関する反転は、
-\begin{align*}
-    z'=c+\frac{r^2}{\overline{z}-\overline{c}}
-\end{align*}
-と書ける。ここで、$z,z'$は互いの反転である。
-
-この式は、
-\begin{align*}
-    z'=\frac{c\overline{z}-|c|^2+r^2}{\overline{z}-\overline{c}}
-    =\overline{\left(\frac{\overline{c}z-|c|^2+r^2}{z-c}\right)}
-\end{align*}
-と書ける。
-
-さらに、点$c'$を中心とする半径$r'$の円に関する反転を続けて行うと、
-\begin{align*}
-    z''=\overline{\left(\frac{\overline{c'}z'-|c'|^2+r'^2}{z'-c'}\right)}
-    =\frac{c'\overline{z'}-|c'|^2+r'^2}{\overline{z'}-\overline{c'}}
-\end{align*}
-である。これは、
-\begin{align*}
-    \begin{bmatrix}
-        c'&-|c'|^2+r'^2\\
-        1&-\overline{c'}
-    \end{bmatrix}
-    \begin{bmatrix}
-        \overline{c}&-|c|^2+r^2\\
-        1&-c
-    \end{bmatrix}
-\end{align*}
-に対応する一次函数である。
-実際、この行列の行列式は、
-\begin{align*}
-    (-|c'|^2+|c'|^2-r'^2)(-|c|^2+|c|^2-r^2)=r^2r'^2\neq0
-\end{align*}
-である。（終）
+%\paragraph{解答}
+%書籍p.155で説明されているように、点$c$を中心とする半径$r$の円に関する反転は、
+%\begin{align*}
+%    z'=c+\frac{r^2}{\overline{z}-\overline{c}}
+%\end{align*}
+%と書ける。ここで、$z,z'$は互いの反転である。
+%
+%この式は、
+%\begin{align*}
+%    z'=\frac{c\overline{z}-|c|^2+r^2}{\overline{z}-\overline{c}}
+%    =\overline{\left(\frac{\overline{c}z-|c|^2+r^2}{z-c}\right)}
+%\end{align*}
+%と書ける。
+%
+%さらに、点$c'$を中心とする半径$r'$の円に関する反転を続けて行うと、
+%\begin{align*}
+%    z''=\overline{\left(\frac{\overline{c'}z'-|c'|^2+r'^2}{z'-c'}\right)}
+%    =\frac{c'\overline{z'}-|c'|^2+r'^2}{\overline{z'}-\overline{c'}}
+%\end{align*}
+%である。これは、
+%\begin{align*}
+%    \begin{bmatrix}
+%        c'&-|c'|^2+r'^2\\
+%        1&-\overline{c'}
+%    \end{bmatrix}
+%    \begin{bmatrix}
+%        \overline{c}&-|c|^2+r^2\\
+%        1&-c
+%    \end{bmatrix}
+%\end{align*}
+%に対応する一次函数である。
+%実際、この行列の行列式は、
+%\begin{align*}
+%    (-|c'|^2+|c'|^2-r'^2)(-|c|^2+|c|^2-r^2)=r^2r'^2\neq0
+%\end{align*}
+%である。（終）
 
 \paragraph{解答}
 前問から、一次函数は平行移動（$z+\alpha$）、定数倍（$\alpha z$）、逆数（$\dfrac{1}{z}$）をとる、という操作で生成されることが分かった。
@@ -158,14 +158,21 @@ $c=0$のとき、
 \end{align*}
 と書ける。ここで、$z,z'$は互いの反転である。
 
-点$c$を通り、傾き$a$の直線に関する反転は
+点$b$を通り、傾き$a$の直線に関する反転は
 \begin{align*}
     \overline{\left(\frac{z-b}{a}\right)}
     &=\frac{z'-b}{a}\\
     z'&=a\overline{\left(\frac{z-b}{a}\right)}+b
 \end{align*}
 と書ける。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{chap8_fig/chap8_fig002.png}
+    \caption{直線に関する反転}
+    \label{fig:chap8_line}
+\end{figure}
 
+\newpage
 まず、平行移動（$z+\alpha$）について考える。
 原点が$\alpha$まで移動することから、原点と$\alpha$を結ぶ線分$\mathrm{O}\alpha$の垂直二等分線で反転をし、
 その後に、$\alpha$を通り線分$\mathrm{O}\alpha$に垂直な直線で反転をすればよい。
@@ -185,7 +192,14 @@ $c=0$のとき、
     z''&=z+\alpha
 \end{align*}
 が得られる。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{chap8_fig/chap8_fig003.png}
+    \caption{平行移動を実現する直線反転}
+    \label{fig:chap8_parallel}
+\end{figure}
 
+\newpage
 次に、定数倍（$\alpha z$）について考える。
 $1$が$\alpha$まで移ることから、原点と$\sqrt{\alpha}$を通る直線で反転をしてから、
 原点と$\alpha$を通る直線で反転をしてみる。
@@ -204,22 +218,37 @@ $1$が$\alpha$まで移ることから、原点と$\sqrt{\alpha}$を通る直線
 \end{align*}
 が得られる。
 
-さらに、原点を中心とする半径$r_1$、$r_2$の円に関する反転を続けて行うと
+さらに、原点を中心とする半径$1$、$\sqrt{|\alpha|}$の円に関する反転を続けて行うと
 \begin{align*}
-    z'''&=\frac{r_2^2}{\overline{\frac{r_1^2}{\overline{z''}}}}
-    =\frac{r_2^2}{r_1^2}z''
-    =\frac{r_2^2}{r_1^2}\cdot\frac{\alpha}{|\alpha|}z
+    z'''&=\frac{\sqrt{|\alpha|}^2}{\overline{\frac{1}{\overline{z''}}}}
+    =|\alpha|z''
+    =|\alpha|\frac{\alpha}{|\alpha|}z
+    =\alpha z
 \end{align*}
-が得られる。よって、$r_2^2/r_1^2=|\alpha|$となるように$r_1,r_2$をとればよい。
+が得られる。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{chap8_fig/chap8_fig004.png}
+    \caption{定数倍を実現する直線反転と円反転}
+    \label{fig:chap8_mult}
+\end{figure}
 
+\newpage
 最後に、逆数（$\dfrac{1}{z}$）について考える。
-複素共役をとってから、原点を中心とする半径1の円に関する反転を行えばよい。
+実軸に関する反転、すなわち複素共役をとってから、原点を中心とする半径1の円に関する反転を行えばよい。操作の順番は逆でもよい。
 よって、
 \begin{align*}
     z'&=\overline{z}\\
     z''&=\frac{1}{\overline{z'}}=\frac{1}{z}
 \end{align*}
-が得られる。（解答終）
+が得られる。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{chap8_fig/chap8_fig005.png}
+    \caption{逆数を実現する円反転}
+    \label{fig:chap8_inverse}
+\end{figure}
+（解答終）
 
 
 
