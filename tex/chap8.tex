@@ -187,7 +187,7 @@ $c=0$のとき、
 \begin{align*}
     \frac{z''-\alpha}{i\alpha}
     &=\overline{\left(\frac{z'-\alpha/2-\alpha/2}{i\alpha}\right)}
-    =\frac{z-\alpha/2}{i\alpha}+\frac{\alpha/2}{i\alpha}
+    =\frac{z-\alpha/2}{i\alpha}+\frac{\overline{\alpha}/2}{i\overline{\alpha}}
     =\frac{z}{i\alpha}\\
     z''&=z+\alpha
 \end{align*}
@@ -496,7 +496,10 @@ $\dfrac{1}{w-\alpha}=\dfrac{1}{z-\alpha}+h$
     w=\frac{az+b}{d}=\frac{a+b/z}{d/z}=\frac{b\zeta+a}{d\zeta}
 \end{align*}
 である。不動点は、$\dfrac{b\zeta+a}{d\zeta}=\zeta$より、
-$d\zeta^2-b\zeta-a=0$の解である。この判別式は$D=b^2+4ac=b^2+4\ge4$であるから、異なる2個の不動点を持つことが分かる。よって、不動点を$\alpha,\beta$とすると、$\dfrac{w-\alpha}{w-\beta}=k\dfrac{\zeta-\alpha}{\zeta-\beta}$の形にできる。次の行列計算をすればよい。
+$d\zeta^2-b\zeta-a=0$の解である。
+$d\neq0$であるから重複度も込めて2個の不動点を持つことが分かる。
+
+異なる2個の不動点を持つときは、上記の議論と同じように、不動点を$\alpha,\beta$とすると、$\dfrac{w-\alpha}{w-\beta}=k\dfrac{\zeta-\alpha}{\zeta-\beta}$の形にできる。次の行列計算をすればよい。
 \begin{align*}
     \begin{bmatrix}
         1&-\alpha\\1&-\beta
@@ -516,7 +519,7 @@ $d\zeta^2-b\zeta-a=0$の解である。この判別式は$D=b^2+4ac=b^2+4\ge4$�
     \end{bmatrix}
 \end{align*}
 これにより、$k=\dfrac{-2a-\beta b}{2a+\alpha b}$も分かる。
-片方だけ逆数にすると不動点が変わるため、有限の異なる2個の不動点の場合に帰着できるという話である。$w$を$w=\dfrac{1}{\xi}$とし、$z$は$z$のままとしても同様の結果が得られる。
+片方だけ逆数にすると不動点が変わるため、有限の異なる2個の不動点の場合に帰着できるという話である。$w$を$w=\dfrac{1}{\xi}$とし、$z$は$z$のままとしても同様の結果が得られる。不動点が1個のときも同様なので省略する。
 
 \newpage
 \begin{mysimplebox}{問7}
@@ -541,7 +544,7 @@ $|z|<1$において$|f(z)|<1$であるから、$g(z)$は$|z|<1$において正�
     =&(1-\overline{f(0)}f(z))(1-f(0)\overline{f(z)})-(f(0)-f(z))(\overline{f(0)}-\overline{f(z)})\\
     =&1-\overline{f(0)}f(z)-f(0)\overline{f(z)}+|f(0)|^2|f(z)|^2-(|f(0)|^2-f(z)\overline{f(0)}-f(0)\overline{f(z)}+|f(z)|^2)\\
     =&1-|f(0)|^2-|f(z)|^2+|f(0)|^2|f(z)|^2\\
-    =&(1-|f(0)|)(1-|f(z)|^2)>0
+    =&(1-|f(0)|^2)(1-|f(z)|^2)>0
 \end{align*}
 である。よって、$|g(z)|<1$である。
 
@@ -572,7 +575,7 @@ $|\zeta|=r(<1)$とすると、
     r&=\left|\frac{c-w}{\overline{c}(1/\overline{c}-w)}\right|\\
     r|\overline{c}|=r|c|&=\left|\frac{c-w}{1/\overline{c}-w}\right|
 \end{align*}
-となる。
+となる。なお、$c=0$、すなわち$f(0)=0$のときは、$f(z)$にSchwarzの定理を適用すれば求める不等式が得られる。ゆえに、以下では$c\neq0$とする。
 よって、$w$は$1/\overline{c}$と$c$からの距離の比が
 $1:r|c|$となる。すなわち、アポロニウスの円上を動く。
 ゆえに、$|\zeta|\le r$のとき、$w$はこのアポロニウスの円による閉円板上に存在する（円周を含む）。
@@ -590,12 +593,26 @@ $1:r|c|$となる。すなわち、アポロニウスの円上を動く。
 \end{align*}
 である（計算は省略する）。
 
-このアポロニウスの円上で$w=0$からの距離の最小値と最大値はそれぞれ、
+このアポロニウスの円上で$w=0$からの距離が最小となる点は、$c$と$\dfrac{1}{\overline{c}}$を結ぶ線分を$r|c|:1$の比に外分するから、
 \begin{align*}
-    &\left|\frac{|c|-r}{1-r|c|}\right|
-    \left(=\left|\frac{-r|c|\frac{1}{\overline{c}}+c}{1-r|c|}\right|\right)\\
-    &\frac{|c|+r}{1+r|c|}
-    \left(=\left|\frac{r|c|\frac{1}{\overline{c}}+c}{1+r|c|}\right|\right)
+    &\frac{-r|c|\frac{1}{\overline{c}}+c}{1-r|c|}
+\end{align*}
+である。原点と$c$と$\dfrac{1}{\overline{c}}$が半直線上にあることから、
+\begin{align*}
+    &\left|\frac{-r|c|\frac{1}{\overline{c}}+c}{1-r|c|}\right|
+    =\frac{\left||c|-r\right|}{1+r|c|}
+\end{align*}
+である。
+
+このアポロニウスの円上で$w=0$からの距離が最大となる点は、$c$と$\dfrac{1}{\overline{c}}$を結ぶ線分を$r|c|:1$の比に内分するから、
+\begin{align*}
+    \frac{r|c|\frac{1}{\overline{c}}+c}{1+r|c|}
+\end{align*}
+である。
+上記と同様に、
+\begin{align*}
+    \left|\frac{r|c|\frac{1}{\overline{c}}+c}{1+r|c|}\right|
+    =\frac{|c|+r}{1+r|c|} 
 \end{align*}
 である。
 
@@ -605,7 +622,8 @@ $1:r|c|$となる。すなわち、アポロニウスの円上を動く。
     \le|w|
     \le\frac{|c|+r}{1+r|c|}
 \end{align*}
-である。もとの問題の記号で表すと、
+である。\footnote{この不等式の左側は$|c|-r<0$のときも成り立つので、絶対値を外した。}
+もとの問題の記号で表すと、
 \begin{align*}
     \frac{|f(0)|-r}{1-r|f(0)|}
     \le|f(z)|
@@ -639,3 +657,87 @@ $1:r|c|$となる。すなわち、アポロニウスの円上を動く。
 \end{align*}
 （別証明終）
 
+\newpage
+\begin{mysimplebox}{問8}
+    $|z_1|<1$,$|z_2|<1$のとき
+    \begin{align*}
+        D(z_1,z_2)=\log\frac{1+r}{1-r}\quad\left(r=\left|\frac{z_1-z_2}{1-\overline{z_1}z_2}\right|\right)
+    \end{align*}
+    とおくと、
+    \begin{enumerate}
+        \item $D(z_1,z_2)\ge0.$ $D(z_1,z_2)=0$であるのは$z_1=z_2$のときに限る。
+        \item $D(z_1,z_2)=D(z_2,z_1).$
+        \item $D(z_1.z_3)\le D(z_1,z_2)+D(z_2,z_3).$
+    \end{enumerate}
+    $D(z_z,z_2)$を$z_1,z_2$の非ユークリッド距離という。
+\end{mysimplebox}
+\paragraph{証明}
+1.について。
+$|c|<1$に対して、
+\begin{align*}
+    w&=f(z)=\frac{z-c}{\overline{c}z-1}
+\end{align*}
+とすると、$|z|=1$のとき$1/z=\overline{z}$であるから
+\begin{align*}
+    |w|&=\left|\frac{z-c}{\overline{c}z-1}\right|
+    =\frac{|z-c|}{|\overline{c}z-1|}
+    =\frac{|z-c|}{|z||\overline{c}-1/z|}
+    =\frac{|z-c|}{|z||\overline{c}-\overline{z}|}
+    =\frac{|z-c|}{|z||z-c|}=1
+\end{align*}
+である。一次変換には円円対応があるから、$w=f(z)$は単位円を単位円に写像する。p.16の問3も参照。
+
+ゆえに、$r=\left|\frac{z_1-z_2}{1-\overline{z_1}z_2}\right|$とすると$|z_1|<1, |z_2|<1$に対して$0\le r<1$である。
+
+\begin{align*}
+    \frac{1+r}{1-r}
+    =\frac{2}{1-r}-1
+\end{align*}
+は、$0\le r<1$において単調増加であり、1から$\infty$まで動く。
+
+したがって、
+\begin{align*}
+    D(z_1,z_2)=\log\frac{1+r}{1-r}\ge0
+\end{align*}
+である。
+等号が成り立つのは、$r=0$のとき、すなわち$z_1=z_2$のときである。
+
+2.について。
+\begin{align*}
+    \left|\frac{z_1-z_2}{1-\overline{z_1}z_2}\right|
+    =\left|\frac{z_2-z_1}{1-\overline{z_2}z_1}\right|
+\end{align*}
+であるから、$D(z_1,z_2)=D(z_2,z_1)$である。
+
+3.について。杉浦『解析入門II』のp.364の問7に同じ問題がある。その巻末に解答が書かれているが、詳細は解読中。
+
+\newpage
+\begin{mysimplebox}{問9}
+    $f(z)$が$|z|<1$で正則で$|f(z)|<1$ならば
+    \begin{align*}
+        D(f(z_1),f(z_2))\le D(z_1,z_2)
+    \end{align*}
+    が成り立つ。等号が成り立つのは、$f(z)$が$|z|<1$をそれ自身に写像する一次函数の場合に限る。
+\end{mysimplebox}
+\paragraph{証明}
+問題の条件下で、次の定理が成り立つ。
+
+\paragraph{Schwarz--Pickの定理}
+$|z_1|<1, |z_2|<1$に対して
+\begin{align*}
+    \left|\frac{f(z_1)-f(z_2)}{1-\overline{f(z_1)}f(z_2)}\right|
+    \le\left|\frac{z_1-z_2}{1-\overline{z_1}z_2}\right|
+\end{align*}
+$z_1=z_2$以外で等号が成り立つのは、$\theta\in\R$（定数）に対して
+\begin{align*}
+    \frac{f(z_1)-f(z_2)}{1-\overline{f(z_1)}f(z_2)}=e^{i\theta}\frac{z_1-z_2}{1-\overline{z_1}z_2}
+\end{align*}
+のときに限る。
+
+この定理を認めれば、$\log\frac{1+r}{1-r}$は$0\le r<1$において単調増加であるから、
+$D(f(z_1),f(z_2))\le D(z_1,z_2)$が成り立つ。
+
+また、$z_1=z_2$以外で等号が成り立つときを考える。
+$z_2$を固定し$z_1$を変数と見ると、$e^{i\theta}\frac{z_1-z_2}{1-\overline{z_1}z_2}$は単位円を単位円に写像する。よって、$f(z)$は単位円を単位円に写像する。
+
+したがって、Schwarz--Pickの定理を証明すればよい。それは現在、検討中である。
