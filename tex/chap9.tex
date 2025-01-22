@@ -3,8 +3,143 @@
 \begin{mysimplebox}{問1}
     領域$|z|>0$、$|\arg z|<\pi$で
     \begin{align*}
-        \int_{1}^{z}=\log|z|+i\arg z
+        \int_{1}^{z}\frac{d\zeta}{\zeta}=\log|z|+i\arg z
     \end{align*}
     である。
 \end{mysimplebox}
 \paragraph{証明}
+$\frac{1}{\zeta}$は$\zeta=0$に極を有するが、問題の領域においては積分路は原点の周りを一周することはない。
+よって、この領域において$\frac{1}{\zeta}$は正則であるからCauchyの積分定理より、領域内で積分路を自由にとってよく、
+\begin{align*}
+    \int_{1}^{z}\frac{d\zeta}{\zeta}
+    =\left[\log\zeta\right]_1^{z}
+    =\log z
+    =\log |z|e^{i\arg z}
+    =\log |z|+i\arg z
+\end{align*}
+が得られる。
+
+または、実軸上を1から$|z|$まで動き、原点を中心とする半径$|z|$の円周上を偏角を0から$\arg z$まで動く積分路で考えると、
+\begin{align*}
+    \int_{1}^{z}\frac{d\zeta}{\zeta}
+    =\int_{1}^{|z|}\frac{dx}{x}
+    +\int_{0}^{\arg z}\frac{ire^{i\theta}d\theta}{re^{i\theta}}
+    =\left[\log x\right]_1^{|z|}
+    +i\int_{0}^{\arg z}d\theta
+    =\log|z|+i\arg z
+\end{align*}
+（終）
+
+\newpage
+\begin{mysimplebox}{問2}
+    \begin{align*}
+        \binom{\alpha}{0}=1,\quad
+        \binom{\alpha}{n}
+        =\frac{\alpha(\alpha-1)(\alpha-2)\cdots(\alpha-n+1)}{n!}
+    \end{align*}
+    とおくと、
+    \begin{align*}
+        f(z)=\sum_{n=0}^{\infty}\binom{\alpha}{n}z^n
+    \end{align*}
+    は$|z|<1$で正則で、
+    \begin{align*}
+        f(z)=\exp[\alpha(\log|1+z|+i\arg(1+z))]
+    \end{align*}
+\end{mysimplebox}
+\paragraph{証明}
+\begin{align*}
+    \frac{\binom{\alpha}{n}}{\binom{\alpha}{n+1}}
+    &=\frac{\alpha(\alpha-1)(\alpha-2)\cdots(\alpha-n+1)}{n!}\cdot
+    \frac{(n+1)!}{\alpha(\alpha-1)(\alpha-2)\cdots(\alpha-n)}\\
+    &=\frac{n+1}{\alpha-n}
+    \longrightarrow -1\quad(n\longrightarrow\infty)
+\end{align*}
+よって、$f(z)=\sum_{n=0}^{\infty}\binom{\alpha}{n}z^n$の収束半径は1である。よって、$|z|<1$で$f(z)$は正則である（p.47参照）。
+
+ここで、$g(z):=(1+z)^\alpha$は次にように定義されているのであった。
+\begin{align*}
+    g(z)
+    &=(1+z)^\alpha\\
+    &=\exp(\alpha\log(1+z))\\
+    &=\exp(\alpha(\log|1+z|+i\arg(1+z)))
+\end{align*}
+
+% $f(0)=1$であるから、
+$\alpha$が整数でないとき、このままでは$g(z)$は多価性を有しているが、今は$\log(1+z)$の主値をとることとする。$g(z)$のテイラー展開を考えると、
+\begin{align*}
+    g^{(k)}(z)
+    &=\alpha(\alpha-1)\cdots(\alpha-k+1)(1+z)^{\alpha-k}\\
+    \frac{g^{(k)}(0)}{k!}&=\binom{\alpha}{k}
+\end{align*}
+また、$f(0)=1$であるから、
+$g(z)=f(z)$である。
+
+もし$\log(1+z)$の主値をとっていなければ、
+$g(0)\neq1$となる得るため、一般には$g(z)\neq f(z)$である。
+
+（終）
+
+\newpage
+\begin{mysimplebox}{問3}
+$f(z)$が$|z|<1$で正則単葉であるとき、円$|z|=r$（$0<r<1$）の写像$w=f(z)$による像曲線の長さ
+\begin{align*}
+    L(r)=\int_{0}^{2\pi}|f'(re^{\theta i})|rd\theta
+\end{align*}
+は$0<r<1$において変数$r$の増加関数である。
+\end{mysimplebox}
+\paragraph{証明}
+問題の式が像曲線の長さを表すことは本のp.93参照。
+
+$f(z)$は$|z|<1$で正則単葉であるため、$|c|<1$に対して$f'(c)\neq0$である。なぜなら、もし$f'(c)=0$とすると、正整数$k$に対して
+\begin{align*}
+    f'(z)=a_k(z-c)^k+a_{k+1}(z-c)^{k+1}+\cdots
+\end{align*}
+と書ける。ただし、$a_k\neq0$。よって、
+\begin{align*}
+    f(z)=a+\frac{a_k}{k+1}(z-c)^{k+1}+\frac{a_{k+1}}{k+2}(z-c)^{k+2}+\cdots
+\end{align*}
+となり、$z=a$において$k+1$葉である。これは単葉であることに反する。ゆえに、$|c|<1$に対して$f'(c)\neq0$である。
+
+このとき、本のp.161より、$f'(z)=[g(z)]^2$を満足する正則函数$g(z)$が存在する。$g(z)=\sum_{n=0}^{\infty}c_nz^n$とすると、p.98と同じ計算により
+\begin{align*}
+    L(r)
+    &=\int_{0}^{2\pi}|g(re^{\theta i})|^2rd\theta\\
+    &=\int_{0}^{2\pi}g(re^{\theta i})\overline{g(re^{\theta i})}rd\theta\\
+    &=r\int_{0}^{2\pi}\sum_{n=0}^{\infty}c_nr^ne^{n\theta i}\sum_{m=0}^{\infty}\overline{c_m}r^me^{-m\theta i}d\theta\\
+    &=r\sum_{n=0}^{\infty}|c_n|^2r^{2n}2\pi\\
+    &=2\pi\sum_{n=0}^{\infty}|c_n|^2r^{2n+1}
+\end{align*}
+これは$0<r<1$において$r$の増加関数である。（終）
+
+\newpage
+\begin{mysimplebox}{問4}
+    $f(z)$が領域$D$で正則、$D$の1点$c$で十分小さい正数$r$に対し
+    \begin{align*}
+        |f(c)|=\frac{1}{2\pi}\int_{0}^{2\pi}|f(c+re^{\theta i})|d\theta
+    \end{align*}
+    ならば、$D$で$f(z)\equiv f(c)$である。
+\end{mysimplebox}
+\paragraph{証明}
+$f(c)=0$ならば
+\begin{align*}
+    |f(c)|=0=\frac{1}{2\pi}\int_{0}^{2\pi}|f(c+re^{\theta i})|d\theta
+\end{align*}
+よって、$0\le\theta\le2\pi$において$|f(c+re^{\theta i})|=0$である。よって$f(z)\equiv0$である（p.88参照）。
+
+$f(c)\neq0$ならば、$|z|$が十分小さいとき、
+$f(z+c)=[g(z)]^2$を満足する正則函数$g(z)$が存在する。前問と同様の計算により、
+\begin{align*}
+    |f(c)|
+    &=\frac{1}{2\pi}\int_{0}^{2\pi}|g(re^{\theta i})|^2d\theta\\
+    &=\frac{1}{2\pi}\int_{0}^{2\pi}g(re^{\theta i})\overline{g(re^{\theta i})}d\theta\\
+    &=\frac{1}{2\pi}\int_{0}^{2\pi}\sum_{n=0}^{\infty}c_nr^ne^{n\theta i}\sum_{m=0}^{\infty}\overline{c_m}r^me^{-m\theta i}d\theta\\
+    &=\frac{1}{2\pi}\sum_{n=0}^{\infty}|c_n|^2r^{2n}2\pi\\
+    &=\sum_{n=0}^{\infty}|c_n|^2r^{2n}
+\end{align*}
+$|f(c)|$は$r$に依存しないから、$n\ge1$に対して$c_n=0$である。
+
+よって、
+\begin{align*}
+    f(z)\equiv c_0^2=f(c)
+\end{align*}
+（終）
