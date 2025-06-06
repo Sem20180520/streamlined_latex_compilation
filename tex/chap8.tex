@@ -709,7 +709,146 @@ $|c|<1$に対して、
 \end{align*}
 であるから、$D(z_1,z_2)=D(z_2,z_1)$である。
 
-3.について。杉浦『解析入門II』のp.364の問7に同じ問題がある。その巻末に解答が書かれているが、詳細は解読中。
+\newpage
+3.について。
+
+\paragraph{$D(z,w)$が非調和比を使って定義できることを見る。}
+
+単位円内の$z,w$について、この2点を通り単位円と直交する円がただ一つ存在する。
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{chap8_fig/chap8_fig006.jpg}
+    \caption{非調和比による距離の定義}
+    \label{fig:chap8_dist}
+\end{figure}
+
+図$\ref{fig:chap8_dist}$のように、その円と単位円の交点を$a,b$とする。
+
+p.152で定義した非調和比を改めて、
+\begin{align*}
+    [a,b,w,z]=\frac{a-w}{b-w}\Bigg/\frac{a-z}{b-z}
+\end{align*}
+と定義する。円周角の性質から$[a,b,w,z]\in\R_{\ge0}$である。
+
+\begin{align*}
+    D(z,w)=\left|\log[a,b,w,z]\right|
+\end{align*}
+と定義する。
+
+ある$\theta\in\R$に対して、
+\begin{align*}
+    f(z)=e^{i\theta}\frac{z-w}{1-\overline{w}z}
+\end{align*}
+と定めると、$f(w)=0$であるから$w$は原点に移される。
+原点と$f(z)$を通る直線は単位円と直交する（リーマン球面では直線は無限遠点を通る円と考える。p.153参照。）
+
+よって、$\theta$を適当に選べば、$f(z)$が実軸の正の部分にあるようにできる。
+$f(z)=r$（$r<1$）とすると、一次函数$f$によって$[a,b,w,z]$は$[1,-1,0,r]$となるが、非調和比は一次変換によって不変であることから（p.152参照）、
+\begin{align*}
+    [a,b,w,z]=[1,-1,0,r]=\frac{1-0}{-1-0}\Bigg/\frac{1-r}{-1-r}=\frac{1+r}{1-r}
+\end{align*}
+である。
+したがって、
+\begin{align*}
+    D(z,w)=\log\frac{1+r}{1-r}
+\end{align*}
+が成り立つ。
+
+% さらに、一次函数によって単位円内$|z|<1$を上半平面$\{w\in\C\mid\Re w>0\}$に移すことができる（問3より）。よって、上半平面において三角不等式を示せばよい。
+
+\paragraph{三角不等式を示す}
+単位円内の$z_1,z_2,z_3$に対して、改めて
+\begin{align*}
+    f(z)=e^{i\theta}\frac{z-z_1}{1-\overline{z_1}z}
+\end{align*}
+とすると$f(z_1)=0$である。
+さらに、$\theta$を適当に選ぶことで$f(z_3)$が実軸の正の部分にあるようにできる。
+
+$f$は一次変換であるから非調和比を保ち、$D(f(z_i),f(z_j))=D(z_i,z_j)$
+であるから、最初から$z_1=0$、$z_3=t$（$0\le t<1$）としてよい。
+
+$z_2=w$とすると、示すべき不等式は
+\begin{align*}
+    D(0,t)\le D(0,w)+D(w,t)
+\end{align*}
+である。
+
+$w$から実軸に垂線を下ろすと交点は$\Re w$である。
+$s:=\Re w$とする。
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=7cm]{chap8_fig/chap8_fig007.jpg}
+    \caption{三角不等式の証明}
+    \label{fig:chap8_tri}
+\end{figure}
+
+まず、
+\begin{align*}
+    D(0,t)\le D(0,s)+D(s,t)
+\end{align*}
+を示す。
+
+原点と$s$と$t$は実軸上にあることから
+\begin{align*}
+    D(0,t)&=|\log[1,-1,0,t]|
+    =\left|\log\frac{1-0}{-1-0}\Bigg/\frac{1-t}{-1-t}\right|
+    =\left|\log\frac{1+t}{1-t}\right|\\
+    &=\log\frac{1+t}{1-t}\\
+    D(0,s)&=\left|\log\frac{1+s}{1-s}\right|=\log\frac{1+s}{1-s}\\
+    D(s,t)&=|\log[1,-1,s,t]|
+    =\left|\log\frac{1-s}{-1-s}\Bigg/\frac{1-t}{-1-t}\right|\\
+    &=\left|\log\frac{1+s}{1-s}-\log\frac{1+t}{1-t}\right|
+    \ge\left|D(0,s)-D(0,t)\right|
+\end{align*}
+よって、$D(0,t)\le D(0,s)+D(s,t)$が成り立つ。
+
+次に、
+\begin{align*}
+    &D(0,s)\le D(0,w)\\
+    &D(s,t)\le D(w,t)
+\end{align*}
+をそれぞれ示せば証明が完了する。
+
+$D(0,s)\le D(0,w)$について。
+
+一次変換である回転によって、$w$は実軸の正の部分に移すことができるから
+\begin{align*}
+    D(0,w)=\left|\log\frac{1+|w|}{1-|w|}\right|
+\end{align*}
+$|s|\le|w|$であり、$\log\frac{1+x}{1-x}$が$0\le x<1$において単調増加であることから、$D(0,s)\le D(0,w)$がわかる。
+
+
+$D(s,t)\le D(w,t)$について。
+\begin{align*}
+    g(z)=\frac{z-t}{1-tz}
+\end{align*}
+という一次変換を定めると、$g(t)=0$である。
+また、$g(s)\in\R$である。
+一次変換が等角写像であることから$\Re g(w)=g(s)$である。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{chap8_fig/chap8_fig008.jpg}
+    \caption{三角不等式の証明2}
+    \label{fig:chap8_tri2}
+\end{figure}
+
+よって、$|g(s)|\le|g(w)|$である。ゆえに上記の議論と同様にして、
+\begin{align*}
+    D(s,t)&=D(g(s),g(t))=D(g(s),0)=\left|\log\frac{1+|g(s)|}{1-|g(s)|}\right|\\
+    D(w,t)&=D(g(w),g(t))=D(g(w),0)=\left|\log\frac{1+|g(w)|}{1-|g(w)|}\right|
+\end{align*}
+から$D(s,t)\le D(w,t)$がわかる。（証明終）
+\paragraph{訂正}
+$|g(s)|\le|g(w)|$は,
+$w=s+iy$として、次の2式から分かる。
+\begin{align*}
+    |g(s)|
+    &=\left|\frac{s-t}{1-st}\right|\\
+    |g(w)|
+    &=\left|\frac{s+iy-t}{1-(s+iy)t}\right|
+\end{align*}
 
 \newpage
 \begin{mysimplebox}{問9}
@@ -720,24 +859,88 @@ $|c|<1$に対して、
     が成り立つ。等号が成り立つのは、$f(z)$が$|z|<1$をそれ自身に写像する一次函数の場合に限る。
 \end{mysimplebox}
 \paragraph{証明}
-問題の条件下で、次の定理が成り立つ。
+% 問題の条件下で、次の定理が成り立つ。
 
-\paragraph{Schwarz--Pickの定理}
-$|z_1|<1, |z_2|<1$に対して
+% \paragraph{Schwarz--Pickの定理}
+% $|z_1|<1, |z_2|<1$に対して
+% \begin{align*}
+%     \left|\frac{f(z_1)-f(z_2)}{1-\overline{f(z_1)}f(z_2)}\right|
+%     \le\left|\frac{z_1-z_2}{1-\overline{z_1}z_2}\right|
+% \end{align*}
+% $z_1=z_2$以外で等号が成り立つのは、$\theta\in\R$（定数）に対して
+% \begin{align*}
+%     \frac{f(z_1)-f(z_2)}{1-\overline{f(z_1)}f(z_2)}=e^{i\theta}\frac{z_1-z_2}{1-\overline{z_1}z_2}
+% \end{align*}
+% のときに限る。
+
+% この定理を認めれば、$\log\frac{1+r}{1-r}$は$0\le r<1$において単調増加であるから、
+% $D(f(z_1),f(z_2))\le D(z_1,z_2)$が成り立つ。
+
+% また、$z_1=z_2$以外で等号が成り立つときを考える。
+% $z_2$を固定し$z_1$を変数と見ると、$e^{i\theta}\frac{z_1-z_2}{1-\overline{z_1}z_2}$は単位円を単位円に写像する。よって、$f(z)$は単位円を単位円に写像する。
+
+% したがって、Schwarz--Pickの定理を証明すればよい。それは現在、検討中である。
+
+$|\alpha|<1$を満たす$\alpha$をパラメータとする、$z\in\C$についての関数を
 \begin{align*}
-    \left|\frac{f(z_1)-f(z_2)}{1-\overline{f(z_1)}f(z_2)}\right|
-    \le\left|\frac{z_1-z_2}{1-\overline{z_1}z_2}\right|
+    \psi_\alpha(z)=\frac{z-\alpha}{1-\overline{\alpha}z}
 \end{align*}
-$z_1=z_2$以外で等号が成り立つのは、$\theta\in\R$（定数）に対して
+と定める。これは
 \begin{align*}
-    \frac{f(z_1)-f(z_2)}{1-\overline{f(z_1)}f(z_2)}=e^{i\theta}\frac{z_1-z_2}{1-\overline{z_1}z_2}
+    \begin{bmatrix}
+        1&-\alpha\\
+        -\overline{\alpha}&1
+    \end{bmatrix}
 \end{align*}
-のときに限る。
+に対応する一次函数である。この一次函数が$|z|<1$を$|\sigma_\alpha(z)|<1$に移すことはp.156で示した。
 
-この定理を認めれば、$\log\frac{1+r}{1-r}$は$0\le r<1$において単調増加であるから、
-$D(f(z_1),f(z_2))\le D(z_1,z_2)$が成り立つ。
+ここで、
+% \begin{align*}
+%     \psi_\alpha(\alpha)=0
+% \end{align*}
+% であるから
+\begin{align*}
+    g=\psi_{f(\alpha)}\circ f\circ\psi_\alpha^{-1}
+\end{align*}
+とすると、$g(z)$は$|z|<1$で正則であり、$|g(z)|<1$、$\psi_\alpha(\alpha)=0$であるから、
+\begin{align*}
+    g(0)&=\psi_{f(\alpha)}\circ f\circ\psi_\alpha^{-1}(0)\\
+    &=\psi_{f(\alpha)}(f(\alpha))=0
+\end{align*}
+である。
 
-また、$z_1=z_2$以外で等号が成り立つときを考える。
-$z_2$を固定し$z_1$を変数と見ると、$e^{i\theta}\frac{z_1-z_2}{1-\overline{z_1}z_2}$は単位円を単位円に写像する。よって、$f(z)$は単位円を単位円に写像する。
+よって、Schwarzの定理（p.102）から、$|g(z)|\le|z|$が成り立つ。
 
-したがって、Schwarz--Pickの定理を証明すればよい。それは現在、検討中である。
+ゆえに、$|z|<1$に対して、
+\begin{align*}
+    |g(\psi_\alpha(z))|&\le|\psi_\alpha(z)|\\
+    |\psi_{f(\alpha)}(f(z))|&\le|\psi_\alpha(z)|\\
+    \left|\frac{f(z)-f(\alpha)}{1-\overline{f(\alpha)}f(z)}\right|&\le\left|\frac{z-\alpha}{1-\overline{\alpha}z}\right|
+\end{align*}
+が成り立つ。
+したがって、$\log\frac{1+r}{1-r}$が$0\le r<1$において単調増加であることから、$D(f(z),f(\alpha))\le D(z,\alpha)$が成り立つ。
+
+等号が成り立つのは、p.102より
+\begin{align*}
+    g(z)=e^{i\theta}z
+\end{align*}
+のときである。このとき、
+\begin{align*}
+    f(z)&=\psi_{f(\alpha)}^{-1}\circ g\circ\psi_\alpha(z)
+\end{align*}
+であり、これは
+\begin{align*}
+    \begin{bmatrix}
+        1&f(\alpha)\\
+        \overline{f(\alpha)}&1
+    \end{bmatrix}
+    \begin{bmatrix}
+        e^{i\theta}&0\\
+        0&1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1&-\alpha\\
+        -\overline{\alpha}&1
+    \end{bmatrix}
+\end{align*}
+に対応する一次函数である。（証明終）
