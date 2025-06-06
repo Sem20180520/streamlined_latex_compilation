@@ -1,0 +1,172 @@
+\chapter{調和函数}%第11章
+
+\begin{mysimplebox}{問1}
+    $f(z)$が領域$D$で正則で$f(z)\neq0$ならば、$\log|f(z)|$が$D$で調和函数であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+$f(z)=P(x,y)+iQ(x,y)$で実部と虚部を表すとする。
+正則性よりコーシー・リーマンの関係式$P_x=Q_y,P_y=-Q_x$が成り立つ。
+\begin{align*}
+    \frac{\partial}{\partial x}\log|f(z)|
+    &=\frac{\partial}{\partial x}\frac{1}{2}\log(P^2+Q^2)
+    =\frac{PP_x+QQ_x}{P^2+Q^2}\\
+    \frac{\partial^2}{\partial x^2}\log|f(z)|
+    &=\frac{1}{(P^2+Q^2)^2}\{(P_x^2+PP_{xx}+Q_x^2+QQ_{xx})(P^2+Q^2)-2(PP_x+QQ_x)^2\}
+\end{align*}
+$y$についても偏微分の計算をし、コーシー・リーマンの関係式を利用すると、次のようになる（途中計算は省略）。
+\begin{align*}
+    &\Delta\log|f(z)|\\
+    &=\frac{1}{(P^2+Q^2)^2}\{2(P_x^2+P_y^2)(P^2+Q^2)-2(PP_x-QP_y)^2-2(PP_y+QP_x)^2\}\\
+    &=\frac{2}{(P^2+Q^2)^2}\{|(P_x,P_y)|^2|(P,Q)|^2-|(P_x,P_y)\cdot(P,-Q)|^2-|(P_x,P_y)\cdot(Q,P)|^2\}\\
+    &=\frac{2}{(P^2+Q^2)^2}|(P_x,P_y)|^2|(P,Q)|^2(1-\sin^2\theta-\cos^2\theta)=0
+\end{align*}
+よって、$\log|f(z)|$が$D$で調和函数であることが示された。
+（証明終）
+
+\newpage
+\begin{mysimplebox}{問2}
+    $x(x^2-3y^2)$を実数部とする整函数を求めよ。
+\end{mysimplebox}
+\paragraph{解答}
+$u(x,y)=x(x^2-3y^2)$とする。
+
+$u(x,y)=x^3-3xy^2$
+
+$\Delta u(x,y)=6x-6x=0$であるから、$u(x,y)$は調和函数である。
+
+$\phi(z)=u_x-iu_y$とすると
+\begin{align*}
+    \phi(z)&=3x^2-3y^2-i(-6xy)=3(x^2+2ixy-y^2)\\
+    &=3(x+iy)^2=3z^2
+\end{align*}
+よって、次のような積分を計算する。ただし、定数分の違いは無視するため、定数部分の記載は省略する。
+\begin{align*}
+    \int^{z}\phi(\zeta)d\zeta
+    &=z^3=(x+iy)^3=x^3+3x^2iy-3xy^2-iy^3\\
+    &=x^3-3xy^2+i(3x^2y-y^3)
+\end{align*}
+（解答終）
+
+\paragraph{別解}
+\begin{align*}
+    U=\int u(x,y)dx
+    =\int (x^3-3xy^2)dx
+    =\frac{x^4}{4}-\frac{3}{2}x^2y^2+g(y)
+\end{align*}
+$g(y)$は積分定数。
+$U_x=u(x,y)$、
+$U_y=-3x^2y+g'(y)$。
+
+$h(z)=U_x-iU_y$が全平面で正則になるように$g(y)$を定めればよい。
+そのために、コーシー・リーマンの関係式が成り立つようにする。
+
+$U_{xy}=-(-U_{yx})=U_{yx}$は成り立っているから、
+$U_{xx}=-U_{yy}$（すなわち$\Delta U=0$）が成り立つようにする。
+\begin{align*}
+    U_{xx}&=3x^2-3y^2\\
+    -U_{yy}&=-(-3x^2+g''(y))=3x^2-g''(y)\\
+    g''(y)&=3y^2\\
+    g'(y)&=y^3+C_1\\
+    g(y)&=\frac{y^4}{4}+C_1y+C_2
+\end{align*}
+よって、$U_y=-3x^2y+g'(y)=-3x^2y+y^3+C_1$。
+\begin{align*}
+    h(z)&=U_x-iU_y
+    =x^3-3xy^2-i(-3x^2y+y^3+C_1)\\
+    &=x^3+3x^2iy-3xy^2-iy^3+iC_1=(x+iy)^3+iC_1\\
+    &=z^3+iC_1
+\end{align*}
+（別解終）
+
+\newpage
+\begin{mysimplebox}{問3}
+    (67.4)を証明せよ。
+\end{mysimplebox}
+\paragraph{証明}
+$u(z)$は$|z|<R$で調和函数であるとする。$z=re^{i\theta}$、$0\le r<R'<R$とすると、
+\begin{align*}
+    u(re^{i\theta})
+    =\frac{1}{2\pi}\int_{0}^{2\pi}u(R'e^{i\phi})\frac{R'^2-r^2}{R'^2+r^2-2R'r\cos(\theta-\phi)}d\phi
+\end{align*}
+が成り立っている。
+
+$u(z)$が$|z|\le R$で連続な場合に、次が成り立つことを示す。
+\begin{align*}
+    u(re^{i\theta})
+    =\frac{1}{2\pi}\int_{0}^{2\pi}u(Re^{i\phi})\frac{R^2-r^2}{R^2+r^2-2Rr\cos(\theta-\phi)}d\phi
+\end{align*}
+
+(31.1)を示したのと同様に、$R'=\frac{n-1}{n}R$とし、$n\longrightarrow\infty$の極限で、第1式の被積分函数が第2式の被積分函数に$z=|R|$上で一様収束することを見ればよい。
+
+これらの被積分函数は、有界閉領域$\epsilon\le R'\le|R|,0\le\phi\le2\pi$で連続であるから、一様連続である（解析概論p.29の定理14）。よって、$R'\longrightarrow R$の極限をとっても積分は成り立つ。（証明終）
+
+\newpage
+\begin{mysimplebox}{問4}
+    $u(z)$は単連結な領域$D$で連続な偏導関数を有する実函数、$C:z=z(t)$（$a\le t\le b$）は$D$内の正則なJordan閉曲線であるとき、$C$の点$z(t)$において
+    \begin{align*}
+        \frac{\partial u}{\partial n}
+        =\frac{\partial u}{\partial x}\cos\alpha
+        +\frac{\partial u}{\partial y}\cos\alpha
+        \quad(\alpha=\arg z'(t)-\pi/2)
+    \end{align*}
+    を$u(z)$の外法線方向の微分係数という。特に、$u(z)$が$D$で調和函数であるときは$\int_C\frac{\partial u}{\partial n}ds=0$である。
+\end{mysimplebox}
+\paragraph{証明}
+単連結領域$D$の境界である$C$の外向きの単位法線を$\bm{n}$とすると
+\begin{align*}
+    \bm{n}=\begin{bmatrix}
+        \cos\alpha\\\sin\alpha
+    \end{bmatrix}
+\end{align*}
+よって、
+\begin{align*}
+    \int_C\frac{\partial u}{\partial n}ds
+    &=\int_C(\frac{\partial u}{\partial x}\cos\alpha
+    +\frac{\partial u}{\partial y}\cos\alpha)ds\\
+    &=\int_C
+    \begin{bmatrix}
+        u_x\\u_y
+    \end{bmatrix}
+    \cdot\begin{bmatrix}
+        \cos\alpha\\\sin\alpha
+    \end{bmatrix}ds\\
+    &=\int_C\nabla u\cdot\bm{u}ds=\int_D\Delta udxdy=0
+\end{align*}
+ここで、ガウスの定理（解析概論p.411の(G)式、またはp.413の一番下の式）を用いた。（証明終）
+
+
+\newpage
+\begin{mysimplebox}{問5}
+    領域$D$で$u(z)$は劣調和函数であるとする。$h(z)$が$D$内の閉領域$\overline{\delta}$で連続な函数で、領域$\delta$では調和函数、$\delta$の境界$\partial\delta$では$h(z)\ge u(z)$ならば、$\delta$の各点で$h(z)\ge u(z)$であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=11cm]{chap11_fig/prob11-5.jpg}
+    \caption{問5と6：入力中}
+    \label{fig:chap11_5}
+\end{figure}
+
+\newpage
+\begin{mysimplebox}{問6}
+    $u(z)$が領域$D$で連続であるとき、$D$内のどの閉領域$\delta$をとっても、また、前提の条件を満たすようなどの函数$h(z)$をとっても、$\delta$で$h(z)\ge u(z)$ならば、$u(z)$は$D$で劣調和函数であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+
+\newpage
+\begin{mysimplebox}{問7}
+    領域$D$で$u(z)$が連続な二次偏導関数を有し、$D$の各点$z$で$\Delta u(z)\ge0$ならば、$u(z)$は$D$で劣調和函数であることを示せ。
+\end{mysimplebox}
+\paragraph{証明}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=11cm]{chap11_fig/prob11-7-1.jpg}
+    \caption{問7-1:入力中}
+    \label{fig:chap11_7-1}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=11cm]{chap11_fig/prob11-7-2.jpg}
+    \caption{問7-2:入力中}
+    \label{fig:chap11_7-2}
+\end{figure}
