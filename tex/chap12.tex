@@ -1,0 +1,174 @@
+\chapter{有理型函数の展開}%第12章
+
+\begin{mysimplebox}{問1}
+    $z=n$（$n=1,2,\dots$）において主要部が
+    \begin{align*}
+        \sum_{\nu=1}^{\infty}\frac{1}{\nu!(z-n)^\nu}
+    \end{align*}
+    であるような特異点をもち、その他の点では正則であるような函数を求めよ。
+\end{mysimplebox}
+\paragraph{解答}
+\begin{align*}
+    \sum_{\nu=1}^{\infty}\frac{1}{\nu!(z-n)^\nu}=e^{\frac{1}{z-n}}-1
+\end{align*}
+であるから、求める函数は
+\begin{align*}
+    \sum_{n=1}^{\infty}(e^{\frac{1}{z-n}}-1)
+\end{align*}
+である。これが収束することを見ておく。
+
+\begin{align*}
+    f(w)=\sum_{n=1}^{\infty}(e^{\frac{1}{z-n}}-1)w^n
+\end{align*}
+とする。
+\begin{align*}
+    \frac{e^{\frac{1}{z-n}}-1}{e^{\frac{1}{z-(n+1)}}-1}
+    =
+\end{align*}
+
+\begin{enumerate}
+    \item 本のp.210の(74.1)式の具体例に対して、Mittag--Lefflerの定理で存在が保証された函数$\phi(z)$を求める問題。
+    \item $\phi(z)$は$\C$から$\{1,2,\dots\}$を除いた領域で正則。
+    \item p.213の(74.5)式の$g(z)\equiv0$、$g_n(z)\equiv0$の場合か？
+    \item この問題では何をすればいいのかが分からない。
+\end{enumerate}
+
+\newpage
+\begin{mysimplebox}{問2}
+    \begin{align*}
+        \frac{\pi}{\sin\pi z}=\frac1z
+        +\sum_{n=1}^{\infty}(-1)^n\left(\frac{1}{z-n}+\frac1n\right)
+        +\sum_{n=1}^{\infty}(-1)^n\left(\frac{1}{z+n}-\frac1n\right)
+    \end{align*}
+\end{mysimplebox}
+\paragraph{証明}
+$\dfrac{\pi}{\sin\pi z}$は$z=n\in\Z$において一位の極をもつ。
+\begin{align*}
+    (z-n)\frac{\pi}{\sin\pi z}
+    &=t\frac{\pi}{\sin\pi(t+n)}
+    =\frac{\pi t}{\sin\pi t\cos\pi n+\cos\pi t\sin\pi n}\\
+    &=(-1)^n \frac{\pi t}{\sin\pi t}
+    \longrightarrow (-1)^n
+\end{align*} 
+よって、$z=n\in\Z$における留数は$(-1)^n$である。
+
+$x=\pm (n+\frac{1}{2}), y=\pm (n+\frac{1}{2})$で囲まれた正方形の周を反時計回りに通る積分路を$C$とすると、$\zeta\notin\Z, |\zeta|<|n|+\frac{1}{2}$のとき
+\begin{align*}
+    \frac{1}{2\pi i}\int_{C}\frac{\pi}{(z-\zeta)\sin\pi z}dz
+    =\frac{\pi}{\sin\pi \zeta}
+     +\sum_{k=-n}^{n}\frac{(-1)^k}{k-\zeta}
+\end{align*}
+積分路の縦辺上では
+\begin{align*}
+    z&=\pm (n+\frac{1}{2})+yi\\
+    \frac{\pi}{\sin\pi z}
+    &=\frac{\pi}{\sin\pi(n+1/2+yi)}
+    =\frac{(-1)^n\pi}{\cos\pi yi}
+    =\frac{(-1)^n\pi}{e^{-\pi y}+e^{\pi y}}\\
+    \left|\frac{\pi}{\sin\pi z}\right|&\le\frac{\pi}{2}
+\end{align*}
+横辺上では
+\begin{align*}
+    z&=x+\pm i(n+\frac{1}{2})\\
+    \frac{\pi}{\sin\pi z}
+    &=\frac{\pi}{\sin\pi(x+i(n+1/2))}
+    =\frac{2i\pi}{e^{i\pi x}e^{-(n+1/2)}-e^{-i\pi x}e^{n+1/2}}\\
+    \left|\frac{\pi}{\sin\pi z}\right|&\longrightarrow 0
+\end{align*}
+よって、
+\begin{align*}
+    &\left|\int_{C}\frac{\pi}{(z-\zeta)\sin\pi z}dz\right|\\
+    &\le \left|\int_{C}\frac{\pi}{z\sin\pi z}dz\right|
+    +\left|\zeta\int_{C}\frac{\pi}{z(z-\zeta)\sin\pi z}dz\right|\\
+    &\le 0+\frac{\pi}{2}\cdot\frac{1}{(|n|+1/2)(|n|+1/2-|\zeta|)}\int_{C}ds\\
+    &=\frac{\pi}{2}\cdot\frac{4(2|n|+1)}{(|n|+1/2)(|n|+1/2-|\zeta|)}\longrightarrow0
+\end{align*}
+したがって
+\begin{align*}
+    \frac{\pi}{\sin\pi \zeta}
+     &=-\sum_{k=-\infty}^{\infty}\frac{(-1)^k}{k-\zeta}
+    =\sum_{k=-\infty}^{\infty}\frac{(-1)^k}{\zeta-k}
+\end{align*}
+（終）
+
+
+
+\newpage
+\begin{mysimplebox}{問3}
+    \begin{align*}
+        \frac{\pi^2}{\sin^2\pi z}=\sum_{n=-\infty}^{\infty}\frac{1}{(z-n)^2}
+    \end{align*}
+\end{mysimplebox}
+\paragraph{証明}
+吉田先生の本のp.223の式より、
+\begin{align*}
+    \pi\cot \pi z=\frac{1}{z}+\sum_{n=1}^{\infty}
+    \left(\frac{1}{z-n}+\frac{1}{z+n}\right)
+\end{align*}
+
+右辺は広義一様収束する（nの2乗の逆数だから）からWeierstrassの二重級数定理より、項別微分可能。
+
+左辺の微分は$\dfrac{-\pi^2}{\sin^2\pi z}$（終）
+
+
+\newpage
+\begin{mysimplebox}{問4}
+    \begin{align*}
+        \cos\pi z=\prod_{n=1}^{\infty}\left(1-\frac{4z^2}{(2n-1)^2}\right)
+    \end{align*}
+\end{mysimplebox}
+\paragraph{証明}
+$\cos\pi z$の零点は$\dfrac{2n-1}{2}\pi$（$n\in\Z$）。
+
+p.218の(76.8)式を利用する。
+
+ここで、位数$\rho$はp.102より、
+\begin{align*}
+    \rho=\overline{\lim_{r\to+\infty}}\frac{\log\log M(r)}{\log r}
+\end{align*}
+\begin{align*}
+    &|\cos\pi z|=\left|\frac{e^{i\pi z}+e^{-i\pi z}}{2}\right|
+    \le e^{\pi r}\\
+    &\frac{\log\log|\cos\pi z|}{\log r}
+    \le\frac{\log\log e^{\pi r}}{\log r}
+    =\frac{\log \pi+\log r}{\log r}\longrightarrow1
+\end{align*}
+よって、$\cos\pi z$の位数$\rho=1$である。
+
+ゆえに、(76.8)式において$q=1$としてよい。
+また、$g(z)\equiv\alpha$（定数）、$k=0$。
+
+したがって、
+\begin{align*}
+    \cos\pi z
+    &=e^\alpha\prod_{n=-\infty}^{\infty}\left(1-\frac{2z}{2n-1}\exp\left(\frac{2z}{2n-1}\right)\right)\\
+    &=e^\alpha\prod_{n=1}^{\infty}\left\{1-\left(\frac{2z}{2n-1}\right)^2\right\}
+\end{align*}
+$\cos\pi0=1$から$e^\alpha=1$が分かる。（終）
+
+\paragraph{別解1}
+\begin{align*}
+    \frac{\prod_{n=1}^{\infty}\left\{1-\frac{4z^2}{(2n-1)^2}\right\}}{\cos\pi z}
+\end{align*}
+は全平面において正則であるから定数。$z=0$を代入すると1。（終）
+
+\paragraph{別解2}
+解析概論（最新の定本版）p.254の(23)式を利用する（吉田先生の本のp.223の式も同じ）。
+\begin{align*}
+    \tan z=-\sum_{n=0}^{\infty}
+    \left\{\frac{1}{z-(n+1/2)\pi}-\frac{1}{z+(n+1/2)\pi}\right\}
+\end{align*}
+さらに、
+\begin{align*}
+    \frac{d}{dz}\log\cos z=-\tan z
+\end{align*}
+0から$z$（$0<z<\pi/2$）まで積分する。
+\begin{align*}
+    \log\cos z&=\sum_{n=0}^{\infty}(\log(z-(n+1/2)\pi)-\log(-(n+1/2)\pi)\\
+    &+\log(z+(n+1/2)\pi)-\log((n+1/2)\pi))\\
+    &=\sum_{n=0}^{\infty}(\log(1-\frac{z}{(n+1/2)\pi})+\log(1+\frac{z}{(n+1/2)\pi}))\\
+    &=\sum_{n=0}^{\infty}\log(1-\frac{4z^2}{(2n+1)^2\pi^2})\\
+    &=\log\prod_{n=0}^{\infty}(1-\frac{4z^2}{(2n+1)^2\pi^2})\\
+    \cos z&=\prod_{n=0}^{\infty}(1-\frac{4z^2}{(2n+1)^2\pi^2})
+\end{align*}
+（終）
