@@ -2,7 +2,7 @@ TEXFILE=sample.tex
 FILE=${TEXFILE%.*}
 TEX=lualatex
 echo $FILE
-$TEX $TEXFILE -interaction=nonstopmode
-$TEX $TEXFILE -interaction=nonstopmode
-$TEX $TEXFILE -interaction=nonstopmode
+$TEX -interaction=nonstopmode $TEXFILE
+$TEX -interaction=nonstopmode $TEXFILE
+$TEX -interaction=nonstopmode $TEXFILE
 cp ${FILE}.pdf ./build
